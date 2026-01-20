@@ -1,0 +1,152 @@
+# CURSOR RULES – FRONTEND (VUE 3)
+
+## GOAL
+Build a frontend application that is modular, maintainable, and scalable, prioritizing long-term quality, low technical debt, and a clear architecture.
+
+### Tech stack:
+- Vue 3 (Composition API)
+- JavaScript (ES2022+)
+- Tailwind CSS
+- GSAP
+- Three.js
+
+---
+
+## ARCHITECTURE GUIDELINES
+
+Use a clear, feature-oriented architecture. Responsibilities must be separated at all times.
+
+### General structure:
+- App bootstrap (main, router, store)
+- UI components
+- Business logic (composables)
+- External communication (services)
+- Pages (views)
+
+Each layer must have a single responsibility and must not leak concerns into others.
+
+---
+
+## COMPONENTIZATION RULES
+
+### Single Responsibility
+Each component must have only one responsibility.
+
+A component must NOT:
+- Fetch data
+- Handle complex business logic
+- Run animations
+- Render UI
+
+all in the same place.
+
+Responsibilities must be split into:
+- **Views**: orchestration and page logic
+- **Components**: UI rendering
+- **Composables**: reusable logic
+- **Services**: data and external systems
+
+### Base Components
+Base components must be:
+- Pure and stateless
+- Controlled only via props and emits
+- Free of API calls, GSAP, or Three.js logic
+
+Base components are UI primitives only.
+
+### Smart vs Dumb Components
+- **Dumb components**: rendering and styling only
+- **Smart components**: orchestration and logic
+
+Never mix both roles in the same component.
+
+---
+
+## COMPOSABLES (DRY PRINCIPLE)
+
+### Rules for composables:
+- Must start with "use"
+- One responsibility per composable
+- Explicit and minimal public API
+
+Composables must not:
+- Produce hidden side effects
+- Access the DOM directly without refs
+- Contain UI rendering logic
+
+---
+
+## GSAP USAGE RULES
+
+- Animations must be encapsulated in composables or wrapper components
+- Always use refs instead of CSS selectors
+- Timelines must be cleaned up on component unmount
+
+GSAP must not:
+- Be used directly inside setup without abstraction
+- Be tightly coupled to markup structure
+
+---
+
+## THREE.JS USAGE RULES
+
+Three.js logic must always be isolated from UI components.
+
+### Rules:
+- UI logic and 3D logic must never mix
+- Scene creation, render loop, and objects must be separated
+- All geometries, materials, and renderers must be properly disposed
+- Three.js must be treated as an independent system
+
+---
+
+## TAILWIND CSS RULES
+
+- Design tokens must be centralized in the Tailwind configuration
+- Reusable patterns should use @apply
+- Templates must remain readable
+
+### Avoid:
+- Repeating magic values
+- Extremely long class strings
+- Encoding logic inside class names
+
+---
+
+## CLEAN CODE GUIDELINES
+
+### Naming:
+- Use verbs for actions (handleClick, fetchData)
+- Use nouns for state (isOpen, hasError)
+- Avoid unclear abbreviations
+
+### Size limits:
+- Components: maximum 150 lines
+- Composables: maximum 80 lines
+
+---
+
+## SOLID PRINCIPLES (FRONTEND ADAPTATION)
+
+- **Single Responsibility**: one role per component or composable
+- **Open/Closed**: extend behavior via props or composition, not modification
+- **Liskov Substitution**: composables must be interchangeable
+- **Interface Segregation**: small, focused APIs
+- **Dependency Inversion**: services must be injected, not hard-coded
+
+---
+
+## QUALITY AND TOOLING (MANDATORY)
+
+The project must include:
+- Unit and component testing
+- Linting and formatting
+- Pre-commit checks
+
+**No feature is considered complete if it breaks tests or linting rules.**
+
+---
+
+## FINAL RULE
+
+> If a component cannot be removed without breaking unrelated parts of the application, the architecture is wrong.
