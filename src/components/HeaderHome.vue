@@ -1,5 +1,5 @@
 <template>
-  <section class="py-24 sm:py-32">
+  <section class="py-24 sm:py-32 bg-[#F2F0E3]">
     <div class="container-md mx-auto px-4">
       <div class="text-center">
         <!-- Subtitle -->
