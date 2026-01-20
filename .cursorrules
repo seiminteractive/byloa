@@ -147,6 +147,17 @@ The project must include:
 
 ---
 
+## DOCUMENTATION & FILES
+
+**DO NOT create .md files unless explicitly requested by the user.**
+
+Documentation should be embedded in the code through:
+- Clear comments in code
+- JSDoc annotations
+- Component descriptions in setup
+
+---
+
 ## FINAL RULE
 
 > If a component cannot be removed without breaking unrelated parts of the application, the architecture is wrong.

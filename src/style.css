@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Base styles */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Components */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-rose-500 text-white font-semibold rounded-lg hover:bg-rose-600;
+  }
+
+  .container-md {
+    @apply max-w-4xl mx-auto;
+  }
+
+  .container-lg {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent;
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

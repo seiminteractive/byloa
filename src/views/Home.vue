@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <p>hola</p>
-  </div>
+  <main class="bg-white">
+    <NavLinks />
+    <HeaderHome />
+  </main>
 </template>
 
 <script setup>
+import NavLinks from '../components/NavLinks.vue'
+import HeaderHome from '../components/HeaderHome.vue'
 </script>
 
 <style scoped>
