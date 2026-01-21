@@ -7,7 +7,7 @@
           <img
             src="/logotipos_logotipodescriptorv1 positivo.png"
             alt="ByLoa Agency"
-            class="h-25 w-auto opacity-70"
+            class="h-15 w-auto opacity-70"
           />
         </div>
 
