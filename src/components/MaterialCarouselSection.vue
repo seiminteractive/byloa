@@ -15,27 +15,27 @@
 
         <!-- Carousel Full Width -->
         <Swiper
-          ref="swiperInstance"
-          :modules="[Pagination]"
-          :slides-per-view="slidesPerView"
-          :space-between="spaceBetween"
-          :loop="true"
-          :centered-slides="true"
-          :speed="600"
-          :grab-cursor="true"
-          :breakpoints="{
-            320: { slidesPerView: 1.2, spaceBetween: 16 },
-            768: { slidesPerView: 2, spaceBetween: 20 },
-            1024: { slidesPerView: 3, spaceBetween: 24 }
-          }"
-          :pagination="{
-            clickable: true,
-            bulletClass: 'swiper-pagination-bullet-custom',
-            bulletActiveClass: 'swiper-pagination-bullet-active-custom'
-          }"
-          @swiper="onSwiperInit"
-          class="w-full"
-        >
+  ref="swiperInstance"
+  :modules="[Pagination]"
+  :slides-per-view="3"
+  :space-between="24"
+  :loop="true"
+  :centered-slides="true"
+  :speed="600"
+  :grab-cursor="true"
+  :breakpoints="{
+    320: { slidesPerView: 1.2, spaceBetween: 16 },
+    640: { slidesPerView: 2, spaceBetween: 20 },
+    1024: { slidesPerView: 3, spaceBetween: 24 }
+  }"
+  :pagination="{
+    clickable: true,
+    bulletClass: 'swiper-pagination-bullet-custom',
+    bulletActiveClass: 'swiper-pagination-bullet-active-custom'
+  }"
+  @swiper="onSwiperInit"
+  class="w-full"
+>
           <SwiperSlide v-for="project in projects" :key="project.id">
             <CarouselSlide
               :image="project.image"
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -95,24 +95,24 @@ const projects = [
   {
     id: 5,
     image: '/MARCA_Mesa de trabajo 1 copia 9.jpg',
-    title: 'Proyecto 1',
+    title: 'Proyecto 5',
     description: 'Estrategia digital integral'
   },
   {
     id: 6,
     image: '/MARCA_Mesa de trabajo 1 copia 10.jpg',
-    title: 'Proyecto 2',
+    title: 'Proyecto 6',
     description: 'Identidad visual y branding'
   }
 ]
 
-const slidesPerView = computed(() => 3)
-const spaceBetween = computed(() => 24)
-
 const onSwiperInit = (swiper) => {
   swiperRef.value = { swiper }
-  // Asegurar que comienza en el slide central
-  swiper.slideTo(0, 0)
+
+  // MUY IMPORTANTE: esperar a que Swiper termine de clonar
+  requestAnimationFrame(() => {
+    swiper.slideToLoop(0, 0, false)
+  })
 }
 
 useCarouselAnimations(containerRef, swiperRef)

@@ -1,9 +1,9 @@
 <template>
-  <section class="py-20 sm:py-28 bg-white">
+  <section class="py-20 sm:py-28 bg-black">
     <div class="container-lg mx-auto px-4 sm:px-6">
       <!-- Header -->
       <div class="mb-20 max-w-2xl">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-black mb-6">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6">
           Cómo trabajamos
         </h2>
         <p class="text-lg sm:text-xl text-gray-600">
@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- Title -->
-                <h3 class="text-2xl sm:text-3xl font-semibold text-black">
+                <h3 class="text-2xl sm:text-3xl font-semibold text-white">
                   {{ step.title }}
                 </h3>
 

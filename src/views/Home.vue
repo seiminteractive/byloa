@@ -1,24 +1,35 @@
 <template>
-  <main class="bg-white">
-    <NavLinks />
-    <HeaderHome />
-    <AboutSection />
-    <ServicesSection />
-    <MaterialCarouselSection />
-    <LogosMeetSection />
-    <HowWeWorkTimeline />
-    <SiteFooter />
-  </main>
+  <div class="relative w-full overflow-hidden bg-black min-h-screen">
+    <!-- Animated Landing Background (mounts once) -->
+    <AnimatedLandingBackground />
+
+    <!-- Main Content -->
+    <main class="relative z-40 pt-16">
+      <NavLinks />
+      <HeaderHome />
+      <AboutSection />
+      <ServicesSection />
+      <MaterialCarouselSection />
+      <LogosMeetSection />
+      <HowWeWorkTimeline />
+      <TrustedBrandsSection />
+      <WhyByLoaSection />
+      <SiteFooter />
+    </main>
+  </div>
 </template>
 
 <script setup>
+import AnimatedLandingBackground from '../components/AnimatedLandingBackground.vue'
 import NavLinks from '../components/NavLinks.vue'
 import HeaderHome from '../components/HeaderHome.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
 import MaterialCarouselSection from '../components/MaterialCarouselSection.vue'
+import TrustedBrandsSection from '../components/TrustedBrandsSection.vue'
 import LogosMeetSection from '../components/LogosMeetSection.vue'
 import HowWeWorkTimeline from '../components/HowWeWorkTimeline.vue'
+import WhyByLoaSection from '../components/WhyByLoaSection.vue'
 import SiteFooter from '../components/SiteFooter.vue'
 </script>
 

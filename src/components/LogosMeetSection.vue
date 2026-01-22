@@ -1,6 +1,6 @@
 <template>
-  <section ref="containerRef" class="h-screen bg-[#F2F0E3] relative overflow-hidden">
-    <div class="w-screen h-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-linear-to-b from-[#F2F0E3] to-[#D1CDB9] flex items-center justify-center">
+  <section ref="containerRef" class="h-screen bg-black relative overflow-hidden">
+    <div class="w-screen h-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-linear-to-b flex items-center justify-center">
       <!-- Logos Container -->
       <div class="absolute inset-0 w-full h-full flex items-center justify-between px-0">
         <!-- Logo Left -->
@@ -10,7 +10,7 @@
           style="width: 50vw"
         >
           <img
-            src="/logotipos_logotipodescriptorv1 positivo.png"
+            src="/logotipos_logotipodescriptorv1 negativo.png"
             alt="ByLoa Logo Left"
             class="h-32 sm:h-40 md:h-48 w-auto object-contain"
           />

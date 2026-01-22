@@ -1,12 +1,12 @@
 <template>
-  <footer ref="containerRef" class="bg-black text-white pt-20 sm:pt-28 pb-0">
+  <footer ref="containerRef" class="bg-[#0A0A0A] text-white pt-20 sm:pt-28 pb-0 relative z-10">
     <div class="container-lg mx-auto px-4 sm:px-6">
       <!-- Main Footer Content -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-16 pb-16 border-b border-white/10">
         <!-- Brand Section -->
         <div ref="brandRef" class="opacity-0">
           <img
-              src="/public/logotipos_logotipodescriptorv1 negativo.png"
+              src="/logotipos_logotipodescriptorv1 negativo.png"
               alt="byloa.agency"
               class="h-20 w-auto mb-7"
             />
@@ -97,8 +97,9 @@
         <!-- Logo (placeholder for asset) -->
         <div class="h-6 flex items-center">
           <img
-            src="#"
-            alt="Seim"
+            v-if="logoSrc"
+            :src="logoSrc"
+            alt="Partner Logo"
             class="h-full w-auto object-contain opacity-60"
           />
         </div>
