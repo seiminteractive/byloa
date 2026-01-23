@@ -1,5 +1,5 @@
 <template>
-    <section class="py-20 sm:py-28 bg-black relative z-10">
+    <section class="py-20 sm:py-28 relative z-10 bg-gradient-to-b from-black via-transparent to-black">
       <div class="container-lg mx-auto px-4 sm:px-6">
   
         <!-- Logo central -->

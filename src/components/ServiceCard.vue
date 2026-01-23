@@ -1,21 +1,26 @@
 <template>
-  <div ref="cardRef" class="p-8 rounded-2xl backdrop-blur-sm bg-white/10 border border-white/20 hover:border-white/40 transition-colors duration-300">
-    <div class="space-y-4">
-      <!-- Title -->
-      <h3 class="text-xl sm:text-2xl font-semibold text-white">
-        {{ title }}
-      </h3>
+  <div
+    class="
+      p-6 sm:p-8
+      rounded-[24px]
+     
+      flex flex-col h-full
+    "
+  >
+    <!-- Title -->
+    <h3 class="text-lg font-semibold text-white mb-3">
+      {{ title }}
+    </h3>
 
-      <!-- Main description -->
-      <p class="text-sm sm:text-base text-white/80 leading-relaxed">
-        {{ mainDescription }}
-      </p>
+    <!-- Main description -->
+    <p class="text-sm text-white/70 leading-relaxed mb-4">
+      {{ mainDescription }}
+    </p>
 
-      <!-- Secondary description -->
-      <p class="text-sm sm:text-base text-white/70 leading-relaxed">
-        {{ secondaryDescription }}
-      </p>
-    </div>
+    <!-- Secondary description -->
+    <p v-if="secondaryDescription" class="text-xs text-white/60 leading-relaxed mt-auto">
+      {{ secondaryDescription }}
+    </p>
   </div>
 </template>
 
@@ -31,7 +36,7 @@ defineProps({
   },
   secondaryDescription: {
     type: String,
-    required: true
+    default: ''
   }
 })
 

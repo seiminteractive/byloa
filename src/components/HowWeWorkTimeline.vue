@@ -1,61 +1,72 @@
 <template>
-  <section class="py-20 sm:py-28 bg-black">
+  <section class="py-20 sm:py-28 bg-black relative z-10">
     <div class="container-lg mx-auto px-4 sm:px-6">
-      <!-- Header -->
-      <div class="mb-20 max-w-2xl">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-6">
+      <!-- HEADER -->
+      <div class="mb-20">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-4">
           Cómo trabajamos
         </h2>
-        <p class="text-lg sm:text-xl text-gray-600">
+        <p class="text-lg sm:text-xl text-white/70 max-w-2xl">
           Un proceso claro, ordenado y estratégico en cada proyecto.
         </p>
       </div>
 
-      <!-- Timeline Container -->
-      <div class="relative">
-        <!-- Vertical Line (Desktop only) -->
-        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 transform -translate-x-1/2" />
+      <!-- TIMELINE CONTAINER -->
+      <div ref="timelineContainer" class="relative">
+        <!-- VERTICAL LINE (Desktop only) -->
+        <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2" />
 
-        <!-- Timeline Items -->
-        <div class="space-y-0">
+        <!-- TIMELINE ITEMS -->
+        <div class="space-y-12 sm:space-y-16 lg:space-y-20">
           <div
             v-for="(step, index) in steps"
             :key="step.id"
-            :ref="el => itemsRefs[index] = el"
-            class="flex gap-8 mb-12 sm:mb-16 items-start"
-            :class="index % 2 === 0 ? 'flex-row-reverse md:flex-row' : 'md:flex-row-reverse'"
+            data-timeline-item
+            class="relative flex lg:gap-0 gap-8 items-start"
+            :class="index % 2 === 0 ? 'flex-col lg:flex-row' : 'flex-col lg:flex-row-reverse'"
           >
-            <!-- Content Block -->
-            <div class="w-full md:w-1/2 md:pr-8" :class="index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'">
-              <div class="space-y-3">
-                <!-- Step Number (subtle) -->
-                <div class="text-xs uppercase tracking-widest text-gray-400 font-semibold">
+            <!-- CONTENT BLOCK -->
+            <div
+              data-content
+              class="relative z-10 w-full lg:w-[45%]"
+              :class="index % 2 === 0 ? 'lg:text-right lg:pr-8' : 'lg:text-left lg:pl-8'"
+            >
+              <!-- Badge: PASO X -->
+              <div
+                data-badge
+                class="inline-block mb-4 px-3 py-1 rounded-full border border-[#F45EBB]/40 bg-[#F45EBB]/10"
+              >
+                <span class="text-xs uppercase tracking-widest text-[#F45EBB] font-semibold">
                   Paso {{ index + 1 }}
-                </div>
-
-                <!-- Title -->
-                <h3 class="text-2xl sm:text-3xl font-semibold text-white">
-                  {{ step.title }}
-                </h3>
-
-                <!-- Description -->
-                <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                  {{ step.description }}
-                </p>
+                </span>
               </div>
+
+              <!-- Title -->
+              <h3 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 leading-tight">
+                {{ step.title }}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-base sm:text-lg text-white/70 leading-relaxed max-w-md">
+                {{ step.description }}
+              </p>
             </div>
 
-            <!-- Timeline Center (dot + line) -->
-            <div class="hidden md:flex w-12 items-start justify-center pt-2">
-              <div class="relative flex flex-col items-center">
-                <!-- Dot -->
-                <div class="w-3 h-3 bg-black rounded-full ring-4 ring-[#F2F0E3]" />
-              </div>
+            <!-- DOT + CENTER LINE (Desktop only) -->
+            <div class="hidden lg:flex w-[10%] items-start justify-center pt-8">
+              <!-- Animated dot -->
+              <div
+                data-dot
+                class="w-5 h-5 rounded-full border-2 border-[#F45EBB] bg-black/50 backdrop-blur-sm ring-4 ring-black/80"
+              />
             </div>
 
-            <!-- Mobile Timeline (dot only) -->
-            <div class="md:hidden absolute left-0 top-0 w-8 h-full flex items-start justify-center pt-2 -ml-6">
-              <div class="w-2 h-2 bg-black rounded-full" />
+            <!-- MOBILE DOT -->
+            <div class="lg:hidden absolute left-0 top-0 w-8 h-8 flex items-center justify-center -ml-4">
+              <div
+                data-dot
+                class="w-3 h-3 rounded-full bg-[#F45EBB]"
+              />
             </div>
           </div>
         </div>
@@ -65,8 +76,8 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import { useTimelineScrollAnimation } from '../composables/useTimelineScrollAnimation'
+import { ref } from 'vue'
+import { useHowWeWorkAnimation } from '../composables/useHowWeWorkAnimation'
 
 const steps = [
   {
@@ -96,11 +107,9 @@ const steps = [
   }
 ]
 
-const itemsRefs = reactive([])
+const timelineContainer = ref(null)
 
-onMounted(() => {
-  useTimelineScrollAnimation(itemsRefs)
-})
+useHowWeWorkAnimation(timelineContainer)
 </script>
 
 <style scoped>
