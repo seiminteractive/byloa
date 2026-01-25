@@ -23,9 +23,9 @@
           style="width: 50vw"
         >
           <img
-            src="/MARCA-11.png"
+            src="/public/LogoSeimBeige.png"
             alt="ByLoa Logo Right"
-            class="h-32 sm:h-40 md:h-48 w-auto object-contain"
+            class="h-32 sm:h-40 md:h-50 w-auto object-contain"
           />
         </div>
       </div>
@@ -58,9 +58,9 @@ onMounted(() => {
   // Logo izquierdo se mueve hacia la derecha
   animationLeft = gsap.fromTo(
     logoLeftRef.value,
-    { x: -100 },
+    { x: -200 },
     {
-      x: 150,
+      x: 300,
       scrollTrigger: {
         trigger: containerRef.value,
         start: 'top center',
@@ -74,9 +74,9 @@ onMounted(() => {
   // Logo derecho se mueve hacia la izquierda
   animationRight = gsap.fromTo(
     logoRightRef.value,
-    { x: 100 },
+    { x: 300 },
     {
-      x: -150,
+      x: -250,
       scrollTrigger: {
         trigger: containerRef.value,
         start: 'top center',

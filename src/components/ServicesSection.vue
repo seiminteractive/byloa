@@ -33,7 +33,6 @@
           class="
             lg:col-start-1 lg:col-span-2 lg:row-start-1
             rounded-[32px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/8 via-white/4 to-transparent
             border border-white/10
@@ -71,7 +70,6 @@
           class="
             lg:col-start-3 lg:row-start-1
             rounded-[24px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/6 to-transparent
             border border-white/10
@@ -85,7 +83,6 @@
           class="
             lg:col-start-1 lg:col-span-3 lg:row-start-2
             rounded-[36px]
-            overflow-hidden
             backdrop-blur-lg
             bg-linear-to-br from-white/9 via-white/4 to-transparent
             border border-white/10
@@ -99,7 +96,6 @@
             class="
               lg:col-start-1 lg:row-start-3
               rounded-[24px]
-              overflow-hidden
               backdrop-blur-md
               bg-linear-to-br from-white/7 to-transparent
               border border-white/10
@@ -122,7 +118,6 @@
           class="
             lg:col-start-2 lg:col-span-2 lg:row-start-3
             rounded-[24px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/6 to-transparent
             border border-white/10
@@ -138,7 +133,7 @@
 <script setup>
 import { ref } from 'vue'
 import ServiceCard from './ServiceCard.vue'
-import { useClipPathAnimation } from '../composables/useClipPathAnimation'
+import { useGridAnimation } from '../composables/useGridAnimation'
 
 const services = [
   {
@@ -178,7 +173,7 @@ const services = [
 ]
 
 const cardsRef = ref(null)
-useClipPathAnimation(cardsRef)
+useGridAnimation(cardsRef)
 </script>
 
 

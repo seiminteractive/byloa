@@ -4,57 +4,53 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/**
- * Animación optimizada: Sin clip-path (demasiado pesado)
- * Usa fade + slide para mejor rendimiento
- */
-export function useClipPathAnimation(containerRef) {
+export function useGridAnimation(containerRef) {
   let timelines = []
 
   const createAnimation = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const cards = Array.from(containerRef.value?.children || [])
+    const items = Array.from(containerRef.value?.children || [])
 
-    if (cards.length === 0) return
+    if (items.length === 0) return
 
     if (prefersReducedMotion) {
-      cards.forEach(card => {
-        gsap.set(card, { opacity: 1, y: 0 })
+      items.forEach(item => {
+        gsap.set(item, { opacity: 1, y: 0 })
       })
       return
     }
 
-    cards.forEach((card, index) => {
+    items.forEach((item, index) => {
       // Establecer will-change directamente en el elemento
-      if (card instanceof HTMLElement) {
-        card.style.willChange = 'opacity, transform'
+      if (item instanceof HTMLElement) {
+        item.style.willChange = 'opacity, transform'
       }
 
-      // Set inicial - fade + slide (mucho más rápido que clip-path)
-      gsap.set(card, { opacity: 0, y: 25 })
+      // Set inicial
+      gsap.set(item, { opacity: 0, y: 30 })
 
       // Timeline con ScrollTrigger - optimizado
       const timeline = gsap.timeline({
         scrollTrigger: {
-          trigger: card,
+          trigger: item,
           start: 'top 80%',
           once: true,
           markers: false
         },
         onComplete: () => {
           // Limpiar will-change después
-          if (card instanceof HTMLElement) {
-            card.style.willChange = 'auto'
+          if (item instanceof HTMLElement) {
+            item.style.willChange = 'auto'
           }
         }
       })
 
       timeline.to(
-        card,
+        item,
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.8,
           ease: 'power2.out',
           delay: index * 0.08
         },
@@ -66,10 +62,9 @@ export function useClipPathAnimation(containerRef) {
   }
 
   onMounted(() => {
-    // Delay más corto para mejor percepción
     setTimeout(() => {
       createAnimation()
-    }, 30)
+    }, 50)
   })
 
   onBeforeUnmount(() => {

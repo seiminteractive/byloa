@@ -22,7 +22,6 @@
           class="
             lg:col-span-2 lg:row-span-2
             p-8 sm:p-10 rounded-[32px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/8 via-white/4 to-transparent
             border border-white/10
@@ -50,7 +49,6 @@
         <div
           class="
             p-6 sm:p-8 rounded-[24px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/6 to-transparent
             border border-white/10
@@ -68,7 +66,6 @@
         <div
           class="
             p-6 sm:p-8 rounded-[24px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/7 to-transparent
             border border-white/10
@@ -90,7 +87,6 @@
         <div
           class="
             p-6 sm:p-8 rounded-[24px]
-            overflow-hidden
             backdrop-blur-md
             bg-linear-to-br from-white/6 to-transparent
             border border-white/10
@@ -109,7 +105,6 @@
           class="
             lg:col-span-2
             p-8 sm:p-10 rounded-[36px]
-            overflow-hidden
             backdrop-blur-lg
             bg-linear-to-br from-white/9 via-white/4 to-transparent
             border border-white/10
@@ -132,10 +127,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useClipPathAnimation } from '../composables/useClipPathAnimation'
+import { useGridAnimation } from '../composables/useGridAnimation'
 
 const cardsRefs = ref(null)
-useClipPathAnimation(cardsRefs)
+useGridAnimation(cardsRefs)
 </script>
 
 

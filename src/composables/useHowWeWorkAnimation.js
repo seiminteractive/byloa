@@ -21,27 +21,39 @@ export function useHowWeWorkAnimation(containerRef) {
     }
 
     items.forEach((item, index) => {
+      // Establecer will-change directamente en el elemento
+      if (item instanceof HTMLElement) {
+        item.style.willChange = 'opacity, transform'
+      }
+
       // Obtener subelementos
       const badge = item.querySelector('[data-badge]')
       const dot = item.querySelector('[data-dot]')
       const content = item.querySelector('[data-content]')
 
-      // Set inicial
+      // Set inicial - usar clearProps en onComplete
       gsap.set(item, { opacity: 0, y: 20 })
       if (badge) gsap.set(badge, { opacity: 0, x: -15 })
       if (dot) gsap.set(dot, { scale: 0, opacity: 0 })
       if (content) gsap.set(content, { opacity: 0, y: 15 })
 
-      // Timeline con ScrollTrigger
+      // Timeline con ScrollTrigger - optimizado
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: item,
           start: 'top 75%',
-          once: true
+          once: true,
+          markers: false
+        },
+        onComplete: () => {
+          // Limpiar will-change después
+          if (item instanceof HTMLElement) {
+            item.style.willChange = 'auto'
+          }
         }
       })
 
-      // Animación principal del item
+      // Animaciones individuales
       timeline.to(item, {
         opacity: 1,
         y: 0,
@@ -49,7 +61,6 @@ export function useHowWeWorkAnimation(containerRef) {
         ease: 'power2.out'
       }, 0)
 
-      // Animación del badge (label)
       if (badge) {
         timeline.to(badge, {
           opacity: 1,
@@ -59,7 +70,6 @@ export function useHowWeWorkAnimation(containerRef) {
         }, 0.1)
       }
 
-      // Animación del dot con escala
       if (dot) {
         timeline.to(dot, {
           scale: 1,
@@ -69,7 +79,6 @@ export function useHowWeWorkAnimation(containerRef) {
         }, 0.2)
       }
 
-      // Animación del contenido (staggered)
       if (content) {
         timeline.to(content, {
           opacity: 1,

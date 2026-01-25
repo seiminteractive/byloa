@@ -17,6 +17,11 @@ export function useContactAnimation(containerRef) {
       return
     }
 
+    // Establecer will-change directamente en el elemento
+    if (containerRef.value instanceof HTMLElement) {
+      containerRef.value.style.willChange = 'opacity, transform'
+    }
+
     // Animación del contenedor principal
     gsap.set(containerRef.value, { opacity: 0, y: 40 })
 
@@ -24,7 +29,14 @@ export function useContactAnimation(containerRef) {
       scrollTrigger: {
         trigger: containerRef.value,
         start: 'top 75%',
-        once: true
+        once: true,
+        markers: false
+      },
+      onComplete: () => {
+        // Limpiar will-change del contenedor
+        if (containerRef.value instanceof HTMLElement) {
+          containerRef.value.style.willChange = 'auto'
+        }
       }
     })
 
@@ -39,6 +51,11 @@ export function useContactAnimation(containerRef) {
     // Animación de los items de contacto (staggered)
     const contactItems = containerRef.value.querySelectorAll('[ref="contactItemsRef"]')
     contactItems.forEach((item, index) => {
+      // Establecer will-change en items
+      if (item instanceof HTMLElement) {
+        item.style.willChange = 'opacity, transform'
+      }
+
       gsap.set(item, { opacity: 0, y: 20 })
 
       mainTimeline.to(item, {
@@ -46,7 +63,14 @@ export function useContactAnimation(containerRef) {
         y: 0,
         duration: 0.6,
         ease: 'power2.out'
-      }, 0.1 + index * 0.08)
+      }, 0.1 + index * 0.07)
+
+      // Limpiar will-change de items
+      mainTimeline.eventCallback('onComplete', () => {
+        if (item instanceof HTMLElement) {
+          item.style.willChange = 'auto'
+        }
+      })
     })
 
     timelines.push(mainTimeline)
@@ -55,7 +79,7 @@ export function useContactAnimation(containerRef) {
   onMounted(() => {
     setTimeout(() => {
       createAnimation()
-    }, 50)
+    }, 30)
   })
 
   onBeforeUnmount(() => {

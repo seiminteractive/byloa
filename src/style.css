@@ -44,11 +44,6 @@
   .text-gradient {
     @apply bg-linear-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent;
   }
-
-  /* Transición suave para clip-path */
-  .clip-path-transition {
-    transition: clip-path 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
 }
 
 /* Accesibilidad */
