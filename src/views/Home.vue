@@ -14,6 +14,7 @@
       <HowWeWorkTimeline />
       <TrustedBrandsSection />
       <WhyByLoaSection />
+      <ContactSection />
       <SiteFooter />
     </main>
   </div>
@@ -30,6 +31,7 @@ import TrustedBrandsSection from '../components/TrustedBrandsSection.vue'
 import LogosMeetSection from '../components/LogosMeetSection.vue'
 import HowWeWorkTimeline from '../components/HowWeWorkTimeline.vue'
 import WhyByLoaSection from '../components/WhyByLoaSection.vue'
+import ContactSection from '../components/ContactSection.vue'
 import SiteFooter from '../components/SiteFooter.vue'
 </script>
 
