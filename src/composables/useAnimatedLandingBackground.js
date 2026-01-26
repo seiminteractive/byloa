@@ -10,11 +10,11 @@ export function useAnimatedLandingBackground(container) {
   const createSparkles = () => {
     if (!container?.value) return
 
-    // Configuración refinada de destellos FIJOS
+    // Configuración refinada de destellos FIJOS - Colores más pastel
     const config = {
-      small: { count: 15, sizeRange: [20, 40], colors: ['#F45EBB', '#FC94C7'], opacityRange: [0.08, 0.12], blurRange: [15, 25] },
-      medium: { count: 10, sizeRange: [50, 90], colors: ['#F45EBB', '#FC94C7', 'rgba(245, 93, 187, 0.08)'], opacityRange: [0.1, 0.15], blurRange: [20, 35] },
-      large: { count: 4, sizeRange: [100, 180], colors: ['#FC94C7', 'rgba(245, 93, 187, 0.06)'], opacityRange: [0.06, 0.12], blurRange: [35, 55] }
+      small: { count: 15, sizeRange: [20, 40], colors: ['#FCAFCA', '#F0C4E0'], opacityRange: [0.08, 0.12], blurRange: [15, 25] },
+      medium: { count: 10, sizeRange: [50, 90], colors: ['#F0C4E0', '#D9B8D4', 'rgba(240, 196, 224, 0.08)'], opacityRange: [0.1, 0.15], blurRange: [20, 35] },
+      large: { count: 4, sizeRange: [100, 180], colors: ['#FCAFCA', 'rgba(240, 196, 224, 0.06)'], opacityRange: [0.06, 0.12], blurRange: [35, 55] }
     }
 
     Object.values(config).forEach(category => {
@@ -63,17 +63,16 @@ export function useAnimatedLandingBackground(container) {
 
   onMounted(() => {
     if (prefersReducedMotion) {
-      // Sin animaciones: fondo estático con gradient suave
+      // Sin animaciones: fondo estático con gradient suave - disposición diferente
       if (container?.value) {
         const div = document.createElement('div')
         div.style.cssText = `
           position: absolute;
           inset: 0;
-          background: radial-gradient(
-            ellipse at 50% 30%,
-            rgba(244, 93, 187, 0.08),
-            transparent 70%
-          );
+          background: 
+            radial-gradient(ellipse 100% 80% at 30% 20%, rgba(252, 175, 202, 0.12), transparent 50%),
+            radial-gradient(ellipse 80% 70% at 70% 40%, rgba(208, 180, 224, 0.1), transparent 55%),
+            radial-gradient(ellipse 90% 85% at 50% 85%, rgba(200, 220, 245, 0.08), transparent 60%);
           pointer-events: none;
         `
         container.value.appendChild(div)
