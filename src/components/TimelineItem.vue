@@ -12,12 +12,12 @@
         </div>
 
         <!-- Title -->
-        <h3 class="text-2xl sm:text-3xl font-semibold text-black">
+        <h3 class="text-2xl sm:text-3xl font-semibold text-white">
           {{ title }}
         </h3>
 
         <!-- Description -->
-        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
           {{ description }}
         </p>
       </div>
@@ -27,13 +27,13 @@
     <div class="hidden md:flex w-12 items-start justify-center pt-2">
       <div class="relative flex flex-col items-center">
         <!-- Dot -->
-        <div class="w-3 h-3 bg-black rounded-full ring-4 ring-[#F2F0E3]" />
+        <div class="w-3 h-3 bg-white rounded-full ring-4 ring-black/20" />
       </div>
     </div>
 
     <!-- Mobile Timeline (dot only) -->
     <div class="md:hidden absolute left-0 top-0 w-8 h-full flex items-start justify-center pt-2 -ml-6">
-      <div class="w-2 h-2 bg-black rounded-full" />
+      <div class="w-2 h-2 bg-white rounded-full" />
     </div>
   </div>
 </template>

@@ -4,12 +4,34 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function useHowWeWorkAnimation(containerRef) {
+export function useHowWeWorkAnimation(containerRef, animatedLineRef) {
   let timelines = []
 
   const createAnimation = () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const items = Array.from(containerRef.value?.querySelectorAll('[data-timeline-item]') || [])
+    
+    // Animar la línea vertical
+    if (animatedLineRef?.value && !prefersReducedMotion) {
+      const lineTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.value,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: 1,
+          markers: false
+        }
+      })
+      
+      lineTimeline.fromTo(
+        animatedLineRef.value,
+        { height: 0 },
+        { height: '100%', duration: 1 },
+        0
+      )
+      
+      timelines.push(lineTimeline)
+    }
 
     if (items.length === 0) return
 
