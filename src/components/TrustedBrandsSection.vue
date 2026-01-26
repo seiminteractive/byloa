@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 sm:py-28 relative z-10 overflow-hidden  bg-black">
+  <section class="py-20 sm:py-28 relative z-10 overflow-hidden bg-black">
 
     <!-- DEGRADADO LATERAL IZQUIERDO -->
     <div class="pointer-events-none absolute inset-y-0 left-0 w-32 sm:w-48 lg:w-64 
@@ -48,10 +48,10 @@
           :key="`row1-${brand.logo}`"
           class="flex items-center shrink-0"
         >
-          <div class="w-64 px-6 py-3 rounded-xl bg-white/5 backdrop-blur border border-[#F5F2ED]/5 flex items-center justify-center">
+          <div class="w-64 px-6 py-3 rounded-xl bg-white/0 backdrop-blur border border-[#F5F2ED]/0 flex items-center justify-center">
             <img
               :src="brand.logo"
-              class="h-8 sm:h-10 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition"
+              class="h-8 sm:h-10 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-1 transition"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@
             :key="`row2-${brand.logo}`"
             class="flex items-center shrink-0"
           >
-            <div class="w-64 px-6 py-3 rounded-xl bg-white/5 backdrop-blur border border-[#F5F2ED]/5 flex items-center justify-center">
+            <div class="w-64 px-6 py-3 rounded-xl bg-white/0 backdrop-blur border border-[#F5F2ED]/0 flex items-center justify-center">
               <img
                 :src="brand.logo"
                 class="h-8 sm:h-10 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition"
