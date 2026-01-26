@@ -4,8 +4,7 @@
     <AnimatedLandingBackground />
 
     <!-- Main Content -->
-    <main class="relative z-40 pt-16">
-      <NavLinks />
+    <main class="relative z-40">
       <HeaderHome />
       <AboutSection />
       <ServicesSection />
@@ -22,7 +21,6 @@
 
 <script setup>
 import AnimatedLandingBackground from '../components/AnimatedLandingBackground.vue'
-import NavLinks from '../components/NavLinks.vue'
 import HeaderHome from '../components/HeaderHome.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
