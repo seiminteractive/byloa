@@ -1,5 +1,5 @@
 <template>
-  <section ref="containerRef" class="h-screen bg-black relative overflow-hidden">
+  <section ref="containerRef" class="h-screen bg-gradient-to-b from-black to-[#1a1a1a] relative overflow-hidden">
     <div class="w-screen h-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-linear-to-b flex items-center justify-center">
       <!-- Logos Container -->
       <div class="absolute inset-0 w-full h-full flex items-center justify-between px-0">

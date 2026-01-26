@@ -1,7 +1,10 @@
 <template>
   <section class="py-20 sm:py-28 bg-[#1a1a1a] relative z-10">
-    <!-- Header -->
-    <div class="container-lg mx-auto px-4 sm:px-6 mb-16 md:mb-20">
+    <!-- Header with animation -->
+    <div 
+      class="container-lg mx-auto px-4 sm:px-6 mb-16 md:mb-20 opacity-0"
+      data-header-animation
+    >
       <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-4">
         {{ title }}
       </h2>
@@ -27,7 +30,12 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Timeline } from '@/components/ui/timeline'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const title = 'Cómo trabajamos'
 const description = 'Un proceso claro, ordenado y estratégico en cada proyecto.'
@@ -64,6 +72,44 @@ const steps = [
     description: 'Análisis de resultados y ajustes continuos.'
   }
 ]
+
+// Header animation
+onMounted(() => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (!prefersReducedMotion) {
+    const header = document.querySelector('[data-header-animation]')
+    
+    if (header instanceof HTMLElement) {
+      header.style.willChange = 'opacity, transform'
+    }
+
+    gsap.set(header, { opacity: 0, y: 20 })
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 80%',
+        once: true,
+        markers: false
+      },
+      onComplete: () => {
+        if (header instanceof HTMLElement) {
+          header.style.willChange = 'auto'
+        }
+      }
+    }).to(
+      header,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      },
+      0
+    )
+  }
+})
 </script>
 
 <style scoped>

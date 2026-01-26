@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 sm:py-28 relative z-10 overflow-hidden bg-black">
+  <section class="py-20 sm:py-28 relative z-10 overflow-hidden  bg-black">
 
     <!-- DEGRADADO LATERAL IZQUIERDO -->
     <div class="pointer-events-none absolute inset-y-0 left-0 w-32 sm:w-48 lg:w-64 

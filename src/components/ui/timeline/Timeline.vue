@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, nextTick, watch } from "vue";
 import { Motion, useScroll, useTransform } from "motion-v";
+import { useTimelineItemsAnimation } from "@/composables/useTimelineItemsAnimation";
 
 const props = defineProps({
   containerClass: { type: null, required: false },
@@ -45,12 +46,15 @@ watch(() => props.items, async () => {
     }
   }, 100);
 }, { immediate: true });
+
+// Iniciar animaciones de items
+useTimelineItemsAnimation(timelineRef);
 </script>
 
 <template>
   <div
     ref="timelineContainerRef"
-    class="w-full font-sans dark:bg-[#1a1a1a]"
+    class="w-full font-sans dark:bg-transparent"
   >
     <div ref="timelineRef" class="relative z-0 mx-auto max-w-7xl pb-0 px-4 md:px-0">
       <!-- Background line (Desktop only) -->
@@ -77,6 +81,7 @@ watch(() => props.items, async () => {
       <div
         v-for="(item, index) in props.items"
         :key="item.id + index"
+        data-timeline-item
         class="flex flex-col md:flex-row md:gap-10 pt-10 md:pt-40 relative"
       >
         <!-- Mobile dot and label -->
