@@ -1,5 +1,5 @@
 <template>
-  <section class="py-20 sm:py-28 bg-gradient-to-b from-[#1a1a1a] via-[#1a1a1a] to-black relative z-10">
+  <section class="py-20 sm:py-28 bg-gradient-to-b from-[#1a1a1a] via-[#1a1a1a] to-[#1a1a1a] relative z-10">
     <!-- Header with animation -->
     <div 
       class="container-lg mx-auto px-4 sm:px-6 mb-16 md:mb-20 opacity-0"
