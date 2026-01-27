@@ -56,7 +56,7 @@ export function useScrollNarrative({
         end: endPercent,
         scrub: 1.2,
         pin: true,
-        pinSpacing: false,
+        pinSpacing: true,
         anticipatePin: 1,
         markers: false
       }

@@ -1,5 +1,5 @@
 <template>
-  <section class="relative w-full min-h-screen bg-gradient-to-b from-black via-transparent to-black overflow-hidden flex items-center justify-center py-12 sm:py-20">
+  <section class="relative w-full min-h-screen bg-gradient-to-b from-black via-black/40 to-[#0a0a0a] overflow-hidden flex items-center justify-center py-12 sm:py-20">
     <!-- Decorative Background Elements -->
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-white/5 to-transparent rounded-full blur-3xl -mr-32 -mt-32"></div>

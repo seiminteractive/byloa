@@ -1,33 +1,28 @@
 <template>
-  <section ref="containerRef" class="h-screen bg-gradient-to-b from-black to-[#1a1a1a] relative overflow-hidden">
-    <div class="w-screen h-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden bg-linear-to-b flex items-center justify-center">
-      <!-- Logos Container -->
-      <div class="absolute inset-0 w-full h-full flex items-center justify-between px-0">
-        <!-- Logo Left -->
-        <div
-          ref="logoLeftRef"
-          class="absolute left-0 h-full flex items-center justify-start pl-0"
-          style="width: 50vw"
-        >
-          <img
-            src="/logotipos_logotipodescriptorv1 negativo.png"
-            alt="ByLoa Logo Left"
-            class="h-32 sm:h-40 md:h-48 w-auto object-contain"
-          />
-        </div>
+  <section ref="containerRef" class="relative w-full min-h-screen bg-black overflow-hidden">
+    <div class="w-full h-screen relative flex items-center justify-between px-0">
+      <!-- Logo Left -->
+      <div
+        ref="logoLeftRef"
+        class="h-full flex items-center justify-start pl-4 sm:pl-8 md:pl-16 flex-1"
+      >
+        <img
+          src="/logotipos_logotipodescriptorv1 negativo.png"
+          alt="ByLoa Logo Left"
+          class="h-32 sm:h-40 md:h-48 w-auto object-contain"
+        />
+      </div>
 
-        <!-- Logo Right -->
-        <div
-          ref="logoRightRef"
-          class="absolute right-0 h-full flex items-center justify-end pr-0"
-          style="width: 50vw"
-        >
-          <img
-            src="/public/LogoSeimBeige.png"
-            alt="ByLoa Logo Right"
-            class="h-32 sm:h-40 md:h-50 w-auto object-contain"
-          />
-        </div>
+      <!-- Logo Right -->
+      <div
+        ref="logoRightRef"
+        class="h-full flex items-center justify-end pr-4 sm:pr-8 md:pr-16 flex-1"
+      >
+        <img
+          src="/public/LogoSeimBeige.png"
+          alt="ByLoa Logo Right"
+          class="h-32 sm:h-40 md:h-50 w-auto object-contain"
+        />
       </div>
     </div>
   </section>
