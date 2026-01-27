@@ -210,7 +210,7 @@ h1 {
   left: 2rem;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20;
+  z-index: 2;
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
@@ -230,7 +230,7 @@ h1 {
   position: absolute;
   top: 2rem;
   right: 3rem;
-  z-index: 20;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -260,7 +260,7 @@ h1 {
   width: 100%;
   max-width: 600px;
   padding: 2rem 4rem;
-  z-index: 10;
+  z-index: 1;
 }
 
 /* Decorative line before text block */

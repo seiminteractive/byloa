@@ -10,7 +10,7 @@
     <div class="bottom-fade"></div>
 
     <!-- Content Container -->
-    <div class="relative z-10 w-full px-8 sm:px-12 lg:px-20">
+    <div class="relative z-0 w-full px-8 sm:px-12 lg:px-20">
       
       <!-- Hero Row: Title Left + Description Right -->
       <div ref="heroRef" class="hero-row">

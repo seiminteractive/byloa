@@ -1,75 +1,64 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
-    <div class="container-lg mx-auto px-4 sm:px-6 py-4">
-      <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <div ref="logoRef" class="opacity-0">
-          <img
-            src="/logotipos_logotipodescriptorv1 negativo.png"
-            alt="ByLoa Agency"
-            class="h-15 w-auto opacity-90"
-          />
-        </div>
+  <nav 
+    :class="[
+      'fixed top-0 left-0 right-0 flex items-center justify-between px-8 sm:px-12 lg:px-20 py-6 transition-all duration-500 ease-out',
+      isScrolled 
+        ? 'bg-black/40 backdrop-blur-md border-b border-white/10' 
+        : 'bg-transparent'
+    ]"
+    style="z-index: 999999 !important"
+  >
+    <!-- Left: Logo -->
+    <div class="text-2xl font-coolvetica font-bold text-white">
+      <img src="/logotipos_logotipodescriptorv1 negativo.png" alt="ByLoa Agency" class="h-10 w-auto opacity-90">
+    </div>
 
-        <!-- Nav Links - Desktop -->
-        <div ref="navRef" class="hidden md:flex items-center gap-8 opacity-0">
-          <a
-            href="#"
-            class="text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors"
-          >
-            Inicio
-          </a>
-          <a
-            href="#"
-            class="text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors"
-          >
-            Servicios
-          </a>
-          <a
-            href="#"
-            class="text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors"
-          >
-            Portfolio
-          </a>
-          <a
-            href="#"
-            class="text-xs uppercase tracking-wide text-gray-300 hover:text-white transition-colors"
-          >
-            Contacto
-          </a>
-        </div>
+    <!-- Center: Navigation Links -->
+    <div class="hidden lg:flex items-center gap-25 text-sm">
+      <span class="flex items-center gap-2">
+        <span class="text-white">•</span>
+        <a href="#" class="text-white hover:text-gray-300 transition">Home</a>
+      </span>
+      <a href="#" class="text-gray-400 hover:text-gray-300 transition">About</a>
+      <a href="#" class="text-gray-400 hover:text-gray-300 transition">Work</a>
+      <a href="#" class="text-gray-400 hover:text-gray-300 transition">Services</a>
+    </div>
 
-        <!-- CTA Nav -->
-        <div ref="ctaNavRef" class="opacity-0">
-          <button
-            type="button"
-            class="px-4 py-1.5 text-xs font-medium text-rose-500 border border-rose-500/60 rounded-full hover:bg-rose-500 hover:text-black transition"
-          >
-            Contactar
-          </button>
-        </div>
-      </div>
+    <!-- Right Side Navigation -->
+    <div class="hidden lg:flex items-center gap-8 text-sm">
+      <button class="px-6 py-2 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition">
+        Contactar
+      </button>
     </div>
   </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useNavAnimation } from '../composables/useNavAnimation'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const logoRef = ref(null)
-const navRef = ref(null)
-const ctaNavRef = ref(null)
+const isScrolled = ref(false)
 
-const elements = {
-  logo: logoRef,
-  nav: navRef,
-  ctaNav: ctaNavRef
+const handleScroll = () => {
+  const scrollPosition = window.scrollY
+  isScrolled.value = scrollPosition > 50
 }
 
-useNavAnimation(elements)
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
-/* Nav specific styles */
+nav {
+  z-index: 999999 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  isolation: isolate !important;
+}
 </style>

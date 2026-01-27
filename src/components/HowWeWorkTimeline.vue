@@ -4,7 +4,7 @@
     <div class="absolute inset-0 how-we-work-bg"></div>
     
     <!-- Content Container -->
-    <div class="relative z-10 w-full px-8 sm:px-12 lg:px-20">
+    <div class="relative z-0 w-full px-8 sm:px-12 lg:px-20">
       
       <!-- Header -->
       <div ref="headerRef" class="header-content mb-20 md:mb-28">

@@ -10,13 +10,13 @@ defineProps({
 
 <template>
   <div
-    class="group flex [gap:var(--gap)] overflow-hidden p-0.5 [--duration:40s] [--gap:1rem]"
+    class="group flex [gap:var(--gap)] overflow-hidden p-0 [--duration:40s] [--gap:1rem]"
     :class="[vertical ? 'flex-col' : 'flex-row', $props.class]"
   >
     <div
       v-for="index in repeat"
       :key="index"
-      class="flex shrink-0 justify-around [gap:var(--gap)]"
+      class="flex shrink-0 [gap:var(--gap)]"
       :class="[
         vertical
           ? 'animate-marquee-vertical flex-col'

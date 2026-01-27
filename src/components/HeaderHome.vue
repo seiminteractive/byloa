@@ -4,33 +4,8 @@
     <div class="hero-gradient absolute inset-0 z-0"></div>
 
     <!-- Content Container -->
-    <div class="relative z-10 h-screen flex flex-col">
-      <!-- Top Navigation Bar -->
-      <nav class="flex items-center justify-between px-8 sm:px-12 lg:px-20 py-6">
-        <!-- Left: Logo -->
-        <div class="text-2xl font-coolvetica font-bold text-white">
-          <img src="/logotipos_logotipodescriptorv1 negativo.png" alt="ByLoa Agency" class="h-10 w-auto opacity-90">
-        </div>
-
-        <!-- Center: Navigation Links -->
-        <div class="hidden lg:flex items-center gap-25 text-sm">
-          <span class="flex items-center gap-2">
-            <span class="text-white">•</span>
-            <a href="#" class="text-white hover:text-gray-300 transition">Home</a>
-          </span>
-          <a href="#" class="text-gray-400 hover:text-gray-300 transition">About</a>
-          <a href="#" class="text-gray-400 hover:text-gray-300 transition">Work</a>
-          <a href="#" class="text-gray-400 hover:text-gray-300 transition">Services</a>
-        </div>
-
-        <!-- Right Side Navigation -->
-        <div class="hidden lg:flex items-center gap-8 text-sm">
-          <button class="px-6 py-2 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition">
-            Contactar
-          </button>
-        </div>
-      </nav>
-
+    <div class="relative z-0 h-screen flex flex-col">
+      
       <!-- Main Content Area -->
       <div class="flex-1 flex flex-col items-center justify-center relative px-8 sm:px-12 lg:px-20">
         <!-- Container for centered content -->

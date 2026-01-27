@@ -3,6 +3,9 @@
     <!-- Animated Landing Background (mounts once) -->
     <AnimatedLandingBackground />
 
+    <!-- Global Navigation - Highest stacking context -->
+    <NavLinks />
+
     <!-- Main Content -->
     <main class="relative z-40">
       <HeaderHome />
@@ -21,6 +24,7 @@
 
 <script setup>
 import AnimatedLandingBackground from '../components/AnimatedLandingBackground.vue'
+import NavLinks from '../components/NavLinks.vue'
 import HeaderHome from '../components/HeaderHome.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ServicesSection from '../components/ServicesSection.vue'

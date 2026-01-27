@@ -225,7 +225,7 @@ onUnmounted(() => {
   left: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,7 +252,7 @@ onUnmounted(() => {
   position: absolute;
   bottom: 2rem;
   left: 4rem;
-  z-index: 20;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -284,7 +284,7 @@ onUnmounted(() => {
   position: absolute;
   top: 2rem;
   right: 3rem;
-  z-index: 20;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -321,7 +321,7 @@ onUnmounted(() => {
 
 .services-content {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   display: flex;
   width: 100%;
   height: 100%;
