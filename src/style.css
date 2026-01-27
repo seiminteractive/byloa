@@ -1,6 +1,12 @@
 @import "tailwindcss";
+/*---break---
+ */
+@plugin "tailwindcss-animate";
 @import url('https://unpkg.com/primeicons/primeicons.css');
 @import url('https://fonts.googleapis.com/css2?family=Cambria:ital@0;1&display=swap');
+/*---break---
+ */
+@custom-variant dark (&:is(.dark *));
 
 /**
  * BRAND MANUAL - COLOR PALETTE & TYPOGRAPHY

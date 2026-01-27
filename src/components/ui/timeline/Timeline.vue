@@ -91,7 +91,7 @@ useTimelineItemsAnimation(timelineRef);
               class="flex size-8 items-center justify-center rounded-full bg-white dark:bg-black"
             >
               <div
-                class="size-3 rounded-full border border-neutral-300 bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800"
+                class="size-3 rounded-full border border-neutral-200 bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800"
               />
             </div>
           </div>
@@ -105,10 +105,10 @@ useTimelineItemsAnimation(timelineRef);
           class="hidden md:flex sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm"
         >
           <div
-            class="absolute left-3 flex size-10 items-center justify-center rounded-full bg-white md:left-3 dark:bg-black"
+            class="absolute left-3 flex size-10 items-center justify-center rounded-full bg-neutral-700 md:left-3 dark:bg-black"
           >
             <div
-              class="size-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800"
+              class="size-4 rounded-full border border-neutral-300 bg-neutral-500 p-2 dark:border-neutral-700 dark:bg-neutral-800"
             />
           </div>
           <h3
