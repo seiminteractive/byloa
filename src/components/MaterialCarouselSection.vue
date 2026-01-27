@@ -3,20 +3,15 @@
     <!-- Header Section -->
     <div ref="headerRef" class="w-full px-4 sm:px-6 lg:px-8 mb-16 md:mb-24">
       <div class="max-w-7xl mx-auto">
-        <!-- Decorative line and label -->
         <div class="flex items-center gap-3 mb-8" ref="headerLabelRef">
           <div class="w-8 h-px bg-white/20"></div>
           <span class="text-xs uppercase tracking-widest text-white/40 font-light">Trabajo destacado</span>
         </div>
-
-        <!-- Main title only -->
         <div ref="headerTitleRef">
           <h2 class="text-5xl md:text-7xl font-light text-white tracking-tight">
             Proyectos
           </h2>
         </div>
-
-        <!-- Description - subtle and below -->
         <div class="mt-6 md:mt-8 max-w-2xl" ref="headerDescriptionRef">
           <p class="text-sm text-white/50 font-light leading-relaxed">
             Casos de estudio que demuestran nuestro enfoque en estrategia, diseño y comunicación coherente.
@@ -105,117 +100,37 @@ const galleryImages = [
   'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=500&h=600&fit=crop'
 ]
 
-let scrollTriggers = []
-
-// Animaciones con ScrollTrigger
 onMounted(() => {
-  // Limpiar ScrollTriggers previos
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+  // Animaciones con ScrollTrigger
+  const triggers = []
 
-  // Animación del label
   if (headerLabelRef.value) {
-    gsap.fromTo(
-      headerLabelRef.value,
-      { opacity: 0, x: -20 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: headerRef.value,
-          start: 'top 85%',
-          markers: false,
-          once: true
-        }
-      }
+    triggers.push(
+      gsap.fromTo(headerLabelRef.value, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: headerRef.value, start: 'top 85%', once: true } })
     )
   }
-
-  // Animación del título
   if (headerTitleRef.value) {
-    gsap.fromTo(
-      headerTitleRef.value,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: 'power2.out',
-        delay: 0.15,
-        scrollTrigger: {
-          trigger: headerRef.value,
-          start: 'top 85%',
-          markers: false,
-          once: true
-        }
-      }
+    triggers.push(
+      gsap.fromTo(headerTitleRef.value, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out', delay: 0.15, scrollTrigger: { trigger: headerRef.value, start: 'top 85%', once: true } })
     )
   }
-
-  // Animación de la descripción
   if (headerDescriptionRef.value) {
-    gsap.fromTo(
-      headerDescriptionRef.value,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: headerRef.value,
-          start: 'top 85%',
-          markers: false,
-          once: true
-        }
-      }
+    triggers.push(
+      gsap.fromTo(headerDescriptionRef.value, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.3, scrollTrigger: { trigger: headerRef.value, start: 'top 85%', once: true } })
     )
   }
-
-  // Animación del carousel
   if (carouselWrapperRef.value) {
-    gsap.fromTo(
-      carouselWrapperRef.value,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: carouselWrapperRef.value,
-          start: 'top 75%',
-          markers: false,
-          once: true
-        }
-      }
+    triggers.push(
+      gsap.fromTo(carouselWrapperRef.value, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: carouselWrapperRef.value, start: 'top 75%', once: true } })
     )
   }
-
-  // Animación de los botones de navegación
   if (navigationButtonsRef.value) {
-    gsap.fromTo(
-      navigationButtonsRef.value,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: carouselWrapperRef.value,
-          start: 'bottom 85%',
-          markers: false,
-          once: true
-        }
-      }
+    triggers.push(
+      gsap.fromTo(navigationButtonsRef.value, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: carouselWrapperRef.value, start: 'bottom 85%', once: true } })
     )
   }
 })
 
-// Limpiar ScrollTriggers al desmontar
 onUnmounted(() => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 })
@@ -226,28 +141,6 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   overflow: hidden;
-}
-
-/* Efecto de difuminado en los laterales */
-.carousel-wrapper::before,
-.carousel-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 15%;
-  height: 100%;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.carousel-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-}
-
-.carousel-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
 }
 
 .swiper-carousel {
@@ -261,6 +154,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   height: auto;
+  position: relative;
 }
 
 .carousel-card {
@@ -271,27 +165,72 @@ onUnmounted(() => {
   border-radius: 20px;
   background: #1a1a1a;
   cursor: grab;
-  opacity: 0.4;
-  transform: scale(0.92);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: scale(0.85);
+  transition: all 0.4s ease-out;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
-.swiper-slide-active .carousel-card,
-.swiper-slide-duplicate-active .carousel-card {
-  opacity: 1;
+/* Overlay dinámico - más opaco cuanto más lejos está */
+.carousel-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.8);
+  pointer-events: none;
+  transition: all 0.4s ease-out;
+}
+
+/* Slide activa - sin overlay */
+.swiper-slide-active .carousel-card {
   transform: scale(1);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
+.swiper-slide-active .carousel-card::after {
+  background: rgba(0,0,0,0);
+}
+
+/* Primera capa lateral inmediata - overlay moderado */
+.swiper-slide-prev .carousel-card,
+.swiper-slide-next .carousel-card {
+  transform: scale(0.92);
+}
+
+.swiper-slide-prev .carousel-card::after,
+.swiper-slide-next .carousel-card::after {
+  background: rgba(0,0,0,0.5);
+}
+
+/* Segunda capa lateral - overlay más oscuro */
+.swiper-slide-prev-prev .carousel-card,
+.swiper-slide-next-next .carousel-card {
+  transform: scale(0.85);
+}
+
+.swiper-slide-prev-prev .carousel-card::after,
+.swiper-slide-next-next .carousel-card::after {
+  background: rgba(0,0,0,0.75);
+}
+
+/* Tercera capa lateral - overlay muy oscuro */
+.swiper-slide-prev-prev-prev .carousel-card,
+.swiper-slide-next-next-next .carousel-card {
+  transform: scale(0.8);
+}
+
+.swiper-slide-prev-prev-prev .carousel-card::after,
+.swiper-slide-next-next-next .carousel-card::after {
+  background: rgba(0,0,0,0.9);
+}
+
+/* Imagen */
 .carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
   transition: transform 0.4s ease-out;
-  display: block;
 }
 
 .carousel-card:hover .carousel-image {
@@ -318,27 +257,21 @@ onUnmounted(() => {
 @media (max-width: 1024px) {
   .carousel-card { border-radius: 18px; }
   .carousel-image { border-radius: 18px; }
-  .carousel-wrapper::before,
-  .carousel-wrapper::after { width: 12%; }
+  .carousel-card::after { border-radius: 18px; }
 }
 
 @media (max-width: 768px) {
   .swiper-carousel { padding: 1.5rem 0.75rem; }
-  .carousel-card { border-radius: 16px; opacity: 0.5; transform: scale(0.94); }
-  .swiper-slide-active .carousel-card,
-  .swiper-slide-duplicate-active .carousel-card { opacity: 1; transform: scale(1); }
+  .carousel-card { border-radius: 16px; transform: scale(0.9); }
   .carousel-image { border-radius: 16px; }
-  .carousel-wrapper::before,
-  .carousel-wrapper::after { width: 10%; }
+  .carousel-card::after { border-radius: 16px; }
 }
 
 @media (max-width: 640px) {
   .swiper-carousel { padding: 1rem 0.5rem; }
-  .carousel-card { border-radius: 12px; opacity: 0.5; transform: scale(0.95); }
-  .swiper-slide-active .carousel-card,
-  .swiper-slide-duplicate-active .carousel-card { opacity: 1; transform: scale(1); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); }
+  .carousel-card { border-radius: 12px; transform: scale(0.88); }
+  .swiper-slide-active .carousel-card { transform: scale(1); }
   .carousel-image { border-radius: 12px; }
-  .carousel-wrapper::before,
-  .carousel-wrapper::after { width: 8%; }
+  .carousel-card::after { border-radius: 12px; }
 }
 </style>
