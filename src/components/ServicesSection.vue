@@ -7,19 +7,17 @@
     
     <!-- Blur Overlay - Solo lado izquierdo -->
     <div class="services-blur-overlay"></div>
+    
+    <!-- Top fade from black -->
+    <div class="top-fade"></div>
+    
+    <!-- Bottom fade to black -->
+    <div class="bottom-fade"></div>
 
     <!-- Decorative Elements - Left Vertical -->
     <div class="deco-left">
       <span class="deco-text-vertical">BYLOA</span>
       <div class="deco-line-vertical"></div>
-    </div>
-
-    <!-- Decorative Elements - Bottom -->
-    <div class="deco-bottom">
-      <span class="deco-link">Facebook</span>
-      <span class="deco-link">Twitter</span>
-      <span class="deco-link active">Instagram</span>
-      <div class="deco-line-horizontal"></div>
     </div>
 
     <!-- Decorative Elements - Top Right -->
@@ -50,13 +48,6 @@
             {{ service.title }}
           </li>
         </ul>
-
-        <!-- Social links -->
-        <div class="social-links">
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">WhatsApp</a>
-        </div>
       </div>
 
       <!-- Center - Main Content -->
@@ -202,6 +193,30 @@ onUnmounted(() => {
     transparent 100%
   );
   z-index: 1;
+}
+
+/* Top fade from black */
+.top-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, #000000 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Bottom fade to black */
+.bottom-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent 0%, #000000 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* Decorative Elements - Left Vertical */
