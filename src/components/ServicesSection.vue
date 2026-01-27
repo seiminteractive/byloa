@@ -1,139 +1,97 @@
 <template>
-  <section class="py-20 sm:py-28 bg-black relative z-10">
-    <div class="container-lg mx-auto px-4 sm:px-6">
+  <section class="services-section">
+    <!-- Background Image -->
+    <div class="services-bg">
+      <img src="/I_want_a_2k_202601262320.jpeg" alt="Services background" />
+    </div>
+    
+    <!-- Blur Overlay - Solo lado izquierdo -->
+    <div class="services-blur-overlay"></div>
 
-      <!-- TÍTULO -->
-      <div class="mb-20">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">
-          QUÉ HACEMOS
-        </h2>
-      </div>
+    <!-- Decorative Elements - Left Vertical -->
+    <div class="deco-left">
+      <span class="deco-text-vertical">BYLOA</span>
+      <div class="deco-line-vertical"></div>
+    </div>
 
-      <!-- SUBTÍTULO -->
-      <div class="mb-16 max-w-3xl">
-        <p class="text-lg sm:text-xl text-white/80">
-          Diseñamos sistemas de comunicación claros, funcionales y sostenibles.
-        </p>
-      </div>
+    <!-- Decorative Elements - Bottom -->
+    <div class="deco-bottom">
+      <span class="deco-link">Facebook</span>
+      <span class="deco-link">Twitter</span>
+      <span class="deco-link active">Instagram</span>
+      <div class="deco-line-horizontal"></div>
+    </div>
 
-      <!-- SERVICES GRID -->
-      <div
-        ref="cardsRef"
-        class="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          lg:grid-rows-3
-          gap-6
-        "
-      >
-        <!-- CARD 1 · PRINCIPAL -->
-        <div
-          class="
-            lg:col-start-1 lg:col-span-2 lg:row-start-1
-            rounded-[32px]
-            backdrop-blur-md
-            bg-linear-to-br from-white/8 via-white/4 to-transparent
-            border border-white/10
-            relative
-            flex
-            flex-col
-          "
-        >
-          <!-- Punto rosa -->
-          <div class="absolute top-6 left-6">
-            <div
-              class="
-                w-12 h-12 rounded-full
-                bg-[#F45EBB]/20
-                border border-[#F45EBB]/40
-                flex items-center justify-center
-              "
-            >
-              <span class="w-2.5 h-2.5 rounded-full bg-[#F45EBB]" />
-            </div>
-          </div>
-
-          <!-- Empujador vertical (no afecta ancho) -->
-          <div class="flex-1"></div>
-
-          <!-- Contenido: MISMO width, solo abajo -->
-          <div>
-            <ServiceCard v-bind="services[0]" />
-          </div>
+    <!-- Decorative Elements - Top Right -->
+    <div class="deco-top-right">
+      <span class="deco-text-small">Desarrollado por</span>
+      <span class="deco-text-brand">BYLOA</span>
+      <span class="deco-text-small">Diseño &</span>
+      <span class="deco-text-accent">CREATIVIDAD</span>
+      <span class="deco-cross">+</span>
+    </div>
+    
+    <!-- Content -->
+    <div class="services-content">
+      <!-- Left Side - Navigation -->
+      <div class="services-nav">
+        <div class="nav-header">
+          <span class="nav-label">SERVICIOS</span>
         </div>
-
-
-        <!-- CARD 2 -->
-        <div
-          class="
-            lg:col-start-3 lg:row-start-1
-            rounded-[24px]
-            backdrop-blur-md
-            bg-linear-to-br from-white/6 to-transparent
-            border border-white/10
-          "
-        >
-          <ServiceCard v-bind="services[1]" />
-        </div>
-
-        <!-- CARD 5 · HORIZONTAL -->
-        <div
-          class="
-            lg:col-start-1 lg:col-span-3 lg:row-start-2
-            rounded-[36px]
-            backdrop-blur-lg
-            bg-linear-to-br from-white/9 via-white/4 to-transparent
-            border border-white/10
-          "
-        >
-          <ServiceCard v-bind="services[2]" />
-        </div>
-
-        <!-- CARD 3 · LÍNEA ROSA -->
-        <div
-            class="
-              lg:col-start-1 lg:row-start-3
-              rounded-[24px]
-              backdrop-blur-md
-              bg-linear-to-br from-white/7 to-transparent
-              border border-white/10
-            "
+        
+        <ul class="services-list">
+          <li 
+            v-for="(service, index) in services" 
+            :key="index"
+            class="service-item"
+            :class="{ 'active': activeIndex === index }"
+            @click="setActiveService(index)"
           >
-            <!-- CONTENIDO -->
-            <div class="flex items-start gap-4 p-8">
-              
-              <!-- Línea rosa -->
-              <div class="w-[2px] h-24 bg-linear-to-b from-[#F45EBB] to-transparent shrink-0"></div>
+            {{ service.title }}
+          </li>
+        </ul>
 
-              <!-- Texto -->
-              <ServiceCard v-bind="services[4]" />
-
-            </div>
-          </div>
-
-        <!-- CARD 4 · EXTENDIDA -->
-        <div
-          class="
-            lg:col-start-2 lg:col-span-2 lg:row-start-3
-            rounded-[24px]
-            backdrop-blur-md
-            bg-linear-to-br from-white/6 to-transparent
-            border border-white/10
-          "
-        >
-          <ServiceCard v-bind="services[3]" />
+        <!-- Social links -->
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">WhatsApp</a>
         </div>
+      </div>
+
+      <!-- Center - Main Content -->
+      <div class="services-main">
+        <Transition name="fade-slide" mode="out-in">
+          <div :key="activeIndex" class="service-detail">
+            <h2 class="service-title">
+              {{ services[activeIndex].title.toUpperCase() }}
+            </h2>
+            <p class="service-description">
+              {{ services[activeIndex].mainDescription }}
+            </p>
+            <p class="service-secondary" v-if="services[activeIndex].secondaryDescription">
+              {{ services[activeIndex].secondaryDescription }}
+            </p>
+          </div>
+        </Transition>
+      </div>
+
+      <!-- Right Side - Dots Navigation -->
+      <div class="dots-nav">
+        <span 
+          v-for="(_, index) in services" 
+          :key="index"
+          class="dot"
+          :class="{ 'active': activeIndex === index }"
+          @click="setActiveService(index)"
+        ></span>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import ServiceCard from './ServiceCard.vue'
-import { useGridAnimation } from '../composables/useGridAnimation'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const services = [
   {
@@ -151,7 +109,7 @@ const services = [
       'Contenido pensado para comunicar, conectar y convertir.'
   },
   {
-    title: 'Publicidad digital (Google Ads & Meta Ads)',
+    title: 'Publicidad digital',
     mainDescription:
       'Planificación y gestión de campañas publicitarias en Google Ads y Meta Ads.',
     secondaryDescription:
@@ -168,12 +126,409 @@ const services = [
     title: 'Web & landings',
     mainDescription:
       'Diseño y redacción de sitios web pensados para convertir.',
-    secondaryDescription: ''
+    secondaryDescription: 'Optimización para conversión y experiencia de usuario.'
   }
 ]
 
-const cardsRef = ref(null)
-useGridAnimation(cardsRef)
+const activeIndex = ref(0)
+let autoScrollInterval = null
+
+const setActiveService = (index) => {
+  activeIndex.value = index
+  resetAutoScroll()
+}
+
+const nextService = () => {
+  activeIndex.value = (activeIndex.value + 1) % services.length
+}
+
+const startAutoScroll = () => {
+  autoScrollInterval = setInterval(nextService, 2000)
+}
+
+const resetAutoScroll = () => {
+  if (autoScrollInterval) {
+    clearInterval(autoScrollInterval)
+  }
+  startAutoScroll()
+}
+
+onMounted(() => {
+  startAutoScroll()
+})
+
+onUnmounted(() => {
+  if (autoScrollInterval) {
+    clearInterval(autoScrollInterval)
+  }
+})
 </script>
 
+<style scoped>
+.services-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.services-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.services-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.services-blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    90deg,
+    rgba(200, 210, 220, 0.7) 0%,
+    rgba(200, 210, 220, 0.4) 60%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Decorative Elements - Left Vertical */
+.deco-left {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deco-text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+.deco-line-vertical {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+}
+
+/* Decorative Elements - Bottom */
+.deco-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 4rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.deco-link {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.deco-link:hover,
+.deco-link.active {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.deco-line-horizontal {
+  width: 60px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.25);
+  margin-left: 0.5rem;
+}
+
+/* Decorative Elements - Top Right */
+.deco-top-right {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.deco-text-small {
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.deco-text-brand {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.deco-text-accent {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.deco-cross {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: 1rem;
+}
+
+.services-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left Navigation */
+.services-nav {
+  width: 280px;
+  padding: 3rem 2rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-header {
+  margin-bottom: 1rem;
+}
+
+.nav-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-item {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding-left: 0;
+  letter-spacing: 0.02em;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 0;
+  background: #1a1a1a;
+  transition: height 0.3s ease;
+}
+
+.service-item:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.service-item.active {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.service-item.active::before {
+  height: 100%;
+}
+
+.social-links {
+  margin-top: auto;
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.social-links a {
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #1a1a1a;
+}
+
+/* Main Content */
+.services-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.service-detail {
+  max-width: 600px;
+  position: relative;
+}
+
+.service-title {
+  font-family: 'Coolvetica', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.service-description {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+  max-width: 450px;
+}
+
+.service-secondary {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* Dots Navigation */
+.dots-nav {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dot.active {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Transitions */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-content {
+    flex-direction: column;
+  }
+
+  .services-nav {
+    width: 100%;
+    padding: 2rem;
+    order: 2;
+  }
+
+  .services-blur-overlay {
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    top: auto;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(
+      0deg,
+      rgba(200, 210, 220, 0.7) 0%,
+      rgba(200, 210, 220, 0.4) 70%,
+      transparent 100%
+    );
+  }
+
+  .services-main {
+    order: 1;
+    padding: 2rem;
+  }
+
+  .dots-nav {
+    right: 1rem;
+    top: 30%;
+  }
+
+  .social-links,
+  .deco-left,
+  .deco-bottom,
+  .deco-top-right {
+    display: none;
+  }
+}
+</style>

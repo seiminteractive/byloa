@@ -8,149 +8,156 @@
 
     <!-- Main Container -->
     <div class="relative z-10 container-lg mx-auto px-4 sm:px-6 w-full max-w-6xl">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
 
         <!-- LEFT COLUMN -->
-        <div class="lg:col-span-3 flex flex-col">
-          <!-- Top Card -->
+        <div class="lg:col-span-3 flex flex-col gap-6">
+          <!-- Top Card: Main Glass Card -->
           <div
             ref="cardLeftTopRef"
-            class="rounded-[28px] backdrop-blur-xl bg-white/8 border border-white/15 p-10 sm:p-12 flex flex-col justify-center min-h-[280px] shadow-xl shadow-black/20 overflow-hidden relative opacity-0"
+            class="card-glass rounded-[32px] p-8 sm:p-10 flex flex-col min-h-[380px] relative overflow-hidden"
           >
-            <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-40"></div>
-
-            <div class="relative z-10">
-              <h2 class="text-3xl sm:text-4xl font-light text-white mb-4 leading-tight tracking-tight">
-                ¿Tu marca necesita
-                <span class="font-semibold">orden y estrategia?</span>
-              </h2>
-              <p class="text-base sm:text-lg text-white/70 font-light leading-relaxed">
-                Comunicación profesional que ordena, potencia y crece.
-              </p>
+            <!-- Inner glow -->
+            <div class="card-inner-glow"></div>
+            
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-8 relative z-10">
+              <span class="text-sm text-gray-700 font-light tracking-wide">BYLOA Agency</span>
+              <span class="text-sm text-gray-600 font-medium cursor-pointer hover:text-gray-900 transition-colors">Contacto</span>
             </div>
+
+            <!-- Title -->
+            <div class="relative z-10 mb-6">
+              <h2 class="text-2xl sm:text-3xl font-light text-gray-900 tracking-tight">
+                Escribinos
+              </h2>
+            </div>
+
+            <!-- Social Button -->
+            <div class="relative z-10 mb-8">
+              <a 
+                href="https://instagram.com/byloa.agency" 
+                target="_blank"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-xs font-medium rounded-full transition-all duration-300"
+              >
+                <i class="pi pi-instagram text-sm"></i>
+                <span>Instagram</span>
+              </a>
+            </div>
+
+            <!-- Input Fields -->
+            <div class="relative z-10 space-y-4 mb-6">
+              <!-- Email Input -->
+              <div class="input-field">
+                <span class="input-icon">@</span>
+                <span class="input-text">loanaaguirre@byloa.agency</span>
+              </div>
+              
+              <!-- WhatsApp Input -->
+              <div class="input-field">
+                <i class="pi pi-whatsapp input-icon-pi"></i>
+                <span class="input-text">+54 9 341 779 7688</span>
+                <span class="input-action">Escribir</span>
+              </div>
+            </div>
+
+            <!-- Legal Text + CTA Button -->
+            <div class="relative z-10 flex items-end justify-between mt-auto">
+              <p class="text-[10px] text-gray-500 leading-relaxed max-w-[200px]">
+                Respondemos en menos de 24 horas.<br/>
+                Consultá sin compromiso.
+              </p>
+              <a 
+                href="https://wa.me/5493417797688"
+                target="_blank"
+                class="cta-circle"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Bottom Text -->
+            <p class="text-[10px] text-gray-400 text-center mt-6 relative z-10 tracking-wide">
+              Comunicación profesional para tu marca
+            </p>
           </div>
 
-          <!-- Bottom Card: Contact -->
+          <!-- Bottom Card: New Project -->
           <div
             ref="cardLeftBottomRef"
-            class="rounded-[28px] bg-black/60 backdrop-blur-lg border border-white/10 p-10 sm:p-12 mt-8 flex flex-col min-h-[320px] shadow-xl shadow-black/30 overflow-hidden relative opacity-0"
+            class="card-dark rounded-[32px] p-8 sm:p-10 flex flex-col justify-between min-h-[180px] relative overflow-hidden"
           >
-            <div class="absolute inset-0 rounded-[28px] border border-white/5"></div>
-
-            <div class="relative z-10 flex flex-col h-full">
-              <!-- Title -->
-              <h3 class="text-sm font-semibold text-white uppercase tracking-widest mb-8">
-                Contacto
-              </h3>
-
-              <!-- CONTACT LINKS -->
-              <div class="mb-auto space-y-8">
-                <!-- WhatsApp + Instagram -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <p class="text-xs text-white/50 font-medium uppercase tracking-wider mb-1">
-                      WhatsApp
-                    </p>
-                    <a
-                      href="https://wa.me/5493417797688"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-white text-sm hover:text-white/80 transition duration-300 font-light"
-                    >
-                      +54 9 341 779 7688
-                    </a>
-                  </div>
-
-                  <div>
-                  <p class="text-xs text-white/50 font-medium uppercase tracking-wider mb-1">
-                    Instagram
-                  </p>
-                  <a
-                    href="https://instagram.com/byloa.agency"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-white text-sm hover:text-white/80 transition duration-300 font-light"
-                  >
-                    @byloa.agency
-                  </a>
-                </div>
-                </div>
-
-                <!-- Email -->
-                
-
-                <div>
-                    <p class="text-xs text-white/50 font-medium uppercase tracking-wider mb-1">
-                      Email
-                    </p>
-                    <a
-                      href="mailto:loanaaguirre@byloa.agency"
-                      class="text-white text-sm hover:text-white/80 transition duration-300 font-light"
-                    >
-                      loanaaguirre@byloa.agency
-                    </a>
-                  </div>
-              </div>
-
-              <!-- CTA -->
-              <div class="pt-8 mt-8 border-t border-white/10">
-                <a
-                  href="#solicitar"
-                  class="inline-flex items-center gap-3 px-8 py-3 bg-black/80 hover:bg-black text-white text-sm font-medium rounded-full transition duration-300 group"
-                >
-                  <span>Solicitar</span>
-                  <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
-              </div>
+            <div class="relative z-10">
+              <span class="text-xl sm:text-2xl font-light text-white tracking-tight">Nuevo proyecto</span>
+              <p class="text-sm text-white/60 font-light mt-1">Estrategia personalizada</p>
+            </div>
+            
+            <div class="relative z-10 flex items-center justify-between mt-6">
+              <span class="text-sm text-white/80 font-medium tracking-wide">Descubrir</span>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT CARD: Split Glass + Image -->
+        <!-- RIGHT CARD: Event Style with Image Background -->
         <div class="lg:col-span-2">
           <div
             ref="cardRightRef"
-            class="card-split-glass rounded-[28px] overflow-hidden relative opacity-0 min-h-full"
-            style="background-image: url('https://img.freepik.com/fotos-premium/papel-pared-movil-patron-color-rosa-pastel-gradiente_53876-1085414.jpg');"
+            class="card-event rounded-[32px] overflow-hidden relative min-h-full flex flex-col"
           >
-            <!-- Left Half: Glassmorphism -->
-            <div class="absolute inset-0 left-half-glass rounded-l-[28px]"></div>
-
-            <!-- Right Half: Normal (transparent or white) -->
-            <div class="absolute inset-0 right-half-normal rounded-r-[28px]"></div>
-
-            <!-- Content Wrapper -->
-            <div class="relative z-10 flex flex-col justify-between h-full min-h-full p-12 sm:p-16">
-              <!-- Top Section -->
+            <!-- Background Image -->
+            <div class="card-bg-image"></div>
+            
+            <!-- Glass Overlay -->
+            <div class="card-glass-overlay"></div>
+            
+            <!-- Gradient Bubble -->
+            <div class="gradient-bubble"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col justify-between h-full p-8 sm:p-10">
+              <!-- Top: Date Style -->
               <div>
-                <p class="text-xs font-semibold text-gray-700 uppercase tracking-widest mb-6">
-                  Propuesta
-                </p>
+                <div class="flex items-start justify-between mb-8">
+                  <div>
+                    <span class="block text-5xl sm:text-6xl font-light text-white tracking-tight leading-none">Lun</span>
+                    <span class="block text-5xl sm:text-6xl font-light text-white tracking-tight leading-none mt-1">a Vie</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="block text-xs text-white/70 font-medium tracking-wide">Disponibles</span>
+                    <span class="block text-xs text-white/50 font-light">Nuevos proyectos</span>
+                  </div>
+                </div>
 
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight tracking-tight">
-                  Solución
-                  <span class="font-semibold">personalizada</span><br />
-                  <span class="text-gray-700">para tu marca</span>
-                </h2>
-
-                <p class="text-base sm:text-lg text-gray-600 font-light leading-relaxed max-w-md">
-                  Estrategia, contenido y publicidad digital diseñados según tus objetivos reales.
-                </p>
+                <!-- Time & Location -->
+                <div class="space-y-1 mb-8">
+                  <p class="text-sm text-white/90 font-light">9 AM - 18 PM</p>
+                  <p class="text-sm text-white/70 font-light">Rosario, Argentina</p>
+                  <p class="text-sm text-white/50 font-light">Remoto / Presencial</p>
+                </div>
               </div>
 
-              <!-- Bottom Section -->
-              <div class="pt-12 border-t border-gray-300 space-y-4">
-                <p class="text-sm text-gray-600 font-light">
-                  Responderemos en menos de 24 horas
-                </p>
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span class="text-sm text-gray-500 font-light">
-                    Disponible para nuevos proyectos
-                  </span>
-                </div>
+              <!-- Icon -->
+              <div class="flex items-center justify-center my-6">
+                <div class="asterisk-icon">✳</div>
+              </div>
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between mt-auto pt-6 border-t border-white/20">
+                <span class="text-xs text-white/60 font-medium tracking-widest uppercase">BYLOA</span>
+                <a 
+                  href="https://wa.me/5493417797688"
+                  target="_blank"
+                  class="cta-button"
+                >
+                  <span>Agendar</span>
+                  <div class="cta-arrow">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -180,80 +187,210 @@ useContactCardsAnimation({
 </script>
 
 <style scoped>
-/* Contact section styles - Split Glass Card */
+/* Glass Card */
+.card-glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
 
-.card-split-glass {
+.card-inner-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+/* Dark Card */
+.card-dark {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Event Card - Liquid Glass with Image */
+.card-event {
+  position: relative;
+  min-height: 580px;
+}
+
+.card-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('/I_want_a_2k_202601262319.jpeg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
-  position: relative;
+  z-index: 0;
+}
+
+.card-glass-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 32px;
+  z-index: 1;
+}
+
+/* Gradient Bubble */
+.gradient-bubble {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 168, 85, 0.7) 0%, rgba(242, 139, 75, 0.5) 40%, transparent 70%);
+  top: 30%;
+  right: -80px;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(20px);
+}
+
+/* Input Fields */
+.input-field {
   display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
-/* Left Half: Glassmorphism */
-.left-half-glass {
-  width: 50%;
-  left: 0;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(16px);
-  background-color: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-right: none;
-  border-top-left-radius: 28px;
-  border-bottom-left-radius: 28px;
-  position: absolute;
-  height: 100%;
-  top: 0;
+.input-field:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
-/* Right Half: Normal / Transparent */
-.right-half-normal {
-  width: 50%;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-left: none;
-  border-top-right-radius: 28px;
-  border-bottom-right-radius: 28px;
-  position: absolute;
-  height: 100%;
-  top: 0;
+.input-icon {
+  font-size: 14px;
+  color: #666;
+  width: 20px;
+  text-align: center;
 }
 
-/* Inner light highlight for glass (optional) */
-.left-half-glass::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
-  border-top-left-radius: 28px;
+.input-icon-pi {
+  font-size: 14px;
+  color: #666;
 }
 
-/* Responsive: Stack on mobile */
+.input-text {
+  flex: 1;
+  font-size: 13px;
+  color: #333;
+  font-weight: 400;
+}
+
+.input-action {
+  font-size: 11px;
+  color: #666;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input-action:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* CTA Circle */
+.cta-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-circle:hover {
+  background: #333;
+  transform: translateX(4px);
+}
+
+/* Asterisk Icon */
+.asterisk-icon {
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* CTA Button */
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 10px 20px;
+  background: #1a1a1a;
+  border-radius: 30px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background: #333;
+}
+
+.cta-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover .cta-arrow {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .card-event {
+    min-height: 480px;
+  }
+  
+  .gradient-bubble {
+    width: 200px;
+    height: 200px;
+    right: -60px;
+    top: 35%;
+  }
+}
+
 @media (max-width: 768px) {
-  .left-half-glass {
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom-left-radius: 0;
-    height: 50%;
-  }
-
-  .right-half-normal {
-    width: 100%;
-    border-top: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.15);
-    border-top-right-radius: 0;
-    top: 50%;
-    height: 50%;
-  }
-
-  .left-half-glass::before {
-    border-top-left-radius: 28px;
+  .gradient-bubble {
+    width: 160px;
+    height: 160px;
+    right: -40px;
   }
 }
 </style>

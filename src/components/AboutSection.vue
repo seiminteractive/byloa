@@ -1,7 +1,25 @@
 <template>
   <section class="about">
+    <!-- Video Background -->
+    <video class="about-video" autoplay muted loop playsinline>
+      <source src="/I_want_an_1080p_202601262119.mp4" type="video/mp4">
+    </video>
+    <!-- Dark Overlay -->
+    <div class="about-overlay"></div>
+
+    <!-- Decorative Elements -->
+    <div class="about-deco-left">
+      <span class="deco-label" ref="decoLabelRef">QUIÉNES SOMOS</span>
+    </div>
+
+    <div class="about-deco-top">
+      <span class="deco-number">01</span>
+      <span class="deco-divider">/</span>
+      <span class="deco-total">03</span>
+    </div>
+    
     <ClientOnly>
-      <div class="space-y-4 animate-text-container services-copy-content">
+      <div class="space-y-4 animate-text-container services-copy-content" ref="textContainerRef">
         <BlurReveal
           :delay="0.2"
           :duration="0.75"
@@ -69,6 +87,8 @@
 import { ref } from 'vue'
 import { useScrollTextAnimation } from '@/composables/useScrollTextAnimation'
 import { useScrollServicesAnimation } from '@/composables/useScrollServicesAnimation'
+import { useAboutScrollReveal } from '@/composables/useAboutScrollReveal'
+import { useDecoLabelAnimation } from '@/composables/useDecoLabelAnimation'
 import { BlurReveal } from '@/components/ui/blur-reveal'
 
 const aboutText1Ref = ref(null)
@@ -77,6 +97,8 @@ const aboutText3Ref = ref(null)
 const servicesCopyText1Ref = ref(null)
 const servicesCopyText2Ref = ref(null)
 const servicesRef = ref(null)
+const textContainerRef = ref(null)
+const decoLabelRef = ref(null)
 
 // Array con referencias para la composable de texto
 const textRefs = ref([])
@@ -104,6 +126,8 @@ const initializeRefs = () => {
 // Llama las composables
 useScrollTextAnimation(textRefs)
 useScrollServicesAnimation(servicesRef)
+useAboutScrollReveal(textContainerRef)
+useDecoLabelAnimation(decoLabelRef)
 
 // Inicializa después de que el componente está listo
 setTimeout(initializeRefs, 100)
@@ -140,12 +164,115 @@ h1 {
 .about {
   position: relative;
   width: 100%;
-  height: 100svh;
-  padding: 2rem;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.about::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.about-video {
+  position: fixed;
+  top: 2rem;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 4rem);
+  object-fit: cover;
+  z-index: -2;
+  scale: 1.1;
+}
+
+.about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+/* Decorative Elements */
+.about-deco-left {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.deco-label {
+  position: relative;
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.about-deco-top {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deco-number {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.deco-divider {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.deco-total {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+}
+
+.animate-text-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem 4rem;
+  z-index: 10;
+}
+
+/* Decorative line before text block */
+.animate-text-container::before {
+  content: '';
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
 }
 
 .services {
@@ -203,12 +330,13 @@ h1 {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  color: #4f4f4f;
+  color: rgba(255, 255, 255, 0.25);
   --clip-value: 100%;
-  font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
   text-align: left;
 }
 
@@ -217,7 +345,7 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   clip-path: inset(0 0 var(--clip-value) 0);
   will-change: clip-path;
   text-align: left;
