@@ -79,10 +79,10 @@
             />
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
 
             <!-- Actions -->
-            <div class="absolute inset-0 flex items-end p-4 sm:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute inset-0 flex items-end p-4 sm:p-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div class="flex gap-3 w-full">
                 <button
                   @click="editProject(idx)"
