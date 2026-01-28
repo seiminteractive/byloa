@@ -282,8 +282,28 @@ const handleMediaUpload = (e) => {
     const reader = new FileReader()
     reader.onload = (event) => {
       formData.value.media = event.target.result
+      formData.value.isUploading = false
     }
     reader.readAsDataURL(file)
+  }
+}
+
+const uploadMediaToFirebase = async (dataUrl, type, fileName) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dataUrl, type, fileName })
+    })
+
+    const result = await response.json()
+    if (result.success) {
+      return result.data.mediaUrl
+    } else {
+      throw new Error(result.error)
+    }
+  } catch (error) {
+    throw new Error(`Upload error: ${error.message}`)
   }
 }
 
@@ -294,10 +314,22 @@ const saveProject = async () => {
   }
 
   try {
+    // Subir a Firebase Storage si es una nueva imagen (starts with data:)
+    let mediaUrl = formData.value.media
+    if (formData.value.media.startsWith('data:')) {
+      alert('⏳ Subiendo archivo a Firebase...')
+      mediaUrl = await uploadMediaToFirebase(
+        formData.value.media,
+        formData.value.type,
+        formData.value.mediaName
+      )
+      alert('✅ Archivo subido a Firebase')
+    }
+
     const payload = {
       title: formData.value.title,
       type: formData.value.type,
-      media: formData.value.media,
+      media: mediaUrl,
       link: formData.value.link
     }
 

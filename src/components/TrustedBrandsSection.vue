@@ -45,7 +45,7 @@
           <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
               :src="brand.logo"
-              class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-500 ease-out"
+              class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-500 ease-out"
             />
           </div>
         </div>
@@ -64,7 +64,7 @@
           <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
               :src="brand.logo"
-              class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-500 ease-out"
+              class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-500 ease-out"
             />
           </div>
         </div>
@@ -85,14 +85,11 @@
 import { Marquee } from '@/components/ui/marquee'
 
 const brands = [
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' },
-  { logo: '/logotipos_logotipov1 negativo.png' }
+  { logo: '/AlFinLunesLogo.png' },
+  { logo: '/ElgPro.png' },
+  { logo: '/LalaLogo.png' },
+  { logo: '/CodigoNuevoLogo.png' },
+  { logo: '/LogoSeim.png' },
 ]
 </script>
 
