@@ -78,16 +78,16 @@ const carouselWrapperRef = ref(null)
 const navigationButtonsRef = ref(null)
 const swiperRef = ref(null)
 
-const slidesPerView = 5
-const spaceBetween = 20
+const slidesPerView = 5.2
+const spaceBetween = 16
 
 const breakpoints = {
-  320: { slidesPerView: 1.5, spaceBetween: 12 },
-  480: { slidesPerView: 2, spaceBetween: 14 },
-  640: { slidesPerView: 2.5, spaceBetween: 16 },
-  768: { slidesPerView: 3, spaceBetween: 18 },
-  1024: { slidesPerView: 4, spaceBetween: 20 },
-  1440: { slidesPerView: 5, spaceBetween: 20 }
+  320: { slidesPerView: 1.5, spaceBetween: 10 },
+  480: { slidesPerView: 2, spaceBetween: 12 },
+  640: { slidesPerView: 2.5, spaceBetween: 14 },
+  768: { slidesPerView: 3, spaceBetween: 16 },
+  1024: { slidesPerView: 4, spaceBetween: 18 },
+  1440: { slidesPerView: 5.2, spaceBetween: 16 }
 }
 
 // Usar la composable para manejar la lógica de duplicación de proyectos
@@ -144,7 +144,7 @@ onUnmounted(() => {
 
 .swiper-carousel {
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
   perspective: 1200px;
 }
 
@@ -164,7 +164,7 @@ onUnmounted(() => {
   border-radius: 20px;
   background: #1a1a1a;
   cursor: grab;
-  transform: scale(0.85);
+  transform: scale(0.80);
   transition: all 0.4s ease-out;
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
