@@ -82,11 +82,11 @@ const slidesPerView = 5
 const spaceBetween = 20
 
 const breakpoints = {
-  320: { slidesPerView: 1.3, spaceBetween: 12 },
-  480: { slidesPerView: 1.5, spaceBetween: 14 },
-  640: { slidesPerView: 2, spaceBetween: 16 },
-  768: { slidesPerView: 2.5, spaceBetween: 18 },
-  1024: { slidesPerView: 3.5, spaceBetween: 20 },
+  320: { slidesPerView: 1.5, spaceBetween: 12 },
+  480: { slidesPerView: 2, spaceBetween: 14 },
+  640: { slidesPerView: 2.5, spaceBetween: 16 },
+  768: { slidesPerView: 3, spaceBetween: 18 },
+  1024: { slidesPerView: 4, spaceBetween: 20 },
   1440: { slidesPerView: 5, spaceBetween: 20 }
 }
 
