@@ -104,13 +104,14 @@
 
       <!-- Projects Table -->
       <div v-if="projects.length > 0" class="mt-16 sm:mt-20">
-        <div class="flex items-center gap-3 mb-8">
+        <div class="flex items-center gap-3 mb-8 px-8 sm:px-12 lg:px-20">
           <div class="w-8 h-px bg-white/20"></div>
           <span class="text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Detalles</span>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full">
+        <div class="overflow-x-auto bg-black/40 backdrop-blur-sm w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+          <div class="px-8 sm:px-12 lg:px-20">
+            <table class="w-full">
             <thead>
               <tr class="border-b border-white/20">
                 <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Título</th>
@@ -137,7 +138,8 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -249,7 +251,7 @@
                 class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
-                {{ isUploading ? '⏳ Subiendo...' : (editingIdx !== null ? 'Actualizar' : 'Crear') }} proyecto
+                {{ isUploading ? 'Subiendo...' : (editingIdx !== null ? 'Actualizar' : 'Crear') }} proyecto
               </button>
               <button
                 @click="closForm"
