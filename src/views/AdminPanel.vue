@@ -245,10 +245,11 @@
             <div class="flex gap-4 mt-8">
               <button
                 @click="saveProject"
-                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base"
+                :disabled="isUploading"
+                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
-                {{ editingIdx !== null ? 'Actualizar' : 'Crear' }} proyecto
+                {{ isUploading ? '⏳ Subiendo...' : (editingIdx !== null ? 'Actualizar' : 'Crear') }} proyecto
               </button>
               <button
                 @click="closForm"
@@ -331,6 +332,7 @@ const showAddForm = ref(false)
 const editingIdx = ref(null)
 const showDeleteModal = ref(false)
 const deleteConfirmIdx = ref(null)
+const isUploading = ref(false)
 const formData = ref({
   title: '',
   type: '',
@@ -356,6 +358,7 @@ const handleMediaUpload = (e) => {
 
 const uploadMediaToFirebase = async (dataUrl, type, fileName) => {
   try {
+    isUploading.value = true
     const response = await fetch('http://localhost:3000/api/upload', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -370,6 +373,8 @@ const uploadMediaToFirebase = async (dataUrl, type, fileName) => {
     }
   } catch (error) {
     throw new Error(`Upload error: ${error.message}`)
+  } finally {
+    isUploading.value = false
   }
 }
 
@@ -383,13 +388,11 @@ const saveProject = async () => {
     // Subir a Firebase Storage si es una nueva imagen (starts with data:)
     let mediaUrl = formData.value.media
     if (formData.value.media.startsWith('data:')) {
-      toast.info('⏳ Subiendo archivo a Firebase...')
       mediaUrl = await uploadMediaToFirebase(
         formData.value.media,
         formData.value.type,
         formData.value.mediaName
       )
-      toast.success('✅ Archivo subido a Firebase')
     }
 
     const payload = {
@@ -410,10 +413,10 @@ const saveProject = async () => {
 
       const result = await response.json()
       if (result.success) {
-        toast.success('✅ Proyecto actualizado')
+        toast.success('Proyecto actualizado')
         await fetchProjects() // Recargar proyectos
       } else {
-        toast.error('❌ Error al actualizar: ' + result.error)
+        toast.error('Error al actualizar: ' + result.error)
       }
     } else {
       // Crear proyecto
@@ -425,16 +428,16 @@ const saveProject = async () => {
 
       const result = await response.json()
       if (result.success) {
-        toast.success('✅ Proyecto creado')
+        toast.success('Proyecto creado')
         await fetchProjects() // Recargar proyectos
       } else {
-        toast.error('❌ Error al crear: ' + result.error)
+        toast.error('Error al crear: ' + result.error)
       }
     }
 
     closForm()
   } catch (error) {
-    toast.error('❌ Error: ' + error.message)
+    toast.error('Error: ' + error.message)
     console.error(error)
   }
 }
@@ -460,13 +463,13 @@ const confirmDelete = async () => {
 
     const result = await response.json()
     if (result.success) {
-      toast.success('✅ Proyecto eliminado')
+      toast.success('Proyecto eliminado')
       await fetchProjects() // Recargar proyectos
     } else {
-      toast.error('❌ Error al eliminar: ' + result.error)
+      toast.error('Error al eliminar: ' + result.error)
     }
   } catch (error) {
-    toast.error('❌ Error: ' + error.message)
+    toast.error('Error: ' + error.message)
     console.error(error)
   } finally {
     showDeleteModal.value = false
