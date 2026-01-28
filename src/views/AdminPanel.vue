@@ -103,48 +103,42 @@
       </div>
 
       <!-- Projects Table -->
-      <div v-if="projects.length > 0" class="mt-20 md:mt-28">
-        <div class="flex items-center gap-3 mb-12 px-8 sm:px-12 lg:px-20">
-          <div class="w-8 h-px bg-white/20"></div>
-          <span class="section-label">Detalles de proyectos</span>
-        </div>
-
-        <div class="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-white/5 backdrop-blur-md border-y border-white/10">
-          <div class="px-8 sm:px-12 lg:px-20 py-8">
-            <div class="overflow-x-auto">
-              <table class="w-full">
-                <thead>
-                  <tr class="border-b border-white/10">
-                    <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/40 font-light" style="font-family: 'COOLVETICA', sans-serif;">Título</th>
-                    <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/40 font-light" style="font-family: 'COOLVETICA', sans-serif;">Tipo</th>
-                    <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/40 font-light" style="font-family: 'COOLVETICA', sans-serif;">Enlace</th>
-                    <th class="text-right py-4 px-4 text-xs uppercase tracking-widest text-white/40 font-light" style="font-family: 'COOLVETICA', sans-serif;">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(project, idx) in projects" :key="idx" class="border-b border-white/5 hover:bg-white/5 transition-colors duration-200">
-                    <td class="py-4 px-4 text-sm text-white/70 font-light" style="font-family: 'Cambria', serif;">{{ project.title }}</td>
-                    <td class="py-4 px-4 text-sm text-white/60 font-light" style="font-family: 'Cambria', serif;">
-                      <span class="inline-block px-3 py-1 rounded-full text-xs" :class="project.type === 'image' ? 'bg-white/10' : 'bg-white/5'">
-                        {{ project.type === 'image' ? '🖼️ Imagen' : '🎬 Video' }}
-                      </span>
-                    </td>
-                    <td class="py-4 px-4 text-sm text-white/60 font-light truncate max-w-xs" style="font-family: 'Cambria', serif;">
-                      <a :href="project.link" target="_blank" class="text-white/50 hover:text-white/90 transition-colors">{{ project.link }}</a>
-                    </td>
-                    <td class="py-4 px-4 text-right">
-                      <button
-                        @click="editProject(idx)"
-                        class="text-xs uppercase tracking-widest text-white/50 hover:text-white/90 transition-colors font-light"
-                        style="font-family: 'COOLVETICA', sans-serif;"
-                      >
-                        Editar
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+      <div v-if="projects.length > 0" class="mt-16 sm:mt-20">
+        
+        <div class="overflow-x-auto sm:py-8 py-4 bg-black backdrop-blur-sm w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+          <div class="flex items-center gap-3 mb-8 px-8 sm:px-12 lg:px-20">
+            <div class="w-8 h-px bg-white/20"></div>
+            <span class="text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Detalles</span>
+          </div>
+          <div class="px-8 sm:px-12 lg:px-20">
+            <table class="w-full">
+            <thead>
+              <tr class="border-b border-white/20">
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Título</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Tipo</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Enlace</th>
+                <th class="text-right py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(project, idx) in projects" :key="idx" class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-4 text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">{{ project.title }}</td>
+                <td class="py-4 px-4 text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">{{ project.type === 'image' ? 'Imagen' : 'Video' }}</td>
+                <td class="py-4 px-4 text-base text-white/60 font-light truncate" style="font-family: 'Cambria', serif;">
+                  <a :href="project.link" target="_blank" class="text-white/70 hover:text-white transition-colors">{{ project.link }}</a>
+                </td>
+                <td class="py-4 px-4 text-right">
+                  <button
+                    @click="editProject(idx)"
+                    class="text-sm text-white/60 hover:text-white transition-colors"
+                    style="font-family: 'COOLVETICA', sans-serif;"
+                  >
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const app = createApp(App)
 // Register Vue Toastification
 app.use(Toast, {
   position: 'top-right',
-  timeout: 4000,
+  timeout: 1500,
   closeOnClick: true,
   pauseOnFocusLoss: true,
   pauseOnHover: true,
