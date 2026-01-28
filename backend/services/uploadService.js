@@ -30,7 +30,7 @@ const generateFileName = (type, originalName) => {
   const timestamp = Date.now()
   const randomId = Math.random().toString(36).substring(2, 8)
   const ext = originalName.split('.').pop()
-  return `${type}s/${timestamp}-${randomId}.${ext}`
+  return `projects/${timestamp}-${randomId}.${ext}`
 }
 
 /**
