@@ -22,16 +22,12 @@
 
     <!-- Carousel Section -->
     <div class="carousel-wrapper" ref="carouselWrapperRef">
-      <div v-if="galleryProjects.length === 0" class="text-center py-20">
-        <p class="text-white/50">No hay proyectos para mostrar</p>
-      </div>
       <Swiper
-        v-else
         ref="swiperRef"
         :modules="[Navigation]"
         :slides-per-view="slidesPerView"
         :space-between="spaceBetween"
-        :loop="galleryProjects.length > 3"
+        :loop="true"
         :centered-slides="true"
         :grab-cursor="true"
         :speed="600"
@@ -39,7 +35,7 @@
         :navigation="{ prevEl: '.swiper-button-prev-custom', nextEl: '.swiper-button-next-custom' }"
         class="swiper-carousel"
       >
-        <SwiperSlide v-for="project in galleryProjects" :key="project.id" class="swiper-slide-custom">
+        <SwiperSlide v-for="(project, idx) in galleryProjects" :key="idx" class="swiper-slide-custom">
           <a :href="project.link" target="_blank" class="carousel-card cursor-pointer group">
             <img v-if="project.type === 'image'" :src="project.media" :alt="project.title" class="carousel-image" />
             <video v-else :src="project.media" class="carousel-image" muted loop @mouseenter="$event.target.play()" @mouseleave="$event.target.pause()" />
@@ -81,16 +77,16 @@ const carouselWrapperRef = ref(null)
 const navigationButtonsRef = ref(null)
 const swiperRef = ref(null)
 
-const slidesPerView = 4
+const slidesPerView = 5
 const spaceBetween = 20
 
 const breakpoints = {
-  320: { slidesPerView: 1.2, spaceBetween: 12 },
+  320: { slidesPerView: 1.3, spaceBetween: 12 },
   480: { slidesPerView: 1.5, spaceBetween: 14 },
   640: { slidesPerView: 2, spaceBetween: 16 },
   768: { slidesPerView: 2.5, spaceBetween: 18 },
-  1024: { slidesPerView: 3, spaceBetween: 20 },
-  1440: { slidesPerView: 4, spaceBetween: 20 }
+  1024: { slidesPerView: 3.5, spaceBetween: 20 },
+  1440: { slidesPerView: 5, spaceBetween: 20 }
 }
 
 // Computed para traer los proyectos del store
