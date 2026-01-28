@@ -1,5 +1,5 @@
 <template>
-  <section class="relative w-full min-h-screen bg-gradient-to-b from-black via-black/40 to-[#0a0a0a] overflow-hidden flex items-center justify-center py-12 sm:py-20">
+  <section id="contact" class="relative w-full min-h-screen bg-gradient-to-b from-black via-black/40 to-[#0a0a0a] overflow-hidden flex items-center justify-center py-12 sm:py-20">
     <!-- Decorative Background Elements -->
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-white/5 to-transparent rounded-full blur-3xl -mr-32 -mt-32"></div>
@@ -40,7 +40,7 @@
                 target="_blank"
                 class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-xs font-medium rounded-full transition-all duration-300"
               >
-                <i class="pi pi-instagram text-sm"></i>
+                <i class="bi bi-instagram text-sm"></i>
                 <span>Instagram</span>
               </a>
             </div>
@@ -116,7 +116,7 @@
             <div class="gradient-bubble"></div>
             
             <!-- Content -->
-            <div class="relative z-10 flex flex-col justify-between h-full p-8 sm:p-10">
+            <div class="relative z-10 flex-1 flex flex-col justify-start p-8 sm:p-10">
               <!-- Top: Date Style -->
               <div>
                 <div class="flex items-start justify-between mb-8">
@@ -137,28 +137,23 @@
                   <p class="text-sm text-white/50 font-light">Remoto / Presencial</p>
                 </div>
               </div>
+            </div>
 
-              <!-- Icon -->
-              <div class="flex items-center justify-center my-6">
-                <div class="asterisk-icon">✳</div>
-              </div>
-
-              <!-- Footer -->
-              <div class="flex items-center justify-between mt-auto pt-6 border-t border-white/20">
-                <span class="text-xs text-white/60 font-medium tracking-widest uppercase">BYLOA</span>
-                <a 
-                  href="https://wa.me/5493417797688"
-                  target="_blank"
-                  class="cta-button"
-                >
-                  <span>Agendar</span>
-                  <div class="cta-arrow">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-              </div>
+            <!-- Footer - Separated -->
+            <div class="relative z-10 flex items-center justify-between p-8 sm:p-10 border-t border-white/20">
+              <span class="text-xs text-white/60 font-medium tracking-widest uppercase">BYLOA</span>
+              <a 
+                href="https://wa.me/5493417797688"
+                target="_blank"
+                class="cta-button"
+              >
+                <span>Agendar</span>
+                <div class="cta-arrow">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
             </div>
           </div>
         </div>

@@ -8,15 +8,15 @@
 
     <!-- Main Content -->
     <main class="relative z-40">
-      <HeaderHome />
-      <AboutSection />
-      <ServicesSection />
+      <HeaderHome id="home" />
+      <AboutSection id="about" />
+      <ServicesSection id="services" />
       <MaterialCarouselSection />
       <LogosMeetSection />
-      <HowWeWorkTimeline />
+      <HowWeWorkTimeline id="process" />
       <TrustedBrandsSection />
       <WhyByLoaSection />
-      <ContactSection />
+      <ContactSection id="contact" />
       <SiteFooter />
     </main>
   </div>

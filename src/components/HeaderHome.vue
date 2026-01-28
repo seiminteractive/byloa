@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-section relative min-h-screen overflow-hidden">
+  <section id="home" class="hero-section relative min-h-screen overflow-hidden">
     <!-- Gradient Background -->
     <div class="hero-gradient absolute inset-0 z-0"></div>
 

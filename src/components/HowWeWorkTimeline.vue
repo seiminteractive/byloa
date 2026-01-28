@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" class="how-we-work-section relative overflow-hidden">
+  <section id="process" ref="sectionRef" class="how-we-work-section relative overflow-hidden">
     <!-- Background Gradient -->
     <div class="absolute inset-0 how-we-work-bg"></div>
     

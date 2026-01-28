@@ -75,7 +75,7 @@
     <!-- FOOTER LABEL -->
     <div class="mt-16 sm:mt-20 md:mt-24 text-center">
       <span class="text-xs sm:text-sm tracking-widest text-white/30 font-light">
-        Y muchas más marcas premium
+        Y muchas marcas más
       </span>
     </div>
   </section>

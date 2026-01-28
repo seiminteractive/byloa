@@ -1,5 +1,5 @@
 <template>
-  <section class="services-section">
+  <section id="services" class="services-section">
     <!-- Background Image -->
     <div class="services-bg">
       <img src="/I_want_a_2k_202601262320.jpeg" alt="Services background" />

@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section id="about" class="about">
     <!-- Video Background -->
     <video class="about-video" autoplay muted loop playsinline>
       <source src="/I_want_an_1080p_202601262119.mp4" type="video/mp4">

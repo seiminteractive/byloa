@@ -23,15 +23,15 @@
           <ul class="space-y-3">
             <li>
               <a
-                href="#"
+                href="#about"
                 class="text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
-                Inicio
+                Nosotros
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#services"
                 class="text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
                 Servicios
@@ -39,18 +39,18 @@
             </li>
             <li>
               <a
-                href="#"
+                href="#process"
                 class="text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
-                Contacto
+                Proceso
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="#contact"
                 class="text-sm text-white/60 hover:text-white transition-colors duration-200"
               >
-                Privacidad
+                Contacto
               </a>
             </li>
           </ul>
@@ -63,23 +63,29 @@
           </h3>
           <div class="flex gap-6">
             <a
-              href="#"
+              href="https://www.instagram.com/byloa.agency/"
               class="text-white/60 hover:text-white transition-colors duration-200"
               aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i class="bi bi-instagram"></i>
             </a>
             <a
-              href="#"
+              href="https://wa.me/5493417797688?text=Hola%20me%20gustaría%20contactarlos"
               class="text-white/60 hover:text-white transition-colors duration-200"
-              aria-label="LinkedIn"
+              aria-label="Whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-             <i class="bi bi-linkedin"></i>
+             <i class="bi bi-whatsapp"></i>
             </a>
             <a
-              href="mailto:info@byloa.agency"
+              href="mailto:loanaaguirre@byloa.agency"
               class="text-white/60 hover:text-white transition-colors duration-200"
               aria-label="Email"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i class="bi bi-envelope"></i>
             </a>
@@ -96,12 +102,18 @@
 
         <!-- Logo (placeholder for asset) -->
         <div class="h-6 flex items-center">
-          <img
-            v-if="logoSrc"
-            :src="logoSrc"
-            alt="Partner Logo"
-            class="h-full w-auto object-contain opacity-60"
-          />
+          <a
+            href="https://seiminteractive.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="h-full flex items-center"
+          >
+            <img
+              src="/public/SeimFooter.jpeg"
+              alt="Partner Logo"
+              class="h-full w-auto object-contain rounded-md"
+            />
+          </a>
         </div>
       </div>
     </div>
