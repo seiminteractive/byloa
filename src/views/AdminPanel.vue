@@ -74,8 +74,8 @@
               class="w-full h-full object-cover"
               muted
               loop
-              @mouseenter="$event.target.play()"
-              @mouseleave="$event.target.pause()"
+              autoplay
+              playsinline
             />
 
             <!-- Overlay -->
@@ -232,6 +232,8 @@
                   :src="formData.media"
                   class="w-full h-48 object-cover"
                   controls
+                  autoplay
+                  playsinline
                 />
               </div>
             </div>

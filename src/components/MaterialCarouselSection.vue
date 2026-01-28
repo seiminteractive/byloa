@@ -38,7 +38,7 @@
         <SwiperSlide v-for="(project, idx) in galleryProjects" :key="`${project.id}-${idx}`" class="swiper-slide-custom">
           <a :href="project.link" target="_blank" class="carousel-card cursor-pointer group">
             <img v-if="project.type === 'image'" :src="project.media" :alt="project.title" class="carousel-image" />
-            <video v-else :src="project.media" class="carousel-image" muted loop @mouseenter="$event.target.play()" @mouseleave="$event.target.pause()" />
+            <video v-else :src="project.media" class="carousel-image" muted loop autoplay playsinline />
           </a>
         </SwiperSlide>
       </Swiper>
