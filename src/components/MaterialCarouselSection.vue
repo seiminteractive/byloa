@@ -35,7 +35,7 @@
         :navigation="{ prevEl: '.swiper-button-prev-custom', nextEl: '.swiper-button-next-custom' }"
         class="swiper-carousel"
       >
-        <SwiperSlide v-for="(project, idx) in galleryProjects" :key="idx" class="swiper-slide-custom">
+        <SwiperSlide v-for="(project, idx) in galleryProjects" :key="`${project.id}-${idx}`" class="swiper-slide-custom">
           <a :href="project.link" target="_blank" class="carousel-card cursor-pointer group">
             <img v-if="project.type === 'image'" :src="project.media" :alt="project.title" class="carousel-image" />
             <video v-else :src="project.media" class="carousel-image" muted loop @mouseenter="$event.target.play()" @mouseleave="$event.target.pause()" />
@@ -63,6 +63,7 @@ import { Navigation } from 'swiper/modules'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, fetchProjects } from '../store/projects'
+import { useCarouselProjects } from '../composables/useCarouselProjects'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
@@ -89,8 +90,11 @@ const breakpoints = {
   1440: { slidesPerView: 5, spaceBetween: 20 }
 }
 
-// Computed para traer los proyectos del store
-const galleryProjects = computed(() => projects.value)
+// Usar la composable para manejar la lógica de duplicación de proyectos
+const { carouselProjects, carouselInfo } = useCarouselProjects(projects)
+
+// Computed para traer los proyectos duplicados del carrusel
+const galleryProjects = computed(() => carouselProjects.value)
 
 onMounted(async () => {
   // Cargar proyectos de la base de datos
