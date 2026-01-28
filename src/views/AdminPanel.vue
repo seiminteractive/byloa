@@ -28,7 +28,7 @@
           <div class="w-8 h-px bg-white/20"></div>
           <span class="section-label text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Gestión</span>
         </div>
-        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-light text-white mb-6" style="font-family: 'COOLVETICA', sans-serif;">
+        <h2 class="section-title text-start ml-0">
           Proyectos <span class="font-coolvetica">destacados</span>
         </h2>
         <p class="text-lg sm:text-xl text-white/70 font-light leading-relaxed max-w-2xl" style="font-family: 'Cambria', serif;">
@@ -552,6 +552,16 @@ const leaveForm = (el, done) => {
 
 .section-label {
   display: inline-block;
+}
+
+.section-title {
+  font-family: 'COOLVETICA', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-top: 1rem;
 }
 
 /* Smooth scroll para inputs */
