@@ -35,10 +35,11 @@
         :navigation="{ prevEl: '.swiper-button-prev-custom', nextEl: '.swiper-button-next-custom' }"
         class="swiper-carousel"
       >
-        <SwiperSlide v-for="(image, idx) in galleryImages" :key="idx" class="swiper-slide-custom">
-          <div class="carousel-card">
-            <img :src="image" :alt="`slide-${idx}`" class="carousel-image" />
-          </div>
+        <SwiperSlide v-for="(project, idx) in galleryProjects" :key="idx" class="swiper-slide-custom">
+          <a :href="project.link" target="_blank" class="carousel-card cursor-pointer group">
+            <img v-if="project.type === 'image'" :src="project.media" :alt="project.title" class="carousel-image" />
+            <video v-else :src="project.media" class="carousel-image" muted loop @mouseenter="$event.target.play()" @mouseleave="$event.target.pause()" />
+          </a>
         </SwiperSlide>
       </Swiper>
     </div>
@@ -56,11 +57,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { projects, fetchProjects } from '../store/projects'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
@@ -87,20 +89,13 @@ const breakpoints = {
   1440: { slidesPerView: 5, spaceBetween: 20 }
 }
 
-const galleryImages = [
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1499955085172-a104c9463ece?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1533685852127-84b9f988ff18?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1495433324511-bf8e92934d90?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=500&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=500&h=600&fit=crop'
-]
+// Computed para traer los proyectos del store
+const galleryProjects = computed(() => projects.value)
 
-onMounted(() => {
+onMounted(async () => {
+  // Cargar proyectos de la base de datos
+  await fetchProjects()
+
   // Animaciones con ScrollTrigger
   const triggers = []
 
