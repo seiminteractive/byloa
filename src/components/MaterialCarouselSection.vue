@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import gsap from 'gsap'
@@ -99,6 +99,16 @@ const galleryProjects = computed(() => carouselProjects.value)
 onMounted(async () => {
   // Cargar proyectos de la base de datos
   await fetchProjects()
+
+  // Esperar a que Vue actualice el DOM con los nuevos proyectos
+  await nextTick()
+
+  // Forzar recalculación de Swiper con los nuevos slides
+  if (swiperRef.value?.swiper) {
+    swiperRef.value.swiper.update()
+    // También reiniciar el carrusel para asegurar buen posicionamiento
+    swiperRef.value.swiper.slideTo(0, 0)
+  }
 
   // Animaciones con ScrollTrigger
   const triggers = []
