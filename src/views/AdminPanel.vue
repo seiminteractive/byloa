@@ -26,12 +26,12 @@
       <div class="mb-16 sm:mb-20">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-8 h-px bg-white/20"></div>
-          <span class="section-label text-xs uppercase tracking-widest text-white/50 font-light">Gestión</span>
+          <span class="section-label text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Gestión</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light text-white mb-6">
+        <h2 class="text-5xl sm:text-6xl lg:text-7xl font-light text-white mb-6" style="font-family: 'COOLVETICA', sans-serif;">
           Proyectos <span class="font-coolvetica">destacados</span>
         </h2>
-        <p class="text-base sm:text-lg text-white/70 font-light leading-relaxed max-w-2xl">
+        <p class="text-lg sm:text-xl text-white/70 font-light leading-relaxed max-w-2xl" style="font-family: 'Cambria', serif;">
           Carga proyectos con imagen o video y asigna un enlace de destino. Estos aparecerán en el carrusel principal de la web.
         </p>
       </div>
@@ -161,12 +161,12 @@
           <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8 sm:p-12">
             <!-- Header -->
             <div class="flex items-center justify-between mb-8">
-              <h3 class="text-2xl sm:text-3xl font-light text-white">
+              <h3 class="text-3xl sm:text-4xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif;">
                 {{ editingIdx !== null ? 'Editar' : 'Nuevo' }} <span class="font-coolvetica">proyecto</span>
               </h3>
               <button
                 @click="closForm"
-                class="text-white/60 hover:text-white transition-colors"
+                class="text-white/60 hover:text-white transition-colors text-2xl"
               >
                 ✕
               </button>
@@ -176,18 +176,19 @@
             <div class="space-y-6">
               <!-- Title -->
               <div>
-                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-3">Título</label>
+                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Título</label>
                 <input
                   v-model="formData.title"
                   type="text"
                   placeholder="Nombre del proyecto"
-                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors"
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  style="font-family: 'Cambria', serif;"
                 />
               </div>
 
               <!-- Media Upload -->
               <div>
-                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-3">
+                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">
                   Imagen o Video
                 </label>
                 <div class="relative">
@@ -198,10 +199,10 @@
                     class="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-4 py-8 text-center hover:border-white/40 transition-colors cursor-pointer">
-                    <p v-if="!formData.media" class="text-sm text-white/60 font-light">
+                    <p v-if="!formData.media" class="text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">
                       Arrastra o haz click para seleccionar
                     </p>
-                    <p v-else class="text-sm text-white/80 font-light">
+                    <p v-else class="text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">
                       📁 {{ formData.mediaName }}
                     </p>
                   </div>
@@ -210,12 +211,13 @@
 
               <!-- Link -->
               <div>
-                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-3">Enlace de destino</label>
+                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Enlace de destino</label>
                 <input
                   v-model="formData.link"
                   type="url"
                   placeholder="https://ejemplo.com"
-                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors"
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  style="font-family: 'Cambria', serif;"
                 />
               </div>
 
@@ -242,13 +244,15 @@
             <div class="flex gap-4 mt-8">
               <button
                 @click="saveProject"
-                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all"
+                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
               >
                 {{ editingIdx !== null ? 'Actualizar' : 'Crear' }} proyecto
               </button>
               <button
                 @click="closForm"
-                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all"
+                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
               >
                 Cancelar
               </button>
@@ -281,12 +285,12 @@
             </div>
 
             <!-- Title -->
-            <h3 class="text-2xl font-light text-white text-center mb-3">
+            <h3 class="text-3xl font-light text-white text-center mb-3" style="font-family: 'COOLVETICA', sans-serif;">
               ¿Eliminar proyecto?
             </h3>
 
             <!-- Message -->
-            <p class="text-white/70 text-center mb-8 font-light">
+            <p class="text-white/70 text-center mb-8 font-light text-base" style="font-family: 'Cambria', serif;">
               Esta acción no se puede deshacer. El proyecto será eliminado permanentemente.
             </p>
 
@@ -294,13 +298,15 @@
             <div class="flex gap-4">
               <button
                 @click="confirmDelete"
-                class="flex-1 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all"
+                class="flex-1 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
               >
                 Eliminar
               </button>
               <button
                 @click="cancelDelete"
-                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all"
+                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
               >
                 Cancelar
               </button>
