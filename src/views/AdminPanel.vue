@@ -91,7 +91,7 @@
                   Editar
                 </button>
                 <button
-                  @click="deleteProjectHandler(idx)"
+                  @click="openDeleteModal(idx)"
                   class="flex-1 py-2 bg-white/10 text-white text-sm font-medium rounded-lg hover:bg-white/20 transition-all"
                 >
                   Eliminar
@@ -257,16 +257,73 @@
         </div>
       </div>
     </transition>
+
+    <!-- Delete Confirmation Modal -->
+    <transition>
+      <div 
+        v-if="showDeleteModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <!-- Backdrop -->
+        <div 
+          class="absolute inset-0 bg-black/60 backdrop-blur-xl"
+          @click="cancelDelete"
+        ></div>
+
+        <!-- Modal -->
+        <div class="relative z-10 w-full max-w-md">
+          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
+            <!-- Icon -->
+            <div class="flex justify-center mb-6">
+              <div class="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
+                <span class="text-3xl">⚠️</span>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-2xl font-light text-white text-center mb-3">
+              ¿Eliminar proyecto?
+            </h3>
+
+            <!-- Message -->
+            <p class="text-white/70 text-center mb-8 font-light">
+              Esta acción no se puede deshacer. El proyecto será eliminado permanentemente.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex gap-4">
+              <button
+                @click="confirmDelete"
+                class="flex-1 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all"
+              >
+                Eliminar
+              </button>
+              <button
+                @click="cancelDelete"
+                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
+import { useToast } from 'vue-toastification'
 import { projects, updateProject, deleteProject as deleteFromStore, fetchProjects, isLoading, error } from '../store/projects'
+
+const toast = useToast()
 
 const showAddForm = ref(false)
 const editingIdx = ref(null)
+const showDeleteModal = ref(false)
+const deleteConfirmIdx = ref(null)
 const formData = ref({
   title: '',
   type: '',
@@ -311,7 +368,7 @@ const uploadMediaToFirebase = async (dataUrl, type, fileName) => {
 
 const saveProject = async () => {
   if (!formData.value.title || !formData.value.media || !formData.value.link) {
-    alert('Por favor completa todos los campos')
+    toast.error('Por favor completa todos los campos')
     return
   }
 
@@ -319,13 +376,13 @@ const saveProject = async () => {
     // Subir a Firebase Storage si es una nueva imagen (starts with data:)
     let mediaUrl = formData.value.media
     if (formData.value.media.startsWith('data:')) {
-      alert('⏳ Subiendo archivo a Firebase...')
+      toast.info('⏳ Subiendo archivo a Firebase...')
       mediaUrl = await uploadMediaToFirebase(
         formData.value.media,
         formData.value.type,
         formData.value.mediaName
       )
-      alert('✅ Archivo subido a Firebase')
+      toast.success('✅ Archivo subido a Firebase')
     }
 
     const payload = {
@@ -346,10 +403,10 @@ const saveProject = async () => {
 
       const result = await response.json()
       if (result.success) {
-        alert('✅ Proyecto actualizado')
+        toast.success('✅ Proyecto actualizado')
         await fetchProjects() // Recargar proyectos
       } else {
-        alert('❌ Error al actualizar: ' + result.error)
+        toast.error('❌ Error al actualizar: ' + result.error)
       }
     } else {
       // Crear proyecto
@@ -361,16 +418,16 @@ const saveProject = async () => {
 
       const result = await response.json()
       if (result.success) {
-        alert('✅ Proyecto creado')
+        toast.success('✅ Proyecto creado')
         await fetchProjects() // Recargar proyectos
       } else {
-        alert('❌ Error al crear: ' + result.error)
+        toast.error('❌ Error al crear: ' + result.error)
       }
     }
 
     closForm()
   } catch (error) {
-    alert('❌ Error: ' + error.message)
+    toast.error('❌ Error: ' + error.message)
     console.error(error)
   }
 }
@@ -381,26 +438,38 @@ const editProject = (idx) => {
   showAddForm.value = true
 }
 
-const deleteProjectHandler = async (idx) => {
-  if (confirm('¿Estás seguro de que quieres eliminar este proyecto?')) {
-    try {
-      const projectId = projects.value[idx].id
-      const response = await fetch(`http://localhost:3000/api/projects/${projectId}`, {
-        method: 'DELETE'
-      })
+const openDeleteModal = (idx) => {
+  deleteConfirmIdx.value = idx
+  showDeleteModal.value = true
+}
 
-      const result = await response.json()
-      if (result.success) {
-        alert('✅ Proyecto eliminado')
-        await fetchProjects() // Recargar proyectos
-      } else {
-        alert('❌ Error al eliminar: ' + result.error)
-      }
-    } catch (error) {
-      alert('❌ Error: ' + error.message)
-      console.error(error)
+const confirmDelete = async () => {
+  const idx = deleteConfirmIdx.value
+  try {
+    const projectId = projects.value[idx].id
+    const response = await fetch(`http://localhost:3000/api/projects/${projectId}`, {
+      method: 'DELETE'
+    })
+
+    const result = await response.json()
+    if (result.success) {
+      toast.success('✅ Proyecto eliminado')
+      await fetchProjects() // Recargar proyectos
+    } else {
+      toast.error('❌ Error al eliminar: ' + result.error)
     }
+  } catch (error) {
+    toast.error('❌ Error: ' + error.message)
+    console.error(error)
+  } finally {
+    showDeleteModal.value = false
+    deleteConfirmIdx.value = null
   }
+}
+
+const cancelDelete = () => {
+  showDeleteModal.value = false
+  deleteConfirmIdx.value = null
 }
 
 const closForm = () => {
