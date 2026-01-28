@@ -106,30 +106,31 @@
       <div v-if="projects.length > 0" class="mt-16 sm:mt-20">
         <div class="flex items-center gap-3 mb-8">
           <div class="w-8 h-px bg-white/20"></div>
-          <span class="text-xs uppercase tracking-widest text-white/50 font-light">Detalles</span>
+          <span class="text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Detalles</span>
         </div>
 
         <div class="overflow-x-auto">
           <table class="w-full">
             <thead>
               <tr class="border-b border-white/20">
-                <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/50 font-light">Título</th>
-                <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/50 font-light">Tipo</th>
-                <th class="text-left py-4 px-4 text-xs uppercase tracking-widest text-white/50 font-light">Enlace</th>
-                <th class="text-right py-4 px-4 text-xs uppercase tracking-widest text-white/50 font-light">Acciones</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Título</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Tipo</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Enlace</th>
+                <th class="text-right py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(project, idx) in projects" :key="idx" class="border-b border-white/10 hover:bg-white/5 transition-colors">
-                <td class="py-4 px-4 text-sm text-white/80 font-light">{{ project.title }}</td>
-                <td class="py-4 px-4 text-sm text-white/60 font-light">{{ project.type === 'image' ? 'Imagen' : 'Video' }}</td>
-                <td class="py-4 px-4 text-sm text-white/60 font-light truncate">
+                <td class="py-4 px-4 text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">{{ project.title }}</td>
+                <td class="py-4 px-4 text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">{{ project.type === 'image' ? 'Imagen' : 'Video' }}</td>
+                <td class="py-4 px-4 text-base text-white/60 font-light truncate" style="font-family: 'Cambria', serif;">
                   <a :href="project.link" target="_blank" class="text-white/70 hover:text-white transition-colors">{{ project.link }}</a>
                 </td>
                 <td class="py-4 px-4 text-right">
                   <button
                     @click="editProject(idx)"
-                    class="text-xs text-white/60 hover:text-white transition-colors"
+                    class="text-sm text-white/60 hover:text-white transition-colors"
+                    style="font-family: 'COOLVETICA', sans-serif;"
                   >
                     Editar
                   </button>
@@ -161,12 +162,12 @@
           <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8 sm:p-12">
             <!-- Header -->
             <div class="flex items-center justify-between mb-8">
-              <h3 class="text-3xl sm:text-4xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif;">
+              <h3 class="text-4xl sm:text-5xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
                 {{ editingIdx !== null ? 'Editar' : 'Nuevo' }} <span class="font-coolvetica">proyecto</span>
               </h3>
               <button
                 @click="closForm"
-                class="text-white/60 hover:text-white transition-colors text-2xl"
+                class="text-white/60 hover:text-white transition-colors text-3xl"
               >
                 ✕
               </button>
@@ -285,12 +286,12 @@
             </div>
 
             <!-- Title -->
-            <h3 class="text-3xl font-light text-white text-center mb-3" style="font-family: 'COOLVETICA', sans-serif;">
+            <h3 class="text-4xl font-light text-white text-center mb-3" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
               ¿Eliminar proyecto?
             </h3>
 
             <!-- Message -->
-            <p class="text-white/70 text-center mb-8 font-light text-base" style="font-family: 'Cambria', serif;">
+            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'Cambria', serif;">
               Esta acción no se puede deshacer. El proyecto será eliminado permanentemente.
             </p>
 
