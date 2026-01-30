@@ -20,6 +20,15 @@ CREATE TABLE IF NOT EXISTS projects (
   INDEX idx_type (type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabla de proyectos destacados de ByLoa';
 
+-- Crear tabla de marcas confiables
+CREATE TABLE IF NOT EXISTS trusted_brands (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL COMMENT 'Nombre de la marca (para ALT de imagen)',
+  logo_url LONGTEXT NOT NULL COMMENT 'URL de Firebase Storage del logo',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabla de logos de marcas confiables';
+
 -- Insertar datos de ejemplo (opcional, comentado)
 -- INSERT INTO projects (title, type, media, link) VALUES 
 -- ('Proyecto 1', 'image', 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop', 'https://ejemplo.com');
@@ -30,3 +39,4 @@ CREATE TABLE IF NOT EXISTS projects (
 -- USE byloa_db;
 -- SHOW TABLES;
 -- DESC projects;
+-- DESC trusted_brands;

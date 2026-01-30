@@ -4,6 +4,7 @@ const cors = require('@fastify/cors')
 const { createPool, closePool } = require('./config/database')
 const { initializeFirebase } = require('./config/firebase')
 const projectsRoutes = require('./routes/projects')
+const trustedBrandsRoutes = require('./routes/trustedBrands')
 
 const app = fastify({ 
   bodyLimit: 52428800, // 50MB
@@ -37,6 +38,7 @@ app.get('/health', async (request, reply) => {
 
 // Register routes
 app.register(projectsRoutes)
+app.register(trustedBrandsRoutes)
 
 // Error handler
 app.setErrorHandler((error, request, reply) => {
