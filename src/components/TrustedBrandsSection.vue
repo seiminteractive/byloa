@@ -7,8 +7,8 @@
       <!-- Título principal - Tipografía premium -->
       <div class="mb-6 sm:mb-8 text-center">
         <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
-          Marcas que confían<br class="hidden sm:block" />
-          <span class="font-medium">y trabajan</span> con ByLoa
+          Marcas que confían <br class="hidden sm:block" />
+          y <span class="font-medium">trabajan</span> con ByLoa
         </h2>
       </div>
 
@@ -24,7 +24,7 @@
     <!-- ===== CARROUSELES ===== -->
     <div
       class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden z-0"
-      style="--space-mobile: 0.25rem; --space-desktop: 1.25rem; --space: var(--space-mobile)"
+      style="--space-mobile: 0.2rem; --space-desktop: 1.25rem; --space: var(--space-mobile)"
     >
 
      <!-- DEGRADADO LATERAL IZQUIERDO -->
@@ -42,7 +42,7 @@
           :key="`row1-${brand.id}`"
           class="flex items-center justify-center shrink-0"
         >
-          <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
+          <div class="w-auto sm:w-auto md:w-52 lg:w-auto px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
               :src="brand.logo_url"
               :alt="brand.name"
@@ -62,7 +62,7 @@
           :key="`row2-${brand.id}`"
           class="flex items-center justify-center shrink-0"
         >
-          <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
+          <div class="w-auto sm:w-auto md:w-52 lg:w-auto px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
               :src="brand.logo_url"
               :alt="brand.name"
