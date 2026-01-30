@@ -102,6 +102,115 @@
         </div>
       </div>
 
+      <!-- Trusted Brands Section -->
+      <div class="mb-16 sm:mb-20 mt-20 sm:mt-28 pt-20 sm:pt-28 border-t border-white/10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-px bg-white/20"></div>
+          <span class="section-label text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Marcas</span>
+        </div>
+        <h2 class="section-title text-start ml-0">
+          Marcas <span class="font-coolvetica">confiables</span>
+        </h2>
+        <p class="text-lg sm:text-xl text-white/70 font-light leading-relaxed max-w-2xl" style="font-family: 'Cambria', serif;">
+          Carga los logos de las marcas confiables que se mostrarán en la web. Las imágenes se almacenan en Firebase Storage.
+        </p>
+      </div>
+
+      <!-- Trusted Brands Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16 sm:mb-20">
+        <!-- Add Brand Card -->
+        <div 
+          @click="showAddBrandForm = true"
+          class="lg:col-span-1 group cursor-pointer"
+        >
+          <div class="h-48 sm:h-56 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center overflow-hidden relative">
+            <!-- Animated gradient on hover -->
+            <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div class="relative z-10 text-center">
+              <div class="text-4xl text-white/60 group-hover:text-white transition-colors mb-3">+</div>
+              <p class="text-sm text-white/60 group-hover:text-white transition-colors font-light">Nuevo logo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Existing Brands -->
+        <div 
+          v-for="(brand, idx) in trustedBrands" 
+          :key="idx"
+          class="group relative"
+        >
+          <div class="h-48 sm:h-56 bg-black rounded-2xl border border-white/20 group-hover:border-white/40 transition-all duration-300 overflow-hidden relative flex items-center justify-center p-4">
+            <!-- Logo Preview -->
+            <img 
+              :src="brand.logo_url" 
+              :alt="brand.name"
+              class="max-w-full max-h-full object-contain"
+            />
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
+
+            <!-- Actions -->
+            <div class="absolute inset-0 flex items-end p-4 sm:p-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="flex gap-3 w-full">
+                <button
+                  @click="editBrand(idx)"
+                  class="flex-1 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-white/90 transition-all"
+                >
+                  Editar
+                </button>
+                <button
+                  @click="openDeleteBrandModal(idx)"
+                  class="flex-1 py-2 bg-white/10 text-white text-sm font-medium rounded-lg hover:bg-white/20 transition-all"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trusted Brands Table -->
+      <div v-if="trustedBrands.length > 0" class="mt-16 sm:mt-20">
+        
+        <div class="overflow-x-auto sm:py-8 py-4 bg-black backdrop-blur-sm w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+          <div class="flex items-center gap-3 mb-8 px-8 sm:px-12 lg:px-20">
+            <div class="w-8 h-px bg-white/20"></div>
+            <span class="text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Detalles</span>
+          </div>
+          <div class="px-8 sm:px-12 lg:px-20">
+            <table class="w-full">
+            <thead>
+              <tr class="border-b border-white/20">
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Nombre</th>
+                <th class="text-left py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Logo URL</th>
+                <th class="text-right py-4 px-4 text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(brand, idx) in trustedBrands" :key="idx" class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                <td class="py-4 px-4 text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">{{ brand.name }}</td>
+                <td class="py-4 px-4 text-base text-white/60 font-light truncate" style="font-family: 'Cambria', serif;">
+                  <a :href="brand.logo_url" target="_blank" class="text-white/70 hover:text-white transition-colors">{{ brand.logo_url.substring(0, 50) }}...</a>
+                </td>
+                <td class="py-4 px-4 text-right">
+                  <button
+                    @click="editBrand(idx)"
+                    class="text-sm text-white/60 hover:text-white transition-colors"
+                    style="font-family: 'COOLVETICA', sans-serif;"
+                  >
+                    Editar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <!-- Projects Table -->
       <div v-if="projects.length > 0" class="mt-16 sm:mt-20">
         
@@ -319,6 +428,161 @@
         </div>
       </div>
     </transition>
+
+    <!-- Brand Form Modal -->
+    <transition
+      @enter="enterForm"
+      @leave="leaveForm"
+    >
+      <div 
+        v-if="showAddBrandForm"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <!-- Backdrop -->
+        <div 
+          class="absolute inset-0 bg-black/60 backdrop-blur-xl"
+          @click="closeBrandForm"
+        ></div>
+
+        <!-- Form -->
+        <div class="relative z-10 w-full max-w-2xl">
+          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8 sm:p-12">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-8">
+              <h3 class="text-4xl sm:text-5xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
+                {{ editingBrandIdx !== null ? 'Editar' : 'Nuevo' }} <span class="font-coolvetica">logo</span>
+              </h3>
+              <button
+                @click="closeBrandForm"
+                class="text-white/60 hover:text-white transition-colors text-3xl"
+              >
+                ✕
+              </button>
+            </div>
+
+            <!-- Form Fields -->
+            <div class="space-y-6">
+              <!-- Name -->
+              <div>
+                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Nombre de la marca</label>
+                <input
+                  v-model="brandFormData.name"
+                  type="text"
+                  placeholder="Ej: Google, Microsoft, etc."
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  style="font-family: 'Cambria', serif;"
+                />
+              </div>
+
+              <!-- Logo Upload -->
+              <div>
+                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">
+                  Logo
+                </label>
+                <div class="relative">
+                  <input
+                    type="file"
+                    @change="handleBrandLogoUpload"
+                    accept="image/*"
+                    class="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                  <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-4 py-8 text-center hover:border-white/40 transition-colors cursor-pointer">
+                    <p v-if="!brandFormData.logo" class="text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">
+                      Arrastra o haz click para seleccionar
+                    </p>
+                    <p v-else class="text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">
+                      📁 {{ brandFormData.logoName }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Logo Preview -->
+              <div v-if="brandFormData.logo" class="rounded-lg overflow-hidden border border-white/20 flex items-center justify-center bg-white/5 p-4" style="min-height: 120px;">
+                <img 
+                  :src="brandFormData.logo"
+                  alt="Preview"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-4 mt-8">
+              <button
+                @click="saveBrand"
+                :disabled="isUploadingBrand"
+                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
+                style="font-family: 'COOLVETICA', sans-serif;"
+              >
+                {{ isUploadingBrand ? 'Subiendo...' : (editingBrandIdx !== null ? 'Actualizar' : 'Crear') }} logo
+              </button>
+              <button
+                @click="closeBrandForm"
+                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Delete Brand Confirmation Modal -->
+    <transition>
+      <div 
+        v-if="showDeleteBrandModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      >
+        <!-- Backdrop -->
+        <div 
+          class="absolute inset-0 bg-black/60 backdrop-blur-xl"
+          @click="cancelDeleteBrand"
+        ></div>
+
+        <!-- Modal -->
+        <div class="relative z-10 w-full max-w-md">
+          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
+            <!-- Icon -->
+            <div class="flex justify-center mb-6">
+              <div class="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
+                <span class="text-3xl">⚠️</span>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-4xl font-light text-white text-center mb-3" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
+              ¿Eliminar logo?
+            </h3>
+
+            <!-- Message -->
+            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'Cambria', serif;">
+              Esta acción no se puede deshacer. El logo será eliminado permanentemente.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex gap-4">
+              <button
+                @click="confirmDeleteBrand"
+                class="flex-1 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
+              >
+                Eliminar
+              </button>
+              <button
+                @click="cancelDeleteBrand"
+                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                style="font-family: 'COOLVETICA', sans-serif;"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -330,6 +594,7 @@ import { projects, updateProject, deleteProject as deleteFromStore, fetchProject
 
 const toast = useToast()
 
+// Projects
 const showAddForm = ref(false)
 const editingIdx = ref(null)
 const showDeleteModal = ref(false)
@@ -343,6 +608,32 @@ const formData = ref({
   link: ''
 })
 
+// Trusted Brands
+const trustedBrands = ref([])
+const showAddBrandForm = ref(false)
+const editingBrandIdx = ref(null)
+const showDeleteBrandModal = ref(false)
+const deleteBrandIdx = ref(null)
+const isUploadingBrand = ref(false)
+const brandFormData = ref({
+  name: '',
+  logo: '',
+  logoName: ''
+})
+
+// Cargar marcas confiables
+const fetchTrustedBrands = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/api/trusted-brands')
+    const result = await response.json()
+    if (result.success) {
+      trustedBrands.value = result.data
+    }
+  } catch (error) {
+    console.error('Error fetching trusted brands:', error)
+  }
+}
+
 const handleMediaUpload = (e) => {
   const file = e.target.files[0]
   if (file) {
@@ -353,6 +644,19 @@ const handleMediaUpload = (e) => {
     reader.onload = (event) => {
       formData.value.media = event.target.result
       formData.value.isUploading = false
+    }
+    reader.readAsDataURL(file)
+  }
+}
+
+const handleBrandLogoUpload = (e) => {
+  const file = e.target.files[0]
+  if (file) {
+    brandFormData.value.logoName = file.name
+    
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      brandFormData.value.logo = event.target.result
     }
     reader.readAsDataURL(file)
   }
@@ -377,6 +681,28 @@ const uploadMediaToFirebase = async (dataUrl, type, fileName) => {
     throw new Error(`Upload error: ${error.message}`)
   } finally {
     isUploading.value = false
+  }
+}
+
+const uploadBrandLogoToFirebase = async (dataUrl, fileName) => {
+  try {
+    isUploadingBrand.value = true
+    const response = await fetch('http://localhost:3000/api/trusted-brands/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dataUrl, fileName })
+    })
+
+    const result = await response.json()
+    if (result.success) {
+      return result.data.logoUrl
+    } else {
+      throw new Error(result.error)
+    }
+  } catch (error) {
+    throw new Error(`Upload error: ${error.message}`)
+  } finally {
+    isUploadingBrand.value = false
   }
 }
 
@@ -444,15 +770,91 @@ const saveProject = async () => {
   }
 }
 
+const saveBrand = async () => {
+  if (!brandFormData.value.name || !brandFormData.value.logo) {
+    toast.error('Por favor completa todos los campos')
+    return
+  }
+
+  try {
+    // Subir a Firebase Storage si es una nueva imagen (starts with data:)
+    let logoUrl = brandFormData.value.logo
+    if (brandFormData.value.logo.startsWith('data:')) {
+      logoUrl = await uploadBrandLogoToFirebase(
+        brandFormData.value.logo,
+        brandFormData.value.logoName
+      )
+    }
+
+    const payload = {
+      name: brandFormData.value.name,
+      logo_url: logoUrl
+    }
+
+    if (editingBrandIdx.value !== null) {
+      // Actualizar marca
+      const brandId = trustedBrands.value[editingBrandIdx.value].id
+      const response = await fetch(`http://localhost:3000/api/trusted-brands/${brandId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        toast.success('Logo actualizado')
+        await fetchTrustedBrands() // Recargar marcas
+      } else {
+        toast.error('Error al actualizar: ' + result.error)
+      }
+    } else {
+      // Crear marca
+      const response = await fetch('http://localhost:3000/api/trusted-brands', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      const result = await response.json()
+      if (result.success) {
+        toast.success('Logo creado')
+        await fetchTrustedBrands() // Recargar marcas
+      } else {
+        toast.error('Error al crear: ' + result.error)
+      }
+    }
+
+    closeBrandForm()
+  } catch (error) {
+    toast.error('Error: ' + error.message)
+    console.error(error)
+  }
+}
+
 const editProject = (idx) => {
   editingIdx.value = idx
   formData.value = { ...projects.value[idx] }
   showAddForm.value = true
 }
 
+const editBrand = (idx) => {
+  editingBrandIdx.value = idx
+  brandFormData.value = { 
+    name: trustedBrands.value[idx].name,
+    logo: trustedBrands.value[idx].logo_url,
+    logoName: ''
+  }
+  showAddBrandForm.value = true
+}
+
 const openDeleteModal = (idx) => {
   deleteConfirmIdx.value = idx
   showDeleteModal.value = true
+}
+
+const openDeleteBrandModal = (idx) => {
+  deleteBrandIdx.value = idx
+  showDeleteBrandModal.value = true
 }
 
 const confirmDelete = async () => {
@@ -479,9 +881,38 @@ const confirmDelete = async () => {
   }
 }
 
+const confirmDeleteBrand = async () => {
+  const idx = deleteBrandIdx.value
+  try {
+    const brandId = trustedBrands.value[idx].id
+    const response = await fetch(`http://localhost:3000/api/trusted-brands/${brandId}`, {
+      method: 'DELETE'
+    })
+
+    const result = await response.json()
+    if (result.success) {
+      toast.success('Logo eliminado')
+      await fetchTrustedBrands() // Recargar marcas
+    } else {
+      toast.error('Error al eliminar: ' + result.error)
+    }
+  } catch (error) {
+    toast.error('Error: ' + error.message)
+    console.error(error)
+  } finally {
+    showDeleteBrandModal.value = false
+    deleteBrandIdx.value = null
+  }
+}
+
 const cancelDelete = () => {
   showDeleteModal.value = false
   deleteConfirmIdx.value = null
+}
+
+const cancelDeleteBrand = () => {
+  showDeleteBrandModal.value = false
+  deleteBrandIdx.value = null
 }
 
 const closForm = () => {
@@ -496,9 +927,20 @@ const closForm = () => {
   }
 }
 
-// Cargar proyectos al montar el componente
+const closeBrandForm = () => {
+  showAddBrandForm.value = false
+  editingBrandIdx.value = null
+  brandFormData.value = {
+    name: '',
+    logo: '',
+    logoName: ''
+  }
+}
+
+// Cargar datos al montar el componente
 onMounted(() => {
   fetchProjects()
+  fetchTrustedBrands()
 })
 
 const enterForm = (el, done) => {
