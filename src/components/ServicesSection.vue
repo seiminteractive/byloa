@@ -16,48 +16,55 @@
 
     <!-- MOBILE LAYOUT -->
     <div class="sm:hidden mobile-services-container">
-      <!-- Header -->
+      <!-- Header con contador -->
       <div class="mobile-header">
-        <h2 class="mobile-title">Nuestros Servicios</h2>
-        <p class="mobile-subtitle">Soluciones estratégicas para tu marca</p>
-      </div>
-
-      <!-- Services Carousel/Scroll -->
-      <div class="mobile-services-scroll">
-        <div
-          v-for="(service, index) in services"
-          :key="index"
-          class="mobile-service-card"
-          :class="{ 'active': activeIndex === index }"
-          @click="setActiveService(index)"
-        >
-          <div class="card-number">{{ String(index + 1).padStart(2, '0') }}</div>
-          <h3 class="card-title">{{ service.title }}</h3>
-          <div class="card-indicator"></div>
+        <div class="header-top">
+          <span class="header-label">SERVICIOS</span>
+          <span class="header-counter">{{ String(activeIndex + 1).padStart(1, '0') }} / {{ services.length }}</span>
         </div>
       </div>
 
-      <!-- Service Detail (Mobile) -->
+      <!-- Service Detail -->
       <Transition name="fade-slide" mode="out-in">
-        <div :key="activeIndex" class="mobile-service-detail">
-          <p class="detail-description">
+        <div :key="activeIndex" class="mobile-service-content">
+          <h2 class="service-mobile-title">
+            {{ services[activeIndex].title }}
+          </h2>
+          <p class="service-description">
             {{ services[activeIndex].mainDescription }}
           </p>
-          <p class="detail-secondary" v-if="services[activeIndex].secondaryDescription">
+          <p class="service-secondary" v-if="services[activeIndex].secondaryDescription">
             {{ services[activeIndex].secondaryDescription }}
           </p>
         </div>
       </Transition>
 
-      <!-- Mobile Dots Navigation -->
-      <div class="mobile-dots">
-        <span 
-          v-for="(_, index) in services" 
-          :key="index"
-          class="mobile-dot"
-          :class="{ 'active': activeIndex === index }"
-          @click="setActiveService(index)"
-        ></span>
+      <!-- Navigation Bottom -->
+      <div class="mobile-navigation">
+        <button class="nav-button prev" @click="prevService" :disabled="activeIndex === 0">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Deslizá para ver más</span>
+        </button>
+
+        <!-- Dots -->
+        <div class="dots-container">
+          <span 
+            v-for="(_, index) in services" 
+            :key="index"
+            class="dot"
+            :class="{ 'active': activeIndex === index }"
+            @click="setActiveService(index)"
+          ></span>
+        </div>
+
+        <button class="nav-button next" @click="nextService" :disabled="activeIndex === services.length - 1">
+          <span>Deslizá para ver más</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </div>
 
@@ -181,6 +188,10 @@ const setActiveService = (index) => {
 
 const nextService = () => {
   activeIndex.value = (activeIndex.value + 1) % services.length
+}
+
+const prevService = () => {
+  activeIndex.value = (activeIndex.value - 1 + services.length) % services.length
 }
 
 const startAutoScroll = () => {
@@ -605,219 +616,135 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
-  overflow-y: auto;
-}
-
-.mobile-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  animation: fadeInDown 0.6s ease-out;
-}
-
-.mobile-title {
-  font-family: 'Coolvetica', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: #fff;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-}
-
-.mobile-subtitle {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
-}
-
-.mobile-services-scroll {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  max-height: 300px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-/* Custom scrollbar for mobile cards */
-.mobile-services-scroll::-webkit-scrollbar {
-  width: 2px;
-}
-
-.mobile-services-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-.mobile-services-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-.mobile-service-card {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  justify-content: space-between;
+  padding: 3rem 1.5rem 2rem;
   overflow: hidden;
 }
 
-.mobile-service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: rgba(252, 148, 199, 0.2);
-  transition: width 0.3s ease;
-  z-index: -1;
-}
-
-.mobile-service-card:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateX(4px);
-}
-
-.mobile-service-card.active {
-  background: rgba(252, 148, 199, 0.25);
-  border-color: rgba(252, 148, 199, 0.5);
-  transform: scale(1.02);
-}
-
-.mobile-service-card.active::before {
-  width: 100%;
-}
-
-.card-number {
-  font-family: 'Coolvetica', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.4);
-  min-width: 3rem;
-  text-align: center;
-}
-
-.mobile-service-card.active .card-number {
-  color: rgba(252, 148, 199, 0.8);
-}
-
-.card-title {
-  flex: 1;
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-
-.mobile-service-card.active .card-title {
-  color: #fff;
-  font-weight: 400;
-}
-
-.card-indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.mobile-service-card.active .card-indicator {
-  background: rgba(252, 148, 199, 0.8);
-  width: 8px;
-  height: 8px;
-  box-shadow: 0 0 8px rgba(252, 148, 199, 0.6);
-}
-
-.mobile-service-detail {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  padding: 1.5rem;
+.mobile-header {
   margin-bottom: 2rem;
-  animation: fadeInUp 0.4s ease-out;
 }
 
-.detail-description {
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.header-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.header-counter {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+.mobile-service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.service-mobile-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.service-description {
   font-size: 0.95rem;
   font-weight: 300;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0 0 1rem 0;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 1.5rem 0;
 }
 
-.detail-secondary {
+.service-secondary {
   font-size: 0.85rem;
   font-weight: 300;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5);
   font-style: italic;
   margin: 0;
 }
 
-.mobile-dots {
+.mobile-navigation {
   display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.mobile-dot {
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+}
+
+.nav-button:hover:not(:disabled) {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
+.nav-button.prev {
+  flex-direction: row-reverse;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mobile-dot:hover {
+.dot:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
-.mobile-dot.active {
-  background: rgba(252, 148, 199, 0.8);
-  width: 12px;
+.dot.active {
+  background: rgba(255, 200, 150, 0.8);
+  width: 20px;
   border-radius: 3px;
-  box-shadow: 0 0 8px rgba(252, 148, 199, 0.6);
-}
-
-/* Mobile animations */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>
