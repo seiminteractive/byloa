@@ -610,8 +610,8 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   overflow: hidden;
 }
@@ -619,7 +619,8 @@ onUnmounted(() => {
 .mobile-header {
   flex-shrink: 0;
   width: 100%;
-  padding: 2rem 1.5rem 0;
+  padding: 0 1.5rem 2rem;
+  text-align: center;
 }
 
 .header-top {
@@ -644,7 +645,7 @@ onUnmounted(() => {
 }
 
 .mobile-service-content {
-  flex: 1;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -691,7 +692,7 @@ onUnmounted(() => {
   gap: 1.5rem;
   align-items: center;
   width: 100%;
-  padding: 0 1.5rem 2rem;
+  padding: 2rem 1.5rem 0;
 }
 
 .nav-button {
