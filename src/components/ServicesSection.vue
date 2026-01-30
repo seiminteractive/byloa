@@ -2,11 +2,12 @@
   <section id="services" class="services-section">
     <!-- Background Image -->
     <div class="services-bg">
-      <img src="/I_want_a_2k_202601262320.jpeg" alt="Services background" />
+      <img src="/I_want_a_2k_202601262320.jpeg" alt="Services background"/>
+
     </div>
     
     <!-- Blur Overlay - Solo lado izquierdo (Desktop) -->
-    <div class="services-blur-overlay"></div>
+    <div class="services-blur-overlay hidden sm:block"></div>
     
     <!-- Top fade from black -->
     <div class="top-fade"></div>
@@ -654,6 +655,7 @@ onUnmounted(() => {
   width: 100%;
   padding: 2rem 1.5rem;
   text-align: center;
+  height: 30%;
 }
 
 .service-mobile-title {
@@ -749,7 +751,7 @@ onUnmounted(() => {
 }
 
 .mobile-services-container .dot.active {
-  background: rgba(255, 200, 150, 0.8);
+  background: rgba(255, 150, 190, 0.8);
   width: 20px;
   border-radius: 3px;
 }
