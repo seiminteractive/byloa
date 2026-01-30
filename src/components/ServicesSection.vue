@@ -24,6 +24,7 @@
         </div>
       </div>
 
+
       <!-- Service Detail -->
       <Transition name="fade-slide" mode="out-in">
         <div :key="activeIndex" class="mobile-service-content">
@@ -41,13 +42,6 @@
 
       <!-- Navigation Bottom -->
       <div class="mobile-navigation">
-        <button class="nav-button prev" @click="prevService" :disabled="activeIndex === 0">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          <span>Deslizá para ver más</span>
-        </button>
-
         <!-- Dots -->
         <div class="dots-container">
           <span 
@@ -616,20 +610,25 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 3rem 1.5rem 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem;
   overflow: hidden;
 }
 
 .mobile-header {
-  margin-bottom: 2rem;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem;
+  width: 100%;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
 }
 
 .header-label {
@@ -653,6 +652,7 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   animation: fadeInUp 0.5s ease-out;
+  width: 100%;
 }
 
 .service-mobile-title {
@@ -683,10 +683,15 @@ onUnmounted(() => {
 }
 
 .mobile-navigation {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 2rem;
+  align-items: center;
+  width: 100%;
 }
 
 .nav-button {
@@ -746,5 +751,16 @@ onUnmounted(() => {
   background: rgba(255, 200, 150, 0.8);
   width: 20px;
   border-radius: 3px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
