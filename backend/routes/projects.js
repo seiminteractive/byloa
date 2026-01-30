@@ -164,12 +164,23 @@ async function projectsRoutes(fastify, options) {
       const { id } = request.params
       const connection = await getConnection()
       
-      // Verificar que el proyecto existe
-      const [existing] = await connection.query('SELECT id FROM projects WHERE id = ?', [id])
+      // Verificar que el proyecto existe y obtener la URL del media
+      const [existing] = await connection.query('SELECT media FROM projects WHERE id = ?', [id])
       if (existing.length === 0) {
         connection.release()
         reply.status(404)
         return { success: false, error: 'Project not found' }
+      }
+
+      // Eliminar de Firebase Storage
+      const mediaUrl = existing[0].media
+      if (mediaUrl) {
+        try {
+          await deleteFromFirebase(mediaUrl)
+        } catch (firebaseError) {
+          console.warn('Warning: Could not delete file from Firebase:', firebaseError.message)
+          // No fallar si hay error en Firebase, continuar con el borrado de BD
+        }
       }
       
       await connection.query('DELETE FROM projects WHERE id = ?', [id])
