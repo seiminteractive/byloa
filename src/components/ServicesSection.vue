@@ -5,7 +5,7 @@
       <img src="/I_want_a_2k_202601262320.jpeg" alt="Services background" />
     </div>
     
-    <!-- Blur Overlay - Solo lado izquierdo -->
+    <!-- Blur Overlay - Solo lado izquierdo (Desktop) -->
     <div class="services-blur-overlay"></div>
     
     <!-- Top fade from black -->
@@ -14,68 +14,118 @@
     <!-- Bottom fade to black -->
     <div class="bottom-fade"></div>
 
-    <!-- Decorative Elements - Left Vertical -->
-    <div class="deco-left">
-      <span class="deco-text-vertical">BYLOA</span>
-      <div class="deco-line-vertical"></div>
-    </div>
+    <!-- MOBILE LAYOUT -->
+    <div class="sm:hidden mobile-services-container">
+      <!-- Header -->
+      <div class="mobile-header">
+        <h2 class="mobile-title">Nuestros Servicios</h2>
+        <p class="mobile-subtitle">Soluciones estratégicas para tu marca</p>
+      </div>
 
-    <!-- Decorative Elements - Top Right -->
-    <div class="deco-top-right">
-      <span class="deco-text-small">Desarrollado por</span>
-      <span class="deco-text-brand">BYLOA</span>
-      <span class="deco-text-small">Diseño &</span>
-      <span class="deco-text-accent">CREATIVIDAD</span>
-      <span class="deco-cross">+</span>
-    </div>
-    
-    <!-- Content -->
-    <div class="services-content">
-      <!-- Left Side - Navigation -->
-      <div class="services-nav">
-        <div class="nav-header">
-          <span class="nav-label">SERVICIOS</span>
+      <!-- Services Carousel/Scroll -->
+      <div class="mobile-services-scroll">
+        <div
+          v-for="(service, index) in services"
+          :key="index"
+          class="mobile-service-card"
+          :class="{ 'active': activeIndex === index }"
+          @click="setActiveService(index)"
+        >
+          <div class="card-number">{{ String(index + 1).padStart(2, '0') }}</div>
+          <h3 class="card-title">{{ service.title }}</h3>
+          <div class="card-indicator"></div>
         </div>
-        
-        <ul class="services-list">
-          <li 
-            v-for="(service, index) in services" 
-            :key="index"
-            class="service-item"
-            :class="{ 'active': activeIndex === index }"
-            @click="setActiveService(index)"
-          >
-            {{ service.title }}
-          </li>
-        </ul>
       </div>
 
-      <!-- Center - Main Content -->
-      <div class="services-main">
-        <Transition name="fade-slide" mode="out-in">
-          <div :key="activeIndex" class="service-detail">
-            <h2 class="service-title">
-              {{ services[activeIndex].title.toUpperCase() }}
-            </h2>
-            <p class="service-description">
-              {{ services[activeIndex].mainDescription }}
-            </p>
-            <p class="service-secondary" v-if="services[activeIndex].secondaryDescription">
-              {{ services[activeIndex].secondaryDescription }}
-            </p>
-          </div>
-        </Transition>
-      </div>
+      <!-- Service Detail (Mobile) -->
+      <Transition name="fade-slide" mode="out-in">
+        <div :key="activeIndex" class="mobile-service-detail">
+          <p class="detail-description">
+            {{ services[activeIndex].mainDescription }}
+          </p>
+          <p class="detail-secondary" v-if="services[activeIndex].secondaryDescription">
+            {{ services[activeIndex].secondaryDescription }}
+          </p>
+        </div>
+      </Transition>
 
-      <!-- Right Side - Dots Navigation -->
-      <div class="dots-nav">
+      <!-- Mobile Dots Navigation -->
+      <div class="mobile-dots">
         <span 
           v-for="(_, index) in services" 
           :key="index"
-          class="dot"
+          class="mobile-dot"
           :class="{ 'active': activeIndex === index }"
           @click="setActiveService(index)"
         ></span>
+      </div>
+    </div>
+
+    <!-- DESKTOP LAYOUT -->
+    <div class="hidden sm:block desktop-services-wrapper">
+      <!-- Decorative Elements - Left Vertical -->
+      <div class="deco-left">
+        <span class="deco-text-vertical">BYLOA</span>
+        <div class="deco-line-vertical"></div>
+      </div>
+
+      <!-- Decorative Elements - Top Right -->
+      <div class="deco-top-right">
+        <span class="deco-text-small">Desarrollado por</span>
+        <span class="deco-text-brand">BYLOA</span>
+        <span class="deco-text-small">Diseño &</span>
+        <span class="deco-text-accent">CREATIVIDAD</span>
+        <span class="deco-cross">+</span>
+      </div>
+      
+      <!-- Content -->
+      <div class="services-content">
+        <!-- Left Side - Navigation -->
+        <div class="services-nav">
+          <div class="nav-header">
+            <span class="nav-label">SERVICIOS</span>
+          </div>
+          
+          <ul class="services-list">
+            <li 
+              v-for="(service, index) in services" 
+              :key="index"
+              class="service-item"
+              :class="{ 'active': activeIndex === index }"
+              @click="setActiveService(index)"
+            >
+              {{ service.title }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Center - Main Content -->
+        <div class="services-main">
+          <Transition name="fade-slide" mode="out-in">
+            <div :key="activeIndex" class="service-detail">
+              <h2 class="service-title">
+                {{ services[activeIndex].title.toUpperCase() }}
+              </h2>
+              <p class="service-description">
+                {{ services[activeIndex].mainDescription }}
+              </p>
+              <p class="service-secondary" v-if="services[activeIndex].secondaryDescription">
+                {{ services[activeIndex].secondaryDescription }}
+              </p>
+            </div>
+          </Transition>
+        </div>
+
+        <!-- Right Side - Dots Navigation -->
+        <div class="dots-nav">
+          <span 
+            v-for="(_, index) in services" 
+            :key="index"
+            class="dot"
+            :class="{ 'active': activeIndex === index }"
+            @click="setActiveService(index)"
+          ></span>
+        </div>
       </div>
     </div>
   </section>
@@ -544,6 +594,230 @@ onUnmounted(() => {
   .deco-bottom,
   .deco-top-right {
     display: none;
+  }
+}
+
+/* ===== MOBILE STYLES ===== */
+.mobile-services-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.mobile-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.mobile-title {
+  font-family: 'Coolvetica', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.mobile-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.mobile-services-scroll {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for mobile cards */
+.mobile-services-scroll::-webkit-scrollbar {
+  width: 2px;
+}
+
+.mobile-services-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.mobile-services-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.mobile-service-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(252, 148, 199, 0.2);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.mobile-service-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.mobile-service-card.active {
+  background: rgba(252, 148, 199, 0.25);
+  border-color: rgba(252, 148, 199, 0.5);
+  transform: scale(1.02);
+}
+
+.mobile-service-card.active::before {
+  width: 100%;
+}
+
+.card-number {
+  font-family: 'Coolvetica', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 3rem;
+  text-align: center;
+}
+
+.mobile-service-card.active .card-number {
+  color: rgba(252, 148, 199, 0.8);
+}
+
+.card-title {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.mobile-service-card.active .card-title {
+  color: #fff;
+  font-weight: 400;
+}
+
+.card-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mobile-service-card.active .card-indicator {
+  background: rgba(252, 148, 199, 0.8);
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 8px rgba(252, 148, 199, 0.6);
+}
+
+.mobile-service-detail {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.detail-description {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1rem 0;
+}
+
+.detail-secondary {
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  margin: 0;
+}
+
+.mobile-dots {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.mobile-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mobile-dot.active {
+  background: rgba(252, 148, 199, 0.8);
+  width: 12px;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(252, 148, 199, 0.6);
+}
+
+/* Mobile animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
