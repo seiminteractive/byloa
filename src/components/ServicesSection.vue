@@ -610,18 +610,14 @@ onUnmounted(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 2rem 1.5rem;
   overflow: hidden;
 }
 
 .mobile-header {
-  position: absolute;
-  top: 2rem;
-  left: 0;
-  right: 0;
-  padding: 0 1.5rem;
+  flex-shrink: 0;
   width: 100%;
 }
 
@@ -683,10 +679,7 @@ onUnmounted(() => {
 }
 
 .mobile-navigation {
-  position: absolute;
-  bottom: 2rem;
-  left: 0;
-  right: 0;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
