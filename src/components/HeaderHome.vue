@@ -11,54 +11,82 @@
         <!-- Container for centered content -->
         <div class="max-w-5xl w-full text-center">
           <div ref="headlineRef" class="opacity-0">
-            <!-- Line 1: Scan & protect with circles - Stack on mobile -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-4">
-              <p class="font-coolvetica font-light text-4xl sm:text-5xl lg:text-7xl text-white leading-tight sm:leading-none tracking-tight">
-                Ordená y potenciá
-              </p>
-              <!-- Decorative circles - Responsive size -->
-              <svg class="w-24 h-10 sm:w-32 sm:h-12 lg:w-52 lg:h-16 text-white flex-shrink-0" viewBox="0 0 130 32">
-                <circle cx="16" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.4"/>
-                <circle cx="30" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.5"/>
-                <circle cx="44" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.6"/>
-                <circle cx="56" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.7"/>
-                <circle cx="70" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.9"/>
-                <circle cx="84" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="1"/>
-              </svg>
-            </div>
-
-            <!-- Line 2: Buttons + "your payments" - Stack on mobile -->
-            <div ref="ctaRef" class="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-4">
-              <!-- CTA Button -->
-              <button
-                type="button"
-                class="group w-full sm:w-auto flex items-center justify-center sm:justify-start gap-3 px-6 py-3 text-xs sm:text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
-              >
-                <span>ver propuesta</span>
-                <span class="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
-                  <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </button>
-              <!-- "your payments" text -->
-              <p class="font-coolvetica font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight">
-                tu comunicación
+            <!-- MOBILE: Stacked text without decoration -->
+            <div class="sm:hidden mb-8">
+              <h1 class="font-coolvetica font-light text-4xl text-white leading-tight tracking-tight mb-3">
+                Ordená y potenciá tu comunicación
+              </h1>
+              <p class="font-coolvetica font-light text-3xl text-white leading-tight tracking-tight">
+                con <span class="italic font-cambria">estrategia</span> real.
               </p>
             </div>
 
-            <!-- Line 3 -->
-            <p ref="descriptionRef" class="opacity-0 font-coolvetica font-light text-3xl sm:text-4xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight mb-6">
-              con <span class="italic font-cambria">estrategia</span> real.
-            </p>
+            <!-- DESKTOP: Original layout with circles -->
+            <div class="hidden sm:block">
+              <!-- Line 1: Scan & protect with circles -->
+              <div class="flex items-end justify-center gap-3 sm:gap-4 mb-4 sm:mb-4">
+                <p class="font-coolvetica font-light text-5xl sm:text-6xl lg:text-7xl text-white leading-tight sm:leading-none tracking-tight">
+                  Ordená y potenciá
+                </p>
+                <!-- Decorative circles - Responsive size -->
+                <svg class="w-24 h-10 sm:w-32 sm:h-12 lg:w-52 lg:h-16 text-white flex-shrink-0" viewBox="0 0 130 32">
+                  <circle cx="16" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.4"/>
+                  <circle cx="30" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.5"/>
+                  <circle cx="44" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.6"/>
+                  <circle cx="56" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.7"/>
+                  <circle cx="70" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.9"/>
+                  <circle cx="84" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="1"/>
+                </svg>
+              </div>
+
+              <!-- Line 2: Buttons + "your payments" -->
+              <div ref="ctaRef" class="opacity-0 flex items-end justify-center gap-3 sm:gap-4 mb-4">
+                <!-- CTA Button -->
+                <button
+                  type="button"
+                  class="group flex items-center justify-start gap-3 px-6 py-3 text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+                >
+                  <span>ver propuesta</span>
+                  <span class="flex items-center justify-center w-9 h-9 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </button>
+                <!-- "your payments" text -->
+                <p class="font-coolvetica font-light text-4xl sm:text-5xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight">
+                  tu comunicación
+                </p>
+              </div>
+
+              <!-- Line 3 -->
+              <p ref="descriptionRef" class="opacity-0 font-coolvetica font-light text-4xl sm:text-5xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight mb-0">
+                con <span class="italic font-cambria">estrategia</span> real.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- CTA Button - Mobile Only (Below text) -->
+      <div ref="mobileCTARef" class="opacity-0 sm:hidden flex-none w-full px-4 pb-8">
+        <button
+          type="button"
+          class="group w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+        >
+          <span>ver propuesta</span>
+          <span class="flex items-center justify-center w-8 h-8 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+        </button>
+      </div>
+
       <!-- Bottom Section - Responsive Layout -->
-      <div class="flex-none w-full px-4 sm:px-8 lg:px-20 pb-6 sm:pb-8">
+      <div class="flex-none w-full px-4 sm:px-8 lg:px-20 pb-4 sm:pb-8">
         <!-- Border line -->
-        <div class="border-t border-white/20 mx-auto max-w-8xl mb-6 sm:mb-8"></div>
+        <div class="border-t border-white/20 mx-auto max-w-8xl mb-4 sm:mb-8"></div>
         
         <!-- Stats Section - Stack on mobile, horizontal on desktop -->
         <div ref="statsRef" class="opacity-0">
@@ -135,6 +163,7 @@ const ctaRef = ref(null)
 const statsRef = ref(null)
 const socialRef = ref(null)
 const statsContainerRef = ref(null)
+const mobileCTARef = ref(null)
 
 onMounted(() => {
   const tl = gsap.timeline()
@@ -154,6 +183,12 @@ onMounted(() => {
       ease: 'power3.out'
     }, '-=0.6')
     .to(descriptionRef.value, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9,
+      ease: 'power3.out'
+    }, '-=0.6')
+    .to(mobileCTARef.value, {
       opacity: 1,
       y: 0,
       duration: 0.9,
