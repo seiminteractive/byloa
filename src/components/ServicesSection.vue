@@ -611,14 +611,15 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 2rem 1.5rem;
+  align-items: stretch;
+  padding: 0;
   overflow: hidden;
 }
 
 .mobile-header {
   flex-shrink: 0;
   width: 100%;
+  padding: 2rem 1.5rem 0;
 }
 
 .header-top {
@@ -647,8 +648,11 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   animation: fadeInUp 0.5s ease-out;
   width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
 }
 
 .service-mobile-title {
@@ -661,21 +665,23 @@ onUnmounted(() => {
   letter-spacing: 0.02em;
 }
 
-.service-description {
+.mobile-service-content .service-description {
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.75);
   margin: 0 0 1.5rem 0;
+  max-width: 100%;
 }
 
-.service-secondary {
+.mobile-service-content .service-secondary {
   font-size: 0.85rem;
   font-weight: 300;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.5);
   font-style: italic;
   margin: 0;
+  max-width: 100%;
 }
 
 .mobile-navigation {
@@ -685,6 +691,7 @@ onUnmounted(() => {
   gap: 1.5rem;
   align-items: center;
   width: 100%;
+  padding: 0 1.5rem 2rem;
 }
 
 .nav-button {
@@ -727,7 +734,7 @@ onUnmounted(() => {
   gap: 0.75rem;
 }
 
-.dot {
+.mobile-services-container .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -736,11 +743,11 @@ onUnmounted(() => {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dot:hover {
+.mobile-services-container .dot:hover {
   background: rgba(255, 255, 255, 0.5);
 }
 
-.dot.active {
+.mobile-services-container .dot.active {
   background: rgba(255, 200, 150, 0.8);
   width: 20px;
   border-radius: 3px;
