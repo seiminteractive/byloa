@@ -39,12 +39,13 @@
       <Marquee :repeat="8" class="[--gap:var(--space)] [--duration:50s]">
         <div
           v-for="brand in brands"
-          :key="`row1-${brand.logo}`"
+          :key="`row1-${brand.id}`"
           class="flex items-center justify-center shrink-0"
         >
           <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
-              :src="brand.logo"
+              :src="brand.logo_url"
+              :alt="brand.name"
               class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-500 ease-out"
             />
           </div>
@@ -58,12 +59,13 @@
       <Marquee :repeat="8" :reverse="true" class="[--gap:var(--space)] [--duration:50s]">
         <div
           v-for="brand in brands"
-          :key="`row2-${brand.logo}`"
+          :key="`row2-${brand.id}`"
           class="flex items-center justify-center shrink-0"
         >
           <div class="w-24 sm:w-36 md:w-52 lg:w-64 px-1.5 sm:px-3 md:px-4 py-2 sm:py-2.5 flex items-center justify-center group">
             <img
-              :src="brand.logo"
+              :src="brand.logo_url"
+              :alt="brand.name"
               class="h-5 sm:h-7 md:h-8 lg:h-10 w-auto max-w-[80px] sm:max-w-[110px] md:max-w-[150px] lg:max-w-[200px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-500 ease-out"
             />
           </div>
@@ -82,15 +84,30 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { Marquee } from '@/components/ui/marquee'
 
-const brands = [
-  { logo: '/AlFinLunesLogo.png' },
-  { logo: '/ElgPro.png' },
-  { logo: '/LalaLogo.png' },
-  { logo: '/CodigoNuevoLogo.png' },
-  { logo: '/LogoSeim.png' },
-]
+const brands = ref([])
+
+const fetchTrustedBrands = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/api/trusted-brands')
+    const result = await response.json()
+    if (result.success) {
+      brands.value = result.data.map(brand => ({
+        logo_url: brand.logo_url,
+        name: brand.name,
+        id: brand.id
+      }))
+    }
+  } catch (error) {
+    console.error('Error fetching trusted brands:', error)
+  }
+}
+
+onMounted(() => {
+  fetchTrustedBrands()
+})
 </script>
 
 <style scoped>
