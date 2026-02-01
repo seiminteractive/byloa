@@ -300,7 +300,7 @@ onUnmounted(() => {
 .deco-line-vertical {
   width: 1px;
   height: 80px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(137, 23, 23, 0.3) 0%, transparent 100%);
 }
 
 /* Decorative Elements - Bottom */
