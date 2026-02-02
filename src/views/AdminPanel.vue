@@ -1,27 +1,35 @@
 <template>
-  <div class="admin-panel min-h-screen overflow-hidden relative">
+  <div class="admin-panel min-h-screen relative">
     <!-- Animated Background -->
     <div class="fixed inset-0 hero-gradient pointer-events-none z-0"></div>
 
     <!-- Navigation Bar -->
-    <nav class="relative z-40 border-b border-white/10 backdrop-blur-md bg-black/30">
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur-md bg-black/30">
       <div class="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 py-6 flex items-center justify-between">
         <img
           src="/public/logotipos_logotipodescriptorv1 negativo.png"
           alt="ByLoa Admin"
           class="h-8 w-auto object-contain"
         />
-        <router-link 
-          to="/" 
-          class="text-sm text-white/70 hover:text-white transition-colors"
-        >
-          ← Volver
-        </router-link>
+        <div class="flex items-center gap-4">
+          <span  @click="scrollToSection(projectsSection)" class="text-white/70 hover:text-white transition-colors disabled:opacity-50 cursor-pointer">Proyectos</span>
+          <span  @click="scrollToSection(brandsSection)" class="text-white/70 hover:text-white transition-colors disabled:opacity-50 
+          cursor-pointer">Marcas</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            @click="handleLogout"
+            :disabled="isLoading"
+            class="text-sm text-white/70 hover:text-white transition-colors disabled:opacity-50"
+          >
+            Cerrar sesión
+          </button>
+        </div>
       </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 pt-16 sm:pt-24">
+    <div ref="projectsSection"  class="relative z-10 max-w-7xl mx-auto px-8 sm:px-12 lg:px-20 pt-32 sm:pt-40 overflow-hidden"">
       <!-- Header -->
       <div class="mb-16 sm:mb-20">
         <div class="flex items-center gap-3 mb-6">
@@ -43,13 +51,13 @@
           @click="showAddForm = true"
           class="lg:col-span-1 group cursor-pointer"
         >
-          <div class="h-72 sm:h-96 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center overflow-hidden relative">
+          <div class="h-72 sm:h-96 bg-linear-to-br from-white/5 to-white/10 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center overflow-hidden relative">
             <!-- Animated gradient on hover -->
-            <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div class="relative z-10 text-center">
               <div class="text-4xl text-white/60 group-hover:text-white transition-colors mb-3">+</div>
-              <p class="text-sm text-white/60 group-hover:text-white transition-colors font-light">Nuevo proyecto</p>
+              <p class="text-lg text-white/60 group-hover:text-white transition-colors font-light">Nuevo proyecto</p>
             </div>
           </div>
         </div>
@@ -79,7 +87,7 @@
             />
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
 
             <!-- Actions -->
             <div class="absolute inset-0 flex items-end p-4 sm:p-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -103,7 +111,7 @@
       </div>
 
       <!-- Trusted Brands Section -->
-      <div class="mb-16 sm:mb-20 mt-20 sm:mt-28 pt-20 sm:pt-28 border-t border-white/10">
+      <div  ref="brandsSection" class="mb-16 sm:mb-20 mt-20 sm:mt-28 pt-20 sm:pt-28 border-t border-white/10">
         <div class="flex items-center gap-3 mb-6">
           <div class="w-8 h-px bg-white/20"></div>
           <span class="section-label text-sm uppercase tracking-widest text-white/50 font-light" style="font-family: 'COOLVETICA', sans-serif;">Marcas</span>
@@ -123,13 +131,13 @@
           @click="showAddBrandForm = true"
           class="lg:col-span-1 group cursor-pointer"
         >
-          <div class="h-48 sm:h-56 bg-gradient-to-br from-white/5 to-white/10 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center overflow-hidden relative">
+          <div class="h-48 sm:h-56 bg-linear-to-br from-white/5 to-white/10 rounded-2xl border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center overflow-hidden relative">
             <!-- Animated gradient on hover -->
-            <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-br from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div class="relative z-10 text-center">
               <div class="text-4xl text-white/60 group-hover:text-white transition-colors mb-3">+</div>
-              <p class="text-sm text-white/60 group-hover:text-white transition-colors font-light">Nuevo logo</p>
+              <p class="text-lg text-white/60 group-hover:text-white transition-colors font-light">Nuevo logo</p>
             </div>
           </div>
         </div>
@@ -149,7 +157,7 @@
             />
 
             <!-- Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 md:opacity-0"></div>
 
             <!-- Actions -->
             <div class="absolute inset-0 flex items-end p-4 sm:p-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -189,38 +197,38 @@
         ></div>
 
         <!-- Form -->
-        <div class="relative z-10 w-full max-w-2xl">
-          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8 sm:p-12">
+        <div class="relative z-10 w-full max-w-lg">
+          <div class="bg-linear-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
             <!-- Header -->
-            <div class="flex items-center justify-between mb-8">
-              <h3 class="text-4xl sm:text-5xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-2xl sm:text-3xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
                 {{ editingIdx !== null ? 'Editar' : 'Nuevo' }} <span class="font-coolvetica">proyecto</span>
               </h3>
               <button
                 @click="closForm"
-                class="text-white/60 hover:text-white transition-colors text-3xl"
+                class="text-white/60 hover:text-white transition-colors text-2xl"
               >
                 ✕
               </button>
             </div>
 
             <!-- Form Fields -->
-            <div class="space-y-6">
+            <div class="space-y-4">
               <!-- Title -->
               <div>
-                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Título</label>
+                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-2" style="font-family: 'COOLVETICA', sans-serif;">Título</label>
                 <input
                   v-model="formData.title"
                   type="text"
                   placeholder="Nombre del proyecto"
-                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
                   style="font-family: 'Cambria', serif;"
                 />
               </div>
 
               <!-- Media Upload -->
               <div>
-                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">
+                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-2" style="font-family: 'COOLVETICA', sans-serif;">
                   Imagen o Video
                 </label>
                 <div class="relative">
@@ -230,11 +238,11 @@
                     accept="image/*,video/*"
                     class="absolute inset-0 opacity-0 cursor-pointer"
                   />
-                  <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-4 py-8 text-center hover:border-white/40 transition-colors cursor-pointer">
-                    <p v-if="!formData.media" class="text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">
-                      Arrastra o haz click para seleccionar
+                  <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-3 py-5 text-center hover:border-white/40 transition-colors cursor-pointer">
+                    <p v-if="!formData.media" class="text-sm text-white/60 font-light" style="font-family: 'Cambria', serif;">
+                      Arrastra o haz click
                     </p>
-                    <p v-else class="text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'Cambria', serif;">
                       📁 {{ formData.mediaName }}
                     </p>
                   </div>
@@ -243,12 +251,12 @@
 
               <!-- Link -->
               <div>
-                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Enlace de destino</label>
+                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-2" style="font-family: 'COOLVETICA', sans-serif;">Enlace de destino</label>
                 <input
                   v-model="formData.link"
                   type="url"
                   placeholder="https://ejemplo.com"
-                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
                   style="font-family: 'Cambria', serif;"
                 />
               </div>
@@ -259,12 +267,12 @@
                   v-if="formData.type === 'image'"
                   :src="formData.media"
                   alt="Preview"
-                  class="w-full h-48 object-cover"
+                  class="w-full h-32 object-cover"
                 />
                 <video 
                   v-else
                   :src="formData.media"
-                  class="w-full h-48 object-cover"
+                  class="w-full h-32 object-cover"
                   controls
                   autoplay
                   playsinline
@@ -273,18 +281,18 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex gap-4 mt-8">
+            <div class="flex gap-3 mt-6">
               <button
                 @click="saveProject"
                 :disabled="isUploading"
-                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
+                class="flex-1 py-2 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
                 {{ isUploading ? 'Subiendo...' : (editingIdx !== null ? 'Actualizar' : 'Crear') }} proyecto
               </button>
               <button
                 @click="closForm"
-                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                class="flex-1 py-2 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-sm"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
                 Cancelar
@@ -309,7 +317,7 @@
 
         <!-- Modal -->
         <div class="relative z-10 w-full max-w-md">
-          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
+          <div class="bg-linear-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
             <!-- Icon -->
             <div class="flex justify-center mb-6">
               <div class="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
@@ -365,38 +373,38 @@
         ></div>
 
         <!-- Form -->
-        <div class="relative z-10 w-full max-w-2xl">
-          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8 sm:p-12">
+        <div class="relative z-10 w-full max-w-lg">
+          <div class="bg-linear-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
             <!-- Header -->
-            <div class="flex items-center justify-between mb-8">
-              <h3 class="text-4xl sm:text-5xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-2xl sm:text-3xl font-light text-white" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
                 {{ editingBrandIdx !== null ? 'Editar' : 'Nuevo' }} <span class="font-coolvetica">logo</span>
               </h3>
               <button
                 @click="closeBrandForm"
-                class="text-white/60 hover:text-white transition-colors text-3xl"
+                class="text-white/60 hover:text-white transition-colors text-2xl"
               >
                 ✕
               </button>
             </div>
 
             <!-- Form Fields -->
-            <div class="space-y-6">
+            <div class="space-y-4">
               <!-- Name -->
               <div>
-                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">Nombre de la marca</label>
+                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-2" style="font-family: 'COOLVETICA', sans-serif;">Nombre de la marca</label>
                 <input
                   v-model="brandFormData.name"
                   type="text"
                   placeholder="Ej: Google, Microsoft, etc."
-                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-base"
+                  class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
                   style="font-family: 'Cambria', serif;"
                 />
               </div>
 
               <!-- Logo Upload -->
               <div>
-                <label class="block text-sm uppercase tracking-widest text-white/50 font-light mb-3" style="font-family: 'COOLVETICA', sans-serif;">
+                <label class="block text-xs uppercase tracking-widest text-white/50 font-light mb-2" style="font-family: 'COOLVETICA', sans-serif;">
                   Logo
                 </label>
                 <div class="relative">
@@ -406,11 +414,11 @@
                     accept="image/*"
                     class="absolute inset-0 opacity-0 cursor-pointer"
                   />
-                  <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-4 py-8 text-center hover:border-white/40 transition-colors cursor-pointer">
-                    <p v-if="!brandFormData.logo" class="text-base text-white/60 font-light" style="font-family: 'Cambria', serif;">
-                      Arrastra o haz click para seleccionar
+                  <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-3 py-5 text-center hover:border-white/40 transition-colors cursor-pointer">
+                    <p v-if="!brandFormData.logo" class="text-sm text-white/60 font-light" style="font-family: 'Cambria', serif;">
+                      Arrastra o haz click
                     </p>
-                    <p v-else class="text-base text-white/80 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'Cambria', serif;">
                       📁 {{ brandFormData.logoName }}
                     </p>
                   </div>
@@ -418,7 +426,7 @@
               </div>
 
               <!-- Logo Preview -->
-              <div v-if="brandFormData.logo" class="rounded-lg overflow-hidden border border-white/20 flex items-center justify-center bg-white/5 p-4" style="min-height: 120px;">
+              <div v-if="brandFormData.logo" class="rounded-lg overflow-hidden border border-white/20 flex items-center justify-center bg-white/5 p-3" style="height: 100px;">
                 <img 
                   :src="brandFormData.logo"
                   alt="Preview"
@@ -428,18 +436,18 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex gap-4 mt-8">
+            <div class="flex gap-3 mt-6">
               <button
                 @click="saveBrand"
                 :disabled="isUploadingBrand"
-                class="flex-1 py-3 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
+                class="flex-1 py-2 bg-white text-black font-medium rounded-lg hover:bg-white/90 transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
                 {{ isUploadingBrand ? 'Subiendo...' : (editingBrandIdx !== null ? 'Actualizar' : 'Crear') }} logo
               </button>
               <button
                 @click="closeBrandForm"
-                class="flex-1 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-base"
+                class="flex-1 py-2 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all text-sm"
                 style="font-family: 'COOLVETICA', sans-serif;"
               >
                 Cancelar
@@ -464,7 +472,7 @@
 
         <!-- Modal -->
         <div class="relative z-10 w-full max-w-md">
-          <div class="bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
+          <div class="bg-linear-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-8">
             <!-- Icon -->
             <div class="flex justify-center mb-6">
               <div class="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center">
@@ -508,11 +516,34 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 import { useToast } from 'vue-toastification'
+import { useAuth } from '../composables/useAuth'
 import { projects, updateProject, deleteProject as deleteFromStore, fetchProjects, isLoading, error } from '../store/projects'
+const projectsSection = ref(null)
+const brandsSection = ref(null)
 
+const scrollToSection = (section) => {
+  section?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  })
+}
+
+
+const router = useRouter()
 const toast = useToast()
+const { logout, currentUser, isLoading: authLoading } = useAuth()
+
+const handleLogout = async () => {
+  try {
+    await logout()
+    router.push('/login')
+  } catch (error) {
+    console.error('Logout error:', error)
+  }
+}
 
 // Projects
 const showAddForm = ref(false)

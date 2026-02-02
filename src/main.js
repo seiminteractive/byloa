@@ -21,7 +21,9 @@ app.use(Toast, {
   hideProgressBar: false,
   closeButton: 'button',
   icon: true,
-  rtl: false
+  rtl: false,
+  zIndex:99999,
+  containerClassName: 'fixed top-4 right-4'
 })
 
 // Register ClientOnly component globally
@@ -31,4 +33,9 @@ app.component('ClientOnly', {
   }
 })
 
-app.use(router).mount('#app')
+app.use(router)
+
+// Wait for router to be ready before mounting
+router.isReady().then(() => {
+  app.mount('#app')
+})
