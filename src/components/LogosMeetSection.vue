@@ -1,10 +1,10 @@
 <template>
-  <section ref="containerRef" class="relative w-full bg-gradient-to-b from-black  to-black overflow-hidden">
+  <section ref="containerRef" class="relative w-full bg-black overflow-hidden">
     <!-- Background Gradients - Solo para la sección de logos -->
-    <div class="absolute inset-0 logos-meet-bg pointer-events-none" style="height: 100vh; mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);"></div>
+    <div class="absolute inset-0 logos-meet-bg pointer-events-none"></div>
 
     <!-- Logos Meeting Part -->
-    <div class="relative w-full min-h-screen flex items-center justify-center py-16 md:py-24 z-0">
+    <div class="relative w-full min-h-[60vh] flex items-center justify-center pt-16 pb-8 md:pt-24 md:pb-12 z-0">
       <div class="relative flex flex-col md:flex-row items-center justify-center gap-12">
         <!-- Logo Left -->
         <div ref="logoLeftRef">
@@ -26,58 +26,44 @@
       </div>
     </div>
 
-    <!-- Gradient Transition to Black -->
-    <div class="relative w-full h-32 bg-gradient-to-b from-transparent to-black pointer-events-none z-2"></div>
-
     <!-- Integration Description - Pure Black Background -->
-    <div class="relative w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-black z-0">
-      <div class="max-w-5xl mx-auto">
+    <div class="relative w-full px-4 sm:px-6 lg:px-8 pt-8 pb-16 md:pt-12 md:pb-24 z-10">
+      <div class="max-w-3xl mx-auto text-center">
         <!-- Header Label -->
-        <div class="flex items-center gap-3 mb-12 md:mb-16 opacity-0" ref="labelRef">
+        <div class="flex items-center justify-center gap-3 mb-6 md:mb-8" ref="labelRef">
           <div class="w-8 h-px bg-white/20"></div>
           <span class="text-xs uppercase tracking-widest text-white/40 font-light">Integración estratégica</span>
+          <div class="w-8 h-px bg-white/20"></div>
         </div>
 
         <!-- Main Content -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start opacity-0" ref="contentRef">
-          <!-- Left: Main Text -->
-          <div>
-            <p class="text-sm md:text-base text-white/70 font-light leading-relaxed mb-6">
-              Para proyectos que requieren un desarrollo técnico más profundo, 
-              <span class="text-white font-medium">byloa.agency</span> trabaja de forma integrada con 
-              <a target="_blank" href="https://seiminteractive.io/"><span class="text-white font-medium">SEIM Interactive</span></a>, 
-              el área especializada en desarrollo web, software y soluciones digitales.
-            </p>
-            <p class="text-sm md:text-base text-white/70 font-light leading-relaxed">
-              Esta integración permite ofrecer proyectos completos, donde la estrategia, la comunicación, el diseño y la tecnología trabajan alineados desde el inicio.
-            </p>
-          </div>
+        <div ref="contentRef">
+          <p class="text-sm md:text-base text-white/70 font-light leading-relaxed mb-4">
+            Para proyectos que requieren un desarrollo técnico más profundo, 
+            <span class="text-white font-medium">byloa.agency</span> trabaja de forma integrada con 
+            <a target="_blank" href="https://seiminteractive.io/" class="text-white font-medium hover:underline">SEIM Interactive</a>, 
+            el área especializada en desarrollo web, software y soluciones digitales.
+          </p>
+          <p class="text-sm md:text-base text-white/70 font-light leading-relaxed mb-8">
+            Esta integración permite ofrecer proyectos completos, donde la estrategia, la comunicación, el diseño y la tecnología trabajan alineados desde el inicio.
+          </p>
 
-          <!-- Right: Capabilities Grid -->
-          <div class="space-y-4">
-            <div class="flex gap-3 opacity-0" ref="capability1Ref">
-              <div class="w-1 h-1 rounded-full bg-white/40 mt-2 flex-shrink-0"></div>
-              <p class="text-sm text-white/60 font-light">Estrategia y comunicación visual</p>
-            </div>
-            <div class="flex gap-3 opacity-0" ref="capability2Ref">
-              <div class="w-1 h-1 rounded-full bg-white/40 mt-2 flex-shrink-0"></div>
-              <p class="text-sm text-white/60 font-light">Desarrollo web y aplicaciones</p>
-            </div>
-            <div class="flex gap-3 opacity-0" ref="capability3Ref">
-              <div class="w-1 h-1 rounded-full bg-white/40 mt-2 flex-shrink-0"></div>
-              <p class="text-sm text-white/60 font-light">Soluciones digitales personalizadas</p>
-            </div>
-            <div class="flex gap-3 opacity-0" ref="capability4Ref">
-              <div class="w-1 h-1 rounded-full bg-white/40 mt-2 flex-shrink-0"></div>
-              <p class="text-sm text-white/60 font-light">Ejecución alineada y coherente</p>
-            </div>
+          <!-- Capabilities - Inline centered -->
+          <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/50 font-light">
+            <span ref="capability1Ref">• Estrategia y comunicación visual</span>
+            <span ref="capability2Ref">• Desarrollo web y aplicaciones</span>
+            <span ref="capability3Ref">• Soluciones digitales personalizadas</span>
+            <span ref="capability4Ref">• Ejecución alineada y coherente</span>
           </div>
         </div>
 
         <!-- Divider -->
-        <div class="w-full h-px bg-gradient-to-r from-white/0 via-white/10 to-white/0 mt-12 md:mt-16 opacity-0" ref="dividerRef"></div>
+        <div class="w-full h-px bg-gradient-to-r from-white/0 via-white/10 to-white/0 mt-12 md:mt-16" ref="dividerRef"></div>
       </div>
     </div>
+
+    <!-- Bottom fade gradient -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-transparent to-black pointer-events-none z-20"></div>
   </section>
 </template>
 

@@ -8,7 +8,7 @@
 
     <!-- Main Content -->
     <main class="relative z-40">
-      <HeaderHome id="home" />
+      <HeaderHome id="home" @go-to-services="handleGoToServices" />
       <AboutSection id="about" />
       <ServicesSection id="services" />
       <MaterialCarouselSection />
@@ -35,6 +35,10 @@ import HowWeWorkTimeline from '../components/HowWeWorkTimeline.vue'
 import WhyByLoaSection from '../components/WhyByLoaSection.vue'
 import ContactSection from '../components/ContactSection.vue'
 import SiteFooter from '../components/SiteFooter.vue'
+
+const handleGoToServices = () => {
+  window.location.href = '#services'
+}
 </script>
 
 <style scoped>

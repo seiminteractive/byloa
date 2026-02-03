@@ -189,8 +189,8 @@ onUnmounted(() => {
 /* Background */
 .how-we-work-bg {
   background: 
-    radial-gradient(ellipse 80% 60% at 85% 30%, rgba(245, 168, 85, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 90% 50%, rgba(230, 130, 60, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 60% at 85% 30%, rgba(252, 148, 199, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 90% 50%, rgba(180, 100, 180, 0.12) 0%, transparent 45%),
     radial-gradient(ellipse 70% 70% at 10% 80%, rgba(252, 148, 199, 0.08) 0%, transparent 50%),
     linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%);
 }

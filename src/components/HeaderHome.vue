@@ -1,82 +1,82 @@
 <template>
-  <section id="home" class="hero-section relative min-h-screen overflow-hidden">
+  <section id="home" class="hero-section relative h-screen overflow-hidden">
     <!-- Gradient Background -->
     <div class="hero-gradient absolute inset-0 z-0"></div>
 
     <!-- Content Container -->
-    <div class="relative z-10 h-screen flex flex-col">
+    <div class="relative z-10 h-full flex flex-col">
       
       <!-- Main Content Area -->
       <div class="flex-1 flex flex-col items-center justify-center relative px-4 sm:px-8 lg:px-20">
         <!-- Container for centered content -->
         <div class="max-w-5xl w-full text-center">
           <div ref="headlineRef" class="opacity-0">
-            <!-- MOBILE: Stacked text without decoration -->
-            <div class="sm:hidden mb-8">
-              <h1 class="font-coolvetica font-light text-4xl text-white leading-tight tracking-tight mb-3">
-                Ordená y potenciá tu comunicación
-              </h1>
-              <p class="font-coolvetica font-light text-3xl text-white leading-tight tracking-tight">
-                con <span class="italic font-cambria">estrategia</span> real.
+            <!-- Line 1: Ordená y potenciá with circles -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-2 sm:mb-4">
+              <p class="font-coolvetica font-light text-[2.75rem] sm:text-6xl lg:text-7xl text-white leading-[1.1] sm:leading-none tracking-tight">
+                Ordená y potenciá
+              </p>
+              <!-- Decorative circles - Desktop only (inline) -->
+              <svg class="hidden sm:block w-32 sm:h-12 lg:w-52 lg:h-16 text-white flex-shrink-0" viewBox="0 0 130 32">
+                <circle cx="16" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.4"/>
+                <circle cx="30" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.5"/>
+                <circle cx="44" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.6"/>
+                <circle cx="56" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.7"/>
+                <circle cx="70" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.9"/>
+                <circle cx="84" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="1"/>
+              </svg>
+            </div>
+
+            <!-- Line 2: Button + tu comunicación (Desktop: inline, Mobile: stacked) -->
+            <div ref="ctaRef" class="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-2 sm:mb-4">
+              <!-- CTA Button - Desktop: inline before text -->
+              <button
+                type="button"
+                @click="emit('goToServices')"
+                class="hidden sm:flex group items-center justify-center gap-3 px-6 py-3 text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+              >
+                <span>ver propuesta</span>
+                <span class="flex items-center justify-center w-10 h-10 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </button>
+              <p class="font-coolvetica font-light text-[2.75rem] sm:text-5xl lg:text-6xl text-white leading-[1.1] sm:leading-none tracking-tight">
+                tu comunicación
               </p>
             </div>
 
-            <!-- DESKTOP: Original layout with circles -->
-            <div class="hidden sm:block">
-              <!-- Line 1: Scan & protect with circles -->
-              <div class="flex items-end justify-center gap-3 sm:gap-4 mb-4 sm:mb-4">
-                <p class="font-coolvetica font-light text-5xl sm:text-6xl lg:text-7xl text-white leading-tight sm:leading-none tracking-tight">
-                  Ordená y potenciá
-                </p>
-                <!-- Decorative circles - Responsive size -->
-                <svg class="w-24 h-10 sm:w-32 sm:h-12 lg:w-52 lg:h-16 text-white flex-shrink-0" viewBox="0 0 130 32">
-                  <circle cx="16" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.4"/>
-                  <circle cx="30" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.5"/>
-                  <circle cx="44" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.6"/>
-                  <circle cx="56" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.7"/>
-                  <circle cx="70" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.9"/>
-                  <circle cx="84" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="1"/>
-                </svg>
-              </div>
+            <!-- Line 3: con estrategia real -->
+            <p ref="descriptionRef" class="opacity-0 font-coolvetica font-light text-[2.25rem] sm:text-5xl lg:text-6xl text-white leading-[1.1] sm:leading-none tracking-tight mb-0">
+              con <span class="italic font-cambria">estrategia</span> real.
+            </p>
 
-              <!-- Line 2: Buttons + "your payments" -->
-              <div ref="ctaRef" class="opacity-0 flex items-end justify-center gap-3 sm:gap-4 mb-4">
-                <!-- CTA Button -->
-                <button
-                  type="button"
-                  class="group flex items-center justify-start gap-3 px-6 py-3 text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
-                >
-                  <span>ver propuesta</span>
-                  <span class="flex items-center justify-center w-9 h-9 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </button>
-                <!-- "your payments" text -->
-                <p class="font-coolvetica font-light text-4xl sm:text-5xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight">
-                  tu comunicación
-                </p>
-              </div>
-
-              <!-- Line 3 -->
-              <p ref="descriptionRef" class="opacity-0 font-coolvetica font-light text-4xl sm:text-5xl lg:text-6xl text-white leading-tight sm:leading-none tracking-tight mb-0">
-                con <span class="italic font-cambria">estrategia</span> real.
-              </p>
+            <!-- Decorative circles - Mobile only (below text) -->
+            <div class="flex sm:hidden justify-center mt-6">
+              <svg class="w-40 h-10 text-white" viewBox="0 0 100 32">
+                <circle cx="16" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.4"/>
+                <circle cx="30" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.5"/>
+                <circle cx="44" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.6"/>
+                <circle cx="58" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.7"/>
+                <circle cx="72" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="0.9"/>
+                <circle cx="86" cy="16" r="14" fill="rgba(255,255,255,0.05)" stroke="currentColor" stroke-width="0.3" opacity="1"/>
+              </svg>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- CTA Button - Mobile Only (Below text) -->
-      <div ref="mobileCTARef" class="opacity-0 sm:hidden flex-none w-full px-4 pb-8">
+      <!-- CTA Button - Mobile only (below text) -->
+      <div ref="mobileCTARef" class="opacity-0 sm:hidden flex-none w-full px-4 pb-4 flex justify-center">
         <button
           type="button"
-          class="group w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+          @click="emit('goToServices')"
+          class="group flex items-center justify-center gap-2 px-4 py-2 text-xs font-light text-white border border-white/40 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
         >
           <span>ver propuesta</span>
-          <span class="flex items-center justify-center w-8 h-8 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span class="flex items-center justify-center w-6 h-6 border border-white/40 rounded-full group-hover:bg-white/10 transition-all">
+            <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </span>
@@ -84,15 +84,15 @@
       </div>
 
       <!-- Bottom Section - Responsive Layout -->
-      <div class="flex-none w-full px-4 sm:px-8 lg:px-20 pb-4 sm:pb-8">
+      <div class="flex-none w-full px-3 sm:px-8 lg:px-20 pb-2 sm:pb-8">
         <!-- Border line -->
-        <div class="border-t border-white/20 mx-auto max-w-8xl mb-4 sm:mb-8"></div>
+        <div class="border-t border-white/20 mx-auto max-w-8xl mb-2 sm:mb-8"></div>
         
-        <!-- Stats Section - Stack on mobile, horizontal on desktop -->
+        <!-- Stats Section -->
         <div ref="statsRef" class="opacity-0">
-          <!-- Left: Description (visible on all sizes) -->
-          <div class="mb-6 sm:mb-0 sm:flex sm:items-center sm:justify-between sm:gap-8">
-            <div class="flex-shrink-0 sm:max-w-xs mb-6 sm:mb-0">
+          <div class="sm:flex sm:items-center sm:justify-between sm:gap-8">
+            <!-- Left: Description - Hidden on mobile -->
+            <div class="hidden sm:block flex-shrink-0 sm:max-w-xs">
               <h3 class="font-coolvetica font-bold text-xs uppercase tracking-widest text-white mb-2">
                 COMUNICACIÓN CLARA
               </h3>
@@ -101,28 +101,28 @@
               </p>
             </div>
 
-            <!-- Stats - Horizontal scroll on mobile, normal on desktop -->
-            <div ref="statsContainerRef" class="flex items-center gap-6 sm:gap-12 overflow-x-auto pb-2 sm:pb-0 sm:flex-1 sm:justify-center snap-x snap-mandatory">
+            <!-- Stats - Compact on mobile -->
+            <div ref="statsContainerRef" class="flex items-center justify-center gap-3 sm:gap-12 sm:flex-1">
               <!-- Stat 1 -->
-              <div class="flex-shrink-0 flex items-center gap-2 snap-center group hover:opacity-80 transition-opacity">
-                <p class="font-coolvetica font-bold text-2xl sm:text-3xl text-white group-hover:text-pink-300 transition-colors">100%</p>
-                <p class="font-cambria text-xs text-white/60">Proyectos<br/>a Medida</p>
+              <div class="flex items-center gap-1 sm:gap-2 group">
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">100%</p>
+                <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Proyectos<br/>a Medida</p>
               </div>
 
               <!-- Stat 2 -->
-              <div class="flex-shrink-0 flex items-center gap-2 snap-center group hover:opacity-80 transition-opacity">
-                <p class="font-coolvetica font-bold text-2xl sm:text-3xl text-white group-hover:text-pink-300 transition-colors">20+</p>
-                <p class="font-cambria text-xs text-white/60">Marcas<br/>Acompañadas</p>
+              <div class="flex items-center gap-1 sm:gap-2 group">
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">20+</p>
+                <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Marcas<br/>Acompañadas</p>
               </div>
 
               <!-- Stat 3 -->
-              <div class="flex-shrink-0 flex items-center gap-2 snap-center group hover:opacity-80 transition-opacity">
-                <p class="font-coolvetica font-bold text-2xl sm:text-3xl text-white group-hover:text-pink-300 transition-colors">100%+</p>
-                <p class="font-cambria text-xs text-white/60">Clientes<br/>Satisfechos</p>
+              <div class="flex items-center gap-1 sm:gap-2 group">
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">100%+</p>
+                <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Clientes<br/>Satisfechos</p>
               </div>
             </div>
 
-            <!-- Light Mode Toggle - Hidden on mobile, visible on desktop -->
+            <!-- Light Mode Toggle - Hidden on mobile -->
             <div class="flex-shrink-0 hidden sm:flex items-center justify-end">
               <label class="flex items-center cursor-pointer group">
                 <div class="relative">
@@ -156,6 +156,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
+
+const emit = defineEmits(['goToServices'])
 
 const headlineRef = ref(null)
 const descriptionRef = ref(null)
