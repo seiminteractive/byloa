@@ -17,7 +17,6 @@
 
     <!-- MOBILE LAYOUT -->
     <div class="sm:hidden mobile-services-container">
-      <!-- Header con contador -->
       <div class="mobile-header">
         <div class="header-top">
           <span class="header-label">SERVICIOS</span>
@@ -375,12 +374,24 @@ onUnmounted(() => {
   margin-left: 1rem;
 }
 
+.desktop-services-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .services-content {
   position: relative;
   z-index: 1;
   display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Left Navigation */
@@ -391,6 +402,7 @@ onUnmounted(() => {
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+  flex-shrink: 0;
 }
 
 .nav-header {
@@ -594,12 +606,27 @@ onUnmounted(() => {
     right: 1rem;
     top: 30%;
   }
+}
 
-  .social-links,
-  .deco-left,
-  .deco-bottom,
-  .deco-top-right {
-    display: none;
+/* ===== DESKTOP STYLES ===== */
+@media (min-width: 640px) {
+  .mobile-services-container {
+    display: none !important;
+  }
+
+  .desktop-services-wrapper {
+    display: block !important;
+  }
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 639px) {
+  .mobile-services-container {
+    display: flex !important;
+  }
+
+  .desktop-services-wrapper {
+    display: none !important;
   }
 }
 

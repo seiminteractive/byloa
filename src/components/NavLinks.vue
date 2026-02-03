@@ -15,13 +15,42 @@
 
     <!-- Center: Navigation Links - Desktop Only -->
     <div class="hidden lg:flex items-center gap-25 text-sm">
-      <span class="flex items-center gap-2">
-        <span class="text-white">•</span>
-        <a href="#home" class="text-white hover:text-gray-300 transition">Home</a>
-      </span>
-      <a href="#about" class="text-gray-400 hover:text-gray-300 transition">Nosotros</a>
-      <a href="#services" class="text-gray-400 hover:text-gray-300 transition">Servicios</a>
-      <a href="#process" class="text-gray-400 hover:text-gray-300 transition">Proceso</a>
+      <a 
+        href="#home" 
+        @click.prevent="scrollToSection('#home')"
+        class="flex items-center gap-2 transition-colors"
+        :class="activeSection === 'home' ? 'text-white' : 'text-gray-400 hover:text-gray-300'"
+      >
+        <span v-if="activeSection === 'home'" class="text-white">•</span>
+        <span>Home</span>
+      </a>
+      <a 
+        href="#about" 
+        @click.prevent="scrollToSection('#about')"
+        class="flex items-center gap-2 transition-colors"
+        :class="activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'"
+      >
+        <span v-if="activeSection === 'about'" class="text-white">•</span>
+        <span>Nosotros</span>
+      </a>
+      <a 
+        href="#services" 
+        @click.prevent="scrollToSection('#services')"
+        class="flex items-center gap-2 transition-colors"
+        :class="activeSection === 'services' ? 'text-white' : 'text-gray-400 hover:text-gray-300'"
+      >
+        <span v-if="activeSection === 'services'" class="text-white">•</span>
+        <span>Servicios</span>
+      </a>
+      <a 
+        href="#process" 
+        @click.prevent="scrollToSection('#process')"
+        class="flex items-center gap-2 transition-colors"
+        :class="activeSection === 'process' ? 'text-white' : 'text-gray-400 hover:text-gray-300'"
+      >
+        <span v-if="activeSection === 'process'" class="text-white">•</span>
+        <span>Proceso</span>
+      </a>
     </div>
 
     <!-- Right Side Navigation - Desktop Only -->
@@ -147,11 +176,25 @@ import gsap from 'gsap'
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
+const activeSection = ref('home')
 let bodyScrollLocked = false
 
 const handleScroll = () => {
   const scrollPosition = window.scrollY
   isScrolled.value = scrollPosition > 50
+  
+  // Detectar sección activa al hacer scroll
+  const sections = ['home', 'about', 'services', 'process']
+  for (const section of sections) {
+    const element = document.getElementById(section)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        activeSection.value = section
+        break
+      }
+    }
+  }
 }
 
 const toggleMobileMenu = () => {
@@ -162,9 +205,20 @@ const closeMobileMenu = () => {
   isMenuOpen.value = false
 }
 
+const scrollToSection = (selector) => {
+  const sectionName = selector.replace('#', '')
+  activeSection.value = sectionName
+  const element = document.querySelector(selector)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 const handleMenuClick = (selector) => {
   closeMobileMenu()
   // Scroll suave al elemento
+  const sectionName = selector.replace('#', '')
+  activeSection.value = sectionName
   const element = document.querySelector(selector)
   if (element) {
     setTimeout(() => {

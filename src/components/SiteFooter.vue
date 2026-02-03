@@ -2,9 +2,9 @@
   <footer ref="containerRef" class="bg-[#0A0A0A] text-white pt-20 sm:pt-28 pb-0 relative z-10">
     <div class="container-lg mx-auto px-4 sm:px-6">
       <!-- Main Footer Content -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 pb-16 border-b border-white/10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-16 pb-16 border-b border-white/10">
         <!-- Brand Section -->
-        <div ref="brandRef" class="opacity-0">
+        <div ref="brandRef" class="opacity-0 col-span-1 md:col-span-1">
           <img
               src="/logotipos_logotipodescriptorv1 negativo.png"
               alt="byloa.agency"
@@ -15,80 +15,86 @@
           </p>
         </div>
 
-        <!-- Navigation -->
-        <div ref="navRef" class="opacity-0">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-6">
-            Navegación
-          </h3>
-          <ul class="space-y-3">
-            <li>
-              <a
-                href="#about"
-                class="text-sm text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Nosotros
-              </a>
-            </li>
-            <li>
-              <a
-                href="#services"
-                class="text-sm text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Servicios
-              </a>
-            </li>
-            <li>
-              <a
-                href="#process"
-                class="text-sm text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Proceso
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="text-sm text-white/60 hover:text-white transition-colors duration-200"
-              >
-                Contacto
-              </a>
-            </li>
-          </ul>
-        </div>
+        <!-- Mobile Grid 2 Columns / Desktop 2 Sections -->
+        <div class="grid grid-cols-2 md:contents gap-8">
+          <!-- Navigation -->
+          <div ref="navRef" class="opacity-0">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+              Navegación
+            </h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#about"
+                  class="text-sm text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Nosotros
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-sm text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#process"
+                  class="text-sm text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Proceso
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-sm text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        <!-- Social & Contact -->
-        <div ref="socialRef" class="opacity-0">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-6">
-            Conecta
-          </h3>
-          <div class="flex gap-6">
-            <a
-              href="https://www.instagram.com/byloa.agency/"
-              class="text-white/60 hover:text-white transition-colors duration-200"
-              aria-label="Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a
-              href="https://wa.me/5493417797688?text=Hola%20me%20gustaría%20contactarlos"
-              class="text-white/60 hover:text-white transition-colors duration-200"
-              aria-label="Whatsapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-             <i class="bi bi-whatsapp"></i>
-            </a>
-            <a
-              href="mailto:loanaaguirre@byloa.agency"
-              class="text-white/60 hover:text-white transition-colors duration-200"
-              aria-label="Email"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="bi bi-envelope"></i>
-            </a>
+          <!-- Social & Contact -->
+          <div ref="socialRef" class="opacity-0">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+              Conecta
+            </h3>
+            <div class="flex flex-col gap-4 md:flex-row md:gap-6">
+              <a
+                href="https://www.instagram.com/byloa.agency/"
+                class="text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 md:gap-0"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-instagram"></i>
+                <span class="text-sm md:hidden">Instagram</span>
+              </a>
+              <a
+                href="https://wa.me/5493417797688?text=Hola%20me%20gustaría%20contactarlos"
+                class="text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 md:gap-0"
+                aria-label="Whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+               <i class="bi bi-whatsapp"></i>
+               <span class="text-sm md:hidden">Whatsapp</span>
+              </a>
+              <a
+                href="mailto:loanaaguirre@byloa.agency"
+                class="text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 md:gap-0"
+                aria-label="Email"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-envelope"></i>
+                <span class="text-sm md:hidden">Email</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
