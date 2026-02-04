@@ -13,10 +13,7 @@
             alt="ByLoa"
             class="h-12 w-auto object-contain mx-auto mb-8"
           />
-          <h1 class="text-4xl sm:text-5xl font-light text-white mb-3" style="font-family: 'COOLVETICA', sans-serif; letter-spacing: -0.02em; line-height: 1.1;">
-            Bienvenido
-          </h1>
-          <p class="text-white/60 text-base font-light" style="font-family: 'Cambria', serif;">
+          <p class="text-white/60 text-base font-light" style="font-family: 'Cambria', sans-serif;">
             Administra tus proyectos
           </p>
         </div>
@@ -32,7 +29,7 @@
               required
               :disabled="isLoading"
               class="w-full bg-white/15 backdrop-blur-md border border-white/30 rounded-full px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-white/60 transition-all duration-300 text-base"
-              style="font-family: 'Cambria', serif;"
+              style="font-family: 'COOLVETICA', sans-serif;"
             />
           </div>
 
@@ -45,7 +42,7 @@
               required
               :disabled="isLoading"
               class="w-full bg-white/15 backdrop-blur-md border border-white/30 rounded-full px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-white/60 transition-all duration-300 text-base"
-              style="font-family: 'Cambria', serif;"
+              style="font-family: 'COOLVETICA', sans-serif;"
             />
           </div>
 
@@ -65,7 +62,7 @@
           <router-link
             to="/"
             class="text-[#F0C9C7] hover:text-white transition-colors text-sm font-light"
-            style="font-family: 'Cambria', serif;"
+            style="font-family: 'cambria', sans-serif;"
           >
             ← Volver a inicio
           </router-link>

@@ -222,7 +222,7 @@
                   type="text"
                   placeholder="Nombre del proyecto"
                   class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
-                  style="font-family: 'Cambria', serif;"
+                  style="font-family: 'COOLVETICA', sans-serif;"
                 />
               </div>
 
@@ -239,10 +239,10 @@
                     class="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-3 py-5 text-center hover:border-white/40 transition-colors cursor-pointer">
-                    <p v-if="!formData.media" class="text-sm text-white/60 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-if="!formData.media" class="text-sm text-white/60 font-light" style="font-family: 'COOLVETICA', sans-serif;">
                       Arrastra o haz click
                     </p>
-                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'COOLVETICA', sans-serif;">
                       📁 {{ formData.mediaName }}
                     </p>
                   </div>
@@ -257,7 +257,7 @@
                   type="url"
                   placeholder="https://ejemplo.com"
                   class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
-                  style="font-family: 'Cambria', serif;"
+                  style="font-family: 'COOLVETICA', sans-serif;"
                 />
               </div>
 
@@ -331,7 +331,7 @@
             </h3>
 
             <!-- Message -->
-            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'Cambria', serif;">
+            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'COOLVETICA', sans-serif;">
               Esta acción no se puede deshacer. El proyecto será eliminado permanentemente.
             </p>
 
@@ -398,7 +398,7 @@
                   type="text"
                   placeholder="Ej: Google, Microsoft, etc."
                   class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/30 focus:outline-none focus:border-white/40 transition-colors text-sm"
-                  style="font-family: 'Cambria', serif;"
+                  style="font-family: 'COOLVETICA', sans-serif;"
                 />
               </div>
 
@@ -415,10 +415,10 @@
                     class="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <div class="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-lg px-3 py-5 text-center hover:border-white/40 transition-colors cursor-pointer">
-                    <p v-if="!brandFormData.logo" class="text-sm text-white/60 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-if="!brandFormData.logo" class="text-sm text-white/60 font-light" style="font-family: 'COOLVETICA', sans-serif;">
                       Arrastra o haz click
                     </p>
-                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'Cambria', serif;">
+                    <p v-else class="text-sm text-white/80 font-light" style="font-family: 'COOLVETICA', sans-serif;">
                       📁 {{ brandFormData.logoName }}
                     </p>
                   </div>
@@ -486,7 +486,7 @@
             </h3>
 
             <!-- Message -->
-            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'Cambria', serif;">
+            <p class="text-white/70 text-center mb-8 font-light text-lg" style="font-family: 'COOLVETICA', sans-serif;">
               Esta acción no se puede deshacer. El logo será eliminado permanentemente.
             </p>
 
