@@ -53,7 +53,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="w-full py-4 bg-[#46EBBB] text-white font-medium rounded-full hover:shadow-lg hover:shadow-[#46EBBB]/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-base"
+            class="w-full py-4 bg-[#F0C9C7] text-white font-medium rounded-full hover:shadow-lg hover:shadow-[#F0C9C7]/30 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed text-base"
             style="font-family: 'COOLVETICA', sans-serif;"
           >
             {{ isLoading ? 'Cargando...' : 'Sign in' }}
@@ -104,19 +104,41 @@ const handleLogin = async () => {
 
 .login-gradient {
   background:
-    /* Gradiente principal - verde teal */
-    radial-gradient(ellipse 100% 90% at 50% 10%, rgba(70, 235, 187, 0.15) 0%, transparent 40%),
-    /* Rosa secundario - lado izquierdo */
-    radial-gradient(ellipse 80% 70% at 10% 60%, rgba(240, 201, 199, 0.1) 0%, transparent 50%),
-    /* Beige sutil - lado derecho */
-    radial-gradient(ellipse 70% 60% at 90% 70%, rgba(245, 242, 237, 0.08) 0%, transparent 50%),
-    /* Degradado de fondo - predominante negro */
-    linear-gradient(180deg, #1A1A1A 0%, #000000 50%, #1A1A1A 100%);
+    /* Gradiente principal - Rose */
+    radial-gradient(
+      ellipse 100% 90% at 50% 10%,
+      rgba(240, 201, 199, 0.20) 0%,
+      transparent 40%
+    ),
+
+    /* Rose secundario - izquierda */
+    radial-gradient(
+      ellipse 80% 70% at 10% 60%,
+      rgba(240, 201, 199, 0.14) 0%,
+      transparent 50%
+    ),
+
+    /* Rose sutil - derecha */
+    radial-gradient(
+      ellipse 70% 60% at 90% 70%,
+      rgba(240, 201, 199, 0.08) 0%,
+      transparent 50%
+    ),
+
+    /* Fondo oscuro */
+    linear-gradient(
+      180deg,
+      #1A1A1A 0%,
+      #000000 50%,
+      #1A1A1A 100%
+    );
 }
+
+
 
 /* Input focus animation */
 input:focus {
-  box-shadow: 0 0 0 2px rgba(70, 235, 187, 0.2);
+  box-shadow: 0 0 0 2px rgba(240, 201, 199, 0.4);
 }
 
 /* Button hover effect */

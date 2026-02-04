@@ -5,6 +5,7 @@ const { createPool, closePool } = require('./config/database')
 const { initializeFirebase } = require('./config/firebase')
 const projectsRoutes = require('./routes/projects')
 const trustedBrandsRoutes = require('./routes/trustedBrands')
+const configRoutes = require('./routes/config')
 
 const app = fastify({ 
   bodyLimit: 52428800, // 50MB
@@ -39,6 +40,7 @@ app.get('/health', async (request, reply) => {
 // Register routes
 app.register(projectsRoutes)
 app.register(trustedBrandsRoutes)
+app.register(configRoutes)
 
 // Error handler
 app.setErrorHandler((error, request, reply) => {
