@@ -6,9 +6,9 @@
 
       <!-- Título principal - Tipografía premium -->
       <div class="mb-6 sm:mb-8 text-center">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
-          Marcas que confían <br class="hidden sm:block" />
-          y <span class="font-medium">trabajan</span> con ByLoa
+        <h2 class="section-title font-light text-white tracking-tight leading-tight">
+          Marcas que<br class="hidden sm:block" />
+          <span class="font-medium font-coolvetica"> acompañamos</span>
         </h2>
       </div>
 
@@ -115,5 +115,14 @@ onMounted(() => {
   div[style*="--space-mobile"] {
     --space: var(--space-desktop);
   }
+}
+
+.section-title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-top: 1rem;
 }
 </style>

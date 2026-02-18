@@ -115,7 +115,7 @@
             </div>
             
             <div class="relative z-10 flex items-center justify-between mt-6">
-              <span class="text-sm text-white/80 font-medium tracking-wide">Descubrir</span>
+              <a href="https://wa.me/5493417797688" target="_blank" class="text-sm text-white/80 font-medium tracking-wide">Descubrir</a>
             </div>
           </div>
         </div>

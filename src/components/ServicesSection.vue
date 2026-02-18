@@ -243,8 +243,10 @@ onUnmounted(() => {
   backdrop-filter: blur(10px);
   background: linear-gradient(
     90deg,
-    rgba(200, 210, 220, 0.7) 0%,
-    rgba(200, 210, 220, 0.4) 60%,
+    /* rgba(200, 210, 220, 0.7) 0%,
+    rgba(200, 210, 220, 0.4) 60%, */
+    rgba(0, 0, 0, 0.7) 0%,
+rgba(0, 0, 0, 0.4) 60%,
     transparent 100%
   );
   z-index: 1;
@@ -292,14 +294,16 @@ onUnmounted(() => {
   text-orientation: mixed;
   font-size: 0.65rem;
   letter-spacing: 0.4em;
-  color: rgba(0, 0, 0, 0.4);
+  /* color: rgba(0, 0, 0, 0.4); */
+  color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
 }
 
 .deco-line-vertical {
   width: 1px;
   height: 80px;
-  background: linear-gradient(180deg, rgba(137, 23, 23, 0.3) 0%, transparent 100%);
+  /* background: linear-gradient(180deg, rgba(137, 23, 23, 0.3) 0%, transparent 100%); */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
 }
 
 /* Decorative Elements - Bottom */
@@ -412,7 +416,8 @@ onUnmounted(() => {
 .nav-label {
   font-size: 0.7rem;
   letter-spacing: 0.3em;
-  color: rgba(0, 0, 0, 0.4);
+  /* color: rgba(0, 0, 0, 0.4); */
+  color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
 }
 
@@ -429,7 +434,8 @@ onUnmounted(() => {
   font-family: 'Manrope', sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.4);
+  /* color: rgba(0, 0, 0, 0.4); */
+  color: #fff;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -445,16 +451,19 @@ onUnmounted(() => {
   transform: translateY(-50%);
   width: 2px;
   height: 0;
-  background: #1a1a1a;
+  /* background: #1a1a1a; */
+  background: #fff;
   transition: height 0.3s ease;
 }
 
 .service-item:hover {
-  color: rgba(0, 0, 0, 0.6);
+  /* color: rgba(0, 0, 0, 0.6); */
+  color: #fff;
 }
 
 .service-item.active {
-  color: #1a1a1a;
+  /* color: #1a1a1a; */
+  color: #fff;
   font-weight: 500;
 }
 
