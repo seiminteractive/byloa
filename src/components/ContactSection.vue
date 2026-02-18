@@ -23,7 +23,7 @@
             <!-- Header -->
             <div class="flex items-center justify-between mb-8 relative z-10">
               <span class="text-sm text-gray-700 font-light tracking-wide">BYLOA Agency</span>
-              <span class="text-sm text-gray-600 font-medium cursor-pointer hover:text-gray-900 transition-colors">Contacto</span>
+              <span class="text-sm text-gray-600 font-medium transition-colors">Contacto</span>
             </div>
 
             <!-- Title -->
@@ -115,7 +115,7 @@
             </div>
             
             <div class="relative z-10 flex items-center justify-between mt-6">
-              <a href="https://wa.me/5493417797688" target="_blank" class="text-sm text-white/80 font-medium tracking-wide">Descubrir</a>
+              <a href="https://wa.me/5493417797688" target="_blank" class="text-sm text-white/80 font-medium tracking-wide hover:text-gray-400 transition-colors">Descubrir</a>
             </div>
           </div>
         </div>
