@@ -51,9 +51,12 @@
   </section>
 
   <section class="services" ref="servicesRef">
+    <!-- <div class="services-header"><img src="/whatido.svg" /></div>
     <div class="services-header"><img src="/whatido.svg" /></div>
-    <div class="services-header"><img src="/whatido.svg" /></div>
-    <div class="services-header"><img src="/whatido.svg" /></div>
+    <div class="services-header"><img src="/whatido.svg" /></div> -->
+    <div class="services-header"><img src="/quehacemos.svg" /></div>
+    <div class="services-header"><img src="/quehacemos.svg" /></div>
+    <div class="services-header"><img src="/quehacemos.svg" /></div>
   </section>
 
   <section class="services-copy">
