@@ -55,7 +55,11 @@
 
     <!-- Right Side Navigation - Desktop Only -->
     <div class="hidden lg:flex items-center gap-8 text-sm">
-      <a href="#contact" class="px-6 py-2 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition">
+      <a 
+        href="#contact" 
+        @click.prevent="scrollToSection('#contact')"
+        class="px-6 py-2 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition"
+      >
         Contactar
       </a>
     </div>
@@ -184,7 +188,7 @@ const handleScroll = () => {
   isScrolled.value = scrollPosition > 50
   
   // Detectar sección activa al hacer scroll
-  const sections = ['home', 'about', 'services', 'process']
+  const sections = ['home', 'about', 'services', 'process', 'contact']
   for (const section of sections) {
     const element = document.getElementById(section)
     if (element) {

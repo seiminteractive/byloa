@@ -54,9 +54,9 @@
     <!-- <div class="services-header"><img src="/whatido.svg" /></div>
     <div class="services-header"><img src="/whatido.svg" /></div>
     <div class="services-header"><img src="/whatido.svg" /></div> -->
-    <div class="services-header"><img src="/quehacemos.svg" /></div>
-    <div class="services-header"><img src="/quehacemos.svg" /></div>
-    <div class="services-header"><img src="/quehacemos.svg" /></div>
+    <div class="services-header"><img src="/service.svg" /></div>
+    <div class="services-header"><img src="/service.svg" /></div>
+    <div class="services-header"><img src="/service.svg" /></div>
   </section>
 
   <section class="services-copy">

@@ -175,6 +175,9 @@ const services = [
 const activeIndex = ref(0)
 let autoScrollInterval = null
 
+// Detectar si es mobile
+const isMobile = () => window.innerWidth < 640
+
 const setActiveService = (index) => {
   activeIndex.value = index
   resetAutoScroll()
@@ -189,7 +192,9 @@ const prevService = () => {
 }
 
 const startAutoScroll = () => {
-  autoScrollInterval = setInterval(nextService, 2000)
+  // 3000ms en mobile, 2000ms en desktop
+  const delay = isMobile() ? 3000 : 2000
+  autoScrollInterval = setInterval(nextService, delay)
 }
 
 const resetAutoScroll = () => {

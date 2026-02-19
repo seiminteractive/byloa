@@ -9,7 +9,7 @@
         <!-- Logo Left -->
         <div ref="logoLeftRef">
           <img
-            src="/logotipos_logotipodescriptorv1 negativo.png"
+            src="/logotipos_logotipodescriptorv2 negativo.png"
             alt="ByLoa Logo Left"
             class="h-32 sm:h-40 md:h-48 w-auto object-contain"
           />
@@ -40,7 +40,7 @@
         <div ref="contentRef">
           <p class="text-sm md:text-base text-white/70 font-light leading-relaxed mb-4">
             Para proyectos que requieren un desarrollo técnico más profundo, 
-            <span class="text-white font-medium">byloa.agency</span> trabaja de forma integrada con 
+            <span class="text-white font-medium">Byloa Agency</span> trabaja de forma integrada con 
             <a target="_blank" href="https://seiminteractive.io/" class="text-white font-medium hover:underline">SEIM Interactive</a>, 
             el área especializada en desarrollo web, software y soluciones digitales.
           </p>

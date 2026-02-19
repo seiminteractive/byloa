@@ -8,7 +8,7 @@
           <span class="text-xs uppercase tracking-widest text-white/40 font-light">Trabajo destacado</span>
         </div>
         <div ref="headerTitleRef">
-          <h2 class="text-5xl md:text-7xl font-light text-white tracking-tight">
+          <h2 class="section-title text-white tracking-tight">
             Proyectos
           </h2>
         </div>
@@ -146,6 +146,16 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.section-title {
+  font-family: 'COOLVETICA', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-top: 1rem;
+}
+
 .carousel-wrapper {
   position: relative;
   width: 100%;

@@ -105,19 +105,19 @@
             <div ref="statsContainerRef" class="flex items-center justify-center gap-3 sm:gap-12 sm:flex-1">
               <!-- Stat 1 -->
               <div class="flex items-center gap-1 sm:gap-2 group">
-                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">100%</p>
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">+100</p>
                 <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Proyectos<br/>a Medida</p>
               </div>
 
               <!-- Stat 2 -->
               <div class="flex items-center gap-1 sm:gap-2 group">
-                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">20+</p>
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">+40</p>
                 <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Marcas<br/>Acompañadas</p>
               </div>
 
               <!-- Stat 3 -->
               <div class="flex items-center gap-1 sm:gap-2 group">
-                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">100%+</p>
+                <p class="font-coolvetica font-bold text-base sm:text-3xl text-white">100%</p>
                 <p class="font-cambria text-[9px] sm:text-xs text-white/60 leading-tight">Clientes<br/>Satisfechos</p>
               </div>
             </div>

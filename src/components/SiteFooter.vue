@@ -94,6 +94,26 @@
                 <i class="bi bi-envelope"></i>
                 <span class="text-sm md:hidden">Email</span>
               </a>
+              <a
+                href="https://www.linkedin.com/in/byloa-agency-4810652a9/"
+                class="text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 md:gap-0"
+                aria-label="Email"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-linkedin"></i>
+                <span class="text-sm md:hidden">Linkedin</span>
+              </a>
+              <a
+                href="https://www.facebook.com/people/Byloa-Agency/61585933823414/"
+                class="text-white/60 hover:text-white transition-colors duration-200 flex items-center gap-2 md:gap-0"
+                aria-label="Email"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="bi bi-facebook"></i>
+                <span class="text-sm md:hidden">Facebook</span>
+              </a>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@
       <!-- Subtítulo - Más refinado y legible -->
       <div class="text-center max-w-3xl mx-auto mb-0">
         <p class="text-sm sm:text-base md:text-lg text-white/70 font-light leading-relaxed tracking-wide">
-          Acompañamos emprendimientos y proyectos que apuestan a la<br class="hidden sm:inline" />
+          Acompañamos emprendimientos y proyectos que apuestan a la <br class="hidden sm:inline" />
           <span class="text-white/70">comunicación estratégica y coherente</span>
         </p>
       </div>
@@ -118,11 +118,17 @@ onMounted(() => {
 }
 
 .section-title {
+  /* font-family: 'COOLVETICA', sans-serif; */
   font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 100;
   color: #fff;
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin-top: 1rem;
+}
+
+.section-title .font-medium {
+  font-weight: 400;
+  font-family: 'COOLVETICA', sans-serif;
 }
 </style>
