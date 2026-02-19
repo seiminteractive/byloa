@@ -124,13 +124,13 @@
 
             <!-- Light Mode Toggle - Hidden on mobile -->
             <div class="flex-shrink-0 hidden sm:flex items-center justify-end">
-              <label class="flex items-center cursor-pointer group">
+              <label class="flex items-center group">
                 <div class="relative">
                   <input type="checkbox" class="sr-only" />
-                  <div class="block w-10 h-6 bg-white/80 group-hover:bg-white rounded-full transition-all"></div>
+                  <div class="block w-10 h-6 bg-white/80 rounded-full transition-all"></div>
                   <div class="absolute left-1 top-1 bg-gray-900 w-4 h-4 rounded-full transition"></div>
                 </div>
-                <div class="ml-3 font-cambria text-xs text-white/70 group-hover:text-white transition-colors">Modo claro</div>
+                <div class="ml-3 font-cambria text-xs text-white/70">Modo claro</div>
               </label>
             </div>
           </div>

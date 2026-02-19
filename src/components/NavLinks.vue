@@ -10,7 +10,7 @@
   >
     <!-- Left: Logo -->
     <div class="text-2xl font-coolvetica font-bold text-white">
-      <img src="/logotipos_logotipodescriptorv1 negativo.png" alt="ByLoa Agency" class="h-10 w-auto opacity-90">
+      <img src="/logotipos_logotipodescriptorv2 negativo.png" alt="ByLoa Agency" class="h-10 w-auto opacity-90">
     </div>
 
     <!-- Center: Navigation Links - Desktop Only -->
@@ -72,40 +72,33 @@
     >
       <!-- Hamburger Lines (hidden when menu is open) -->
       <div 
-        :class="['w-6 h-0.5 bg-white transition-all duration-500 absolute', {
+        :class="['w-6 h-0.5 bg-[#F2F0E3] transition-all duration-500 absolute', {
           'opacity-0': isMenuOpen
         }]"
         style="top: 2px"
       ></div>
       <div 
-        :class="['w-6 h-0.5 bg-white transition-all duration-500 absolute', {
+        :class="['w-6 h-0.5 bg-[#F2F0E3] transition-all duration-500 absolute', {
           'opacity-0': isMenuOpen
         }]"
         style="top: 50%; transform: translateY(-50%)"
       ></div>
       <div 
-        :class="['w-6 h-0.5 bg-white transition-all duration-500 absolute', {
+        :class="['w-6 h-0.5 bg-[#F2F0E3] transition-all duration-500 absolute', {
           'opacity-0': isMenuOpen
         }]"
         style="bottom: 2px"
       ></div>
 
-      <!-- Asterisk SVG (shown when menu is open) -->
-      <svg 
-        :class="['w-5 h-5 absolute transition-all duration-500', {
+      <!-- Logo (shown when menu is open) -->
+      <img 
+        src="/logotipos_reducciónv2 negativo.png"
+        alt="Close menu"
+        :class="['w-12 h-auto absolute transition-all duration-500', {
           'opacity-100 rotate-0': isMenuOpen,
           'opacity-0 -rotate-90': !isMenuOpen
         }]"
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        stroke-width="2.5" 
-        stroke-linecap="round"
-        class="text-white"
-      >
-        <!-- Asterisk shape made with lines -->
-        <path d="M12 2v20M3 6l18 12M21 6l-18 12" />
-      </svg>
+      />
     </button>
   </nav>
 
@@ -130,28 +123,28 @@
           <a 
             href="#home" 
             @click.prevent="handleMenuClick('#home')"
-            class="text-3xl sm:text-4xl md:text-5xl font-light text-white transition-all duration-300 hover:text-white/80 leading-tight"
+            class="text-3xl sm:text-4xl md:text-5xl font-light text-[#F2F0E3] transition-all duration-300 hover:text-white/80 leading-tight"
           >
             Home
           </a>
           <a 
             href="#about" 
             @click.prevent="handleMenuClick('#about')"
-            class="text-3xl sm:text-4xl md:text-5xl font-light text-white transition-all duration-300 hover:text-white/80 leading-tight"
+            class="text-3xl sm:text-4xl md:text-5xl font-light text-[#F2F0E3] transition-all duration-300 hover:text-white/80 leading-tight"
           >
             Nosotros
           </a>
           <a 
             href="#services" 
             @click.prevent="handleMenuClick('#services')"
-            class="text-3xl sm:text-4xl md:text-5xl font-light text-white transition-all duration-300 hover:text-white/80 leading-tight"
+            class="text-3xl sm:text-4xl md:text-5xl font-light text-[#F2F0E3] transition-all duration-300 hover:text-white/80 leading-tight"
           >
             Servicios
           </a>
           <a 
             href="#process" 
             @click.prevent="handleMenuClick('#process')"
-            class="text-3xl sm:text-4xl md:text-5xl font-light text-white transition-all duration-300 hover:text-white/80 leading-tight"
+            class="text-3xl sm:text-4xl md:text-5xl font-light text-[#F2F0E3] transition-all duration-300 hover:text-white/80 leading-tight"
           >
             Proceso
           </a>
@@ -160,7 +153,7 @@
         <!-- Contact Button -->
         <button 
           @click="handleContactClick"
-          class="w-full py-4 sm:py-5 bg-white text-black font-medium rounded-lg transition-all duration-300 hover:bg-white/90 text-base sm:text-lg"
+          class="w-full py-4 sm:py-5 bg-[#F2F0E3] text-black font-medium rounded-lg transition-all duration-300 hover:bg-white/90 text-base sm:text-lg"
         >
           Contactar
         </button>

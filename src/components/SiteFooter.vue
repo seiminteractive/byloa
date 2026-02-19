@@ -6,7 +6,7 @@
         <!-- Brand Section -->
         <div ref="brandRef" class="opacity-0 col-span-1 md:col-span-1">
           <img
-              src="/logotipos_logotipodescriptorv1 negativo.png"
+              src="/logotipos_logotipodescriptorv2 negativo.png"
               alt="byloa.agency"
               class="h-20 w-auto mb-7"
             />
